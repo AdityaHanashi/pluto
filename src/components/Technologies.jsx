@@ -59,16 +59,12 @@ const Technologies = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-left mb-16"
         >
-          <span className="tag tag-purple mb-4 inline-flex">Stack</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Technologies We <span className="gradient-text">Deploy</span>
+          <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">02 / Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
+            What we bring <span className="gradient-text font-extrabold">to the table</span>
           </h2>
-          <div className="title-underline" />
-          <p className="text-gray-400 max-w-2xl mx-auto mt-6">
-            We operate at the forefront of modern engineering, leveraging a hyper-scalable, elite stack.
-          </p>
         </motion.div>
 
         {/* Groups */}
@@ -78,7 +74,7 @@ const Technologies = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: groupIdx * 0.1 }}
-              className="text-xl md:text-2xl font-bold font-orbitron text-purple-300 mb-6 flex items-center gap-3"
+              className="text-xl md:text-2xl font-bold font-syne text-purple-300 mb-6 flex items-center gap-3"
             >
               <span className="w-1.5 h-6 rounded-full bg-gradient-to-b from-purple-500 to-blue-500" />
               {group.category}
@@ -108,7 +104,7 @@ const Technologies = () => {
                     >
                       <Icon size={24} className="stroke-[1.75]" />
                     </div>
-                    <span className="text-sm font-semibold tracking-wider font-orbitron text-gray-300 hover:text-white transition-colors duration-200">
+                    <span className="text-xs font-semibold font-mono-jb text-gray-300 hover:text-white transition-colors duration-200 uppercase tracking-wider">
                       {tech.name}
                     </span>
                   </motion.div>

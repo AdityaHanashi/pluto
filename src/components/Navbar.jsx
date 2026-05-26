@@ -7,7 +7,7 @@ const navItems = [
   { label: 'Home', to: 'home' },
   { label: 'About', to: 'about' },
   { label: 'AI Automation', to: 'ai-automation' },
-  { label: 'Labor Management', to: 'labor' },
+  { label: 'Projects', to: 'projects' },
   { label: 'Contact', to: 'contact' },
 ]
 
@@ -39,11 +39,11 @@ const Navbar = () => {
           smooth={true}
           duration={600}
           offset={-80}
-          className="flex items-center gap-2 font-orbitron font-bold text-white text-xl tracking-widest cursor-pointer group"
+          className="flex items-center gap-2 font-syne font-bold text-white text-xl tracking-wide cursor-pointer group"
         >
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300">
-            <span className="relative z-10">P</span>
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300">
+            <span className="relative z-10 text-sm">P</span>
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
           <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent group-hover:to-blue-400 transition-all duration-300">
             PLUTO.AI
@@ -63,8 +63,8 @@ const Navbar = () => {
                   duration={600}
                   offset={-80}
                   onSetActive={() => setActiveSection(item.to)}
-                  className="relative px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer block text-gray-300 hover:text-white"
-                  activeClass="text-purple-400 font-semibold"
+                  className="relative px-4 py-2 text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer block text-gray-400 hover:text-white uppercase font-mono-jb"
+                  activeClass="text-purple-400"
                 >
                   {item.label}
                   {/* Glowing active indicator dot */}
@@ -85,10 +85,10 @@ const Navbar = () => {
             smooth={true}
             duration={600}
             offset={-80}
-            className="btn-primary flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white cursor-pointer shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+            className="btn-outline flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-semibold tracking-wider uppercase font-mono-jb text-purple-400 hover:bg-purple-500 hover:text-black hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all cursor-pointer"
           >
-            <Zap size={14} className="animate-pulse" />
-            <span>Start a Project</span>
+            <Zap size={12} className="animate-pulse" />
+            <span>Contact Us</span>
           </ScrollLink>
         </div>
 

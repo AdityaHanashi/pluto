@@ -24,16 +24,12 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-left mb-16"
         >
-          <span className="tag tag-purple mb-4 inline-flex">The Visionary</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Meet Our <span className="gradient-text">Founder</span>
+          <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">01 / About</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
+            Building the <span className="gradient-text font-extrabold">intelligent layer</span> of modern enterprise
           </h2>
-          <div className="title-underline" />
-          <p className="text-gray-400 max-w-2xl mx-auto mt-6">
-            Connecting cutting-edge AI systems with modern frontend aesthetics to launch the future.
-          </p>
         </motion.div>
 
         {/* Grid Layout */}
@@ -71,8 +67,8 @@ const About = () => {
             </div>
 
             {/* Title / details */}
-            <h3 className="text-3xl font-bold font-orbitron text-white mb-2">Aditya Hanashi</h3>
-            <p className="text-purple-400 font-semibold text-lg tracking-widest uppercase mb-6 font-orbitron">
+            <h3 className="text-3xl font-bold font-syne text-white mb-2">Aditya Hanashi</h3>
+            <p className="text-purple-400 font-semibold text-sm tracking-widest uppercase mb-6 font-mono-jb">
               Founder &bull; Pluto.ai
             </p>
 
@@ -141,9 +137,9 @@ const About = () => {
                 <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20 shrink-0">
                   <Target size={18} />
                 </div>
-                <h4 className="text-lg font-bold text-white font-orbitron">The Mission</h4>
+                <h4 className="text-lg font-bold text-white font-syne">The Mission</h4>
               </div>
-              <p className="text-gray-400 leading-relaxed text-sm md:text-base">
+              <p className="text-gray-400 leading-relaxed text-sm md:text-base font-normal">
                 Pluto.ai designs high-fidelity neural agents and operational voice pipelines. We replace manual administrative tasks with automated intelligence, turning computational pipelines into direct business value.
               </p>
             </div>
@@ -154,9 +150,9 @@ const About = () => {
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20 shrink-0">
                   <Cpu size={18} />
                 </div>
-                <h4 className="text-lg font-bold text-white font-orbitron">Intelligent Systems</h4>
+                <h4 className="text-lg font-bold text-white font-syne">Intelligent Systems</h4>
               </div>
-              <p className="text-gray-400 leading-relaxed text-sm">
+              <p className="text-gray-400 leading-relaxed text-sm font-normal">
                 From self-contained calling streams to integrated MySQL databases, we orchestrate workflows that sync with your operational KPIs.
               </p>
               <div className="flex flex-wrap gap-2.5 pt-2">
@@ -167,7 +163,7 @@ const About = () => {
                   'MySQL Roster Hubs',
                   'Autonomous Agents'
                 ].map((item, i) => (
-                  <span key={i} className="inline-flex items-center gap-1.5 text-xs text-purple-300 bg-purple-950/20 border border-purple-500/15 rounded-full px-3.5 py-1.5 font-mono">
+                  <span key={i} className="inline-flex items-center gap-1.5 text-xs text-purple-300 bg-purple-950/20 border border-purple-500/15 rounded-full px-3.5 py-1.5 font-mono-jb">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
                     {item}
                   </span>
@@ -181,9 +177,9 @@ const About = () => {
                 <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20 shrink-0">
                   <Shield size={18} />
                 </div>
-                <h4 className="text-lg font-bold text-white font-orbitron">Technical Integrity</h4>
+                <h4 className="text-lg font-bold text-white font-syne">Technical Integrity</h4>
               </div>
-              <p className="text-gray-400 leading-relaxed text-sm">
+              <p className="text-gray-400 leading-relaxed text-sm font-normal">
                 Clean architectures built using modern react interfaces and secure relational databases. Tested to deploy securely on modern platforms like Netlify.
               </p>
             </div>

@@ -5,7 +5,8 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import AIAutomation from './components/AIAutomation'
-import LaborManagement from './components/LaborManagement'
+import Projects from './components/Projects'
+import Technologies from './components/Technologies'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ParticleField from './components/ParticleField'
@@ -29,7 +30,8 @@ function App() {
         <section id="home"><Hero /></section>
         <section id="about"><About /></section>
         <section id="ai-automation"><AIAutomation /></section>
-        <section id="labor"><LaborManagement /></section>
+        <section id="projects"><Projects /></section>
+        <section id="technologies"><Technologies /></section>
         <section id="contact"><Contact /></section>
       </main>
       <Footer />

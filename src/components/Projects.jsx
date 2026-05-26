@@ -1,275 +1,174 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Link as ScrollLink } from 'react-scroll'
-import { Laptop, Server, Code2, Cpu, Sparkles, Terminal, ArrowUpRight } from 'lucide-react'
+import { 
+  Laptop, Server, Code2, Cpu, Sparkles, Terminal, 
+  ArrowUpRight, Play, Database, RefreshCw, Eye, MessageSquare, Flame 
+} from 'lucide-react'
 
+// Pre-defined projects mapping to user specifications
 const projectsData = [
-  // FRONTEND PROJECTS (2)
   {
-    id: 'coffeeic',
+    id: 'coffeic',
     name: 'Coffeeic',
     category: 'frontend',
-    isFeatured: true,
-    description: 'A premium, high-fidelity storefront and booking application for a futuristic coffee shop, featuring a client-side AI recommendation engine for custom blends.',
+    desc: 'Premium storefront and online ordering system for a futuristic coffee shop, utilizing client-side context models for dynamic custom blends.',
     tags: ['React', 'Framer Motion', 'Tailwind CSS'],
-    mockupType: 'storefront',
-    url: 'https://coffeeic.pluto.ai'
+    liveURL: 'https://coffeic.pluto.ai',
+    mockTitle: 'COFFEIC_ENGINE',
+    mockDesc: 'Dynamic Barista Recommendation Engine'
   },
   {
     id: 'apple-clone',
     name: 'Apple Website Clone',
     category: 'frontend',
-    isFeatured: true,
-    description: 'A cinematic clone of the Apple flagship landing pages featuring custom hardware modeling previews, viewport scroll-linked animations, and responsive assets.',
+    desc: 'Cinematic flagship clone featuring custom responsive layout viewports, scroll-linked viewport transitions, and hardware wireframe modeling.',
     tags: ['React', 'Vite', 'CSS Gradients'],
-    mockupType: 'apple',
-    url: 'https://apple.pluto.ai'
+    liveURL: 'https://apple.pluto.ai',
+    mockTitle: 'APPLE_MODEL',
+    mockDesc: 'Hardware Perspective Wireframe Mesh'
   },
-  // BACKEND PROJECTS (3)
   {
     id: 'moody',
     name: 'Moody',
     category: 'backend',
-    isFeatured: true,
-    description: 'Low-latency emotion telemetry API backend processing real-time video feeds to classify facial expressions and output telemetry for business audits.',
-    tags: ['Node.js', 'Express', 'OpenCV Bindings'],
-    mockupType: 'vision',
-    url: 'https://moody.pluto.ai'
+    desc: 'Low-latency face expression telemetry backend, reading real-time camera streams to output audit-ready commercial sentiment statistics.',
+    tags: ['Node.js', 'Express', 'OpenCV'],
+    liveURL: 'https://moody.pluto.ai',
+    mockTitle: 'MOODY_ANALYTICS_V2',
+    mockDesc: 'Real-Time Facial Expression Telemetry'
   },
   {
     id: 'odonx',
     name: 'OdonX',
     category: 'backend',
-    isFeatured: false,
-    description: 'A distributed LLM-powered backend pipeline handling parallel context chunking, prompt safety auditing, and autonomous routing to optimal cloud models.',
-    tags: ['Python', 'FastAPI', 'Redis Cache'],
-    mockupType: 'odonx',
-    url: 'https://odonx.pluto.ai'
+    desc: 'Distributed LLM pipeline backend conducting context chunking, prompt safety sanitizing, and autonomous API routing.',
+    tags: ['Python', 'FastAPI', 'Redis'],
+    liveURL: 'https://odonx.pluto.ai',
+    mockTitle: 'ODONX_ROUTER_V1.1',
+    mockDesc: 'Autonomous Context Safe Router'
   },
   {
     id: 'labour-management',
     name: 'Labour Management System',
     category: 'backend',
-    isFeatured: false,
-    description: 'Automated shift roster scheduling engine that uses intelligent allocation pipelines to assign factory workers based on availability, certs, and union rules.',
-    tags: ['MongoDB', 'Express', 'JWT Auth'],
-    mockupType: 'labour',
-    url: 'https://roster.pluto.ai'
+    desc: 'Automated shift scheduling platform linked directly to MySQL relational database tables. Custom query presets test scheduling and labor compliance variables.',
+    tags: ['MySQL', 'Node.js', 'JWT Auth'],
+    liveURL: 'https://roster.pluto.ai',
+    mockTitle: 'MYSQL_ROSTER_DB',
+    mockDesc: 'Local Relational Database Sync'
   },
-  // PYTHON LLM PROJECTS (1)
   {
     id: 'age-gesture-scanner',
     name: 'Age & Gesture Scanner',
     category: 'python-ai',
-    isFeatured: true,
-    description: 'A Python system powered by convolutional networks and local LLMs that estimates age groups and maps hand gestures to execute local OS navigation controls.',
-    tags: ['Python', 'PyTorch', 'MediaPipe', 'LLM'],
-    mockupType: 'gesture',
-    url: 'https://scanner.pluto.ai'
+    desc: 'Python deep learning application using convolutional networks to identify age brackets and translate hand gestures to execute local OS navigation controls.',
+    tags: ['Python', 'PyTorch', 'MediaPipe'],
+    liveURL: 'https://scanner.pluto.ai',
+    mockTitle: 'LANDMARK_CLASSIFIER_V3',
+    mockDesc: 'Webcam Face & Gesture Landmark Tracker'
   }
 ]
-
-const Mockup = ({ type }) => {
-  if (type === 'storefront') {
-    return (
-      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
-        <div className="flex items-center justify-between border-b border-white/5 pb-1">
-          <div className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-            <span className="w-1.5 h-1.5 rounded-full bg-yellow-500" />
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-          </div>
-          <span className="text-[7px] text-gray-600 font-mono">coffeeic.pluto.ai</span>
-        </div>
-        <div className="flex items-center gap-3 mt-1">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-amber-600 to-amber-900 flex items-center justify-center text-white text-base font-bold shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-            ☕
-          </div>
-          <div className="flex-grow space-y-1">
-            <div className="h-2 bg-white/10 rounded w-[85%]" />
-            <div className="h-1.5 bg-white/5 rounded w-[55%]" />
-            <div className="flex gap-1 mt-1">
-              <span className="px-1 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[5px] text-amber-400 font-mono font-bold uppercase">AI Barista</span>
-              <span className="px-1 py-0.5 rounded bg-green-500/10 border border-green-500/20 text-[5px] text-green-400 font-mono font-bold uppercase">Online</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'apple') {
-    return (
-      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 relative overflow-hidden group-hover:border-blue-500/30 transition-colors">
-        <div className="flex items-center justify-between border-b border-white/5 pb-1">
-          <div className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
-            <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
-          </div>
-          <span className="text-[7px] text-gray-600 font-mono">apple.pluto.ai/iphone</span>
-        </div>
-        <div className="flex-grow flex items-center justify-center gap-4 relative">
-          <div className="w-8 h-10 rounded bg-zinc-900 border border-white/20 flex flex-col items-center justify-center text-[10px] relative">
-            {/* Apple Logo Placeholder */}
-            <span className="text-gray-400 font-bold scale-110"></span>
-            <div className="absolute top-0.5 w-4 h-0.5 bg-black rounded" />
-          </div>
-          <div className="space-y-1 font-mono text-[7px]">
-            <p className="text-white font-bold">iPhone 16 Pro Clone</p>
-            <p className="text-gray-500">60 FPS WebGL rendering</p>
-            <div className="h-1 bg-blue-500 w-[90%] rounded-full mt-1" />
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'vision') {
-    return (
-      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-2.5 flex gap-2 relative overflow-hidden group-hover:border-cyan-500/30 transition-colors">
-        <div className="w-[45%] bg-zinc-950 border border-white/5 rounded flex flex-col items-center justify-center relative">
-          <div className="w-8 h-8 rounded-full border border-dashed border-cyan-500/40 flex items-center justify-center animate-spin-slow">
-            <div className="w-5 h-5 rounded-full bg-cyan-500/10 flex items-center justify-center text-[8px]">😊</div>
-          </div>
-          <div className="absolute inset-0 border border-cyan-500/20 rounded pointer-events-none" />
-          <div className="absolute top-1 left-1 text-[5px] text-cyan-400 font-mono tracking-widest uppercase">NODE_01</div>
-          <div className="absolute bottom-1 right-1 text-[5px] text-green-400 font-mono animate-pulse uppercase">FEED_OK</div>
-        </div>
-        <div className="flex-grow flex flex-col gap-1 font-mono text-[6.5px]">
-          <div className="p-1 bg-zinc-900 border border-white/5 rounded flex items-center justify-between">
-            <span className="text-gray-500">EMOTION</span>
-            <span className="text-cyan-400 font-bold">HAPPY</span>
-          </div>
-          <div className="p-1 bg-zinc-900 border border-white/5 rounded flex items-center justify-between">
-            <span className="text-gray-500">CONFIDENCE</span>
-            <span className="text-green-400 font-bold">98.4%</span>
-          </div>
-          <div className="p-1 bg-zinc-900 border border-white/5 rounded flex items-center justify-between">
-            <span className="text-gray-500">LATENCY</span>
-            <span className="text-purple-400 font-bold">12ms</span>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'odonx') {
-    return (
-      <div className="w-full h-36 bg-zinc-950 border border-white/10 rounded-lg p-3 flex flex-col gap-1.5 font-mono text-[7px] text-purple-400 relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
-        <div className="flex items-center gap-1 border-b border-white/5 pb-1 justify-between">
-          <span className="text-purple-400 font-bold">ODONX CORE API</span>
-          <span className="text-green-400 font-bold">ONLINE</span>
-        </div>
-        <p className="text-gray-500">$ python -m odonx.main</p>
-        <p className="text-cyan-300">&gt; Prompt context: 8,192 tokens</p>
-        <p className="text-green-300">&gt; Distributed LLM route: GPT-4o [100% OK]</p>
-        <p className="text-yellow-400">&gt; Tokens/sec: 142.4 tps</p>
-        <div className="absolute bottom-1 right-2 w-1.5 h-3 bg-purple-500 animate-pulse" />
-      </div>
-    )
-  }
-
-  if (type === 'labour') {
-    return (
-      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 relative overflow-hidden group-hover:border-indigo-500/30 transition-colors">
-        <div className="flex items-center justify-between border-b border-white/5 pb-1 font-mono text-[7px] text-gray-500">
-          <span>ROSTER MANAGER</span>
-          <span className="text-green-400 font-bold">ACTIVE</span>
-        </div>
-        <div className="grid grid-cols-2 gap-2 flex-grow">
-          <div className="bg-zinc-900 border border-white/5 rounded p-1 flex flex-col justify-between">
-            <span className="text-[6px] text-gray-500 uppercase font-mono">Shift A allocation</span>
-            <span className="text-white font-bold text-[8px] font-mono">14 Workers</span>
-          </div>
-          <div className="bg-zinc-900 border border-white/5 rounded p-1 flex flex-col justify-between">
-            <span className="text-[6px] text-gray-500 uppercase font-mono">Compliance check</span>
-            <span className="text-green-400 font-bold text-[8px] font-mono">PASSED</span>
-          </div>
-        </div>
-        <div className="h-3 bg-zinc-900 rounded overflow-hidden relative border border-white/5">
-          <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-[85%] rounded" />
-        </div>
-      </div>
-    )
-  }
-
-  // age-gesture-scanner
-  return (
-    <div className="w-full h-36 bg-zinc-950 border border-white/10 rounded-lg p-2.5 flex gap-2 relative overflow-hidden group-hover:border-emerald-500/30 transition-colors">
-      <div className="w-[50%] bg-black border border-white/5 rounded flex flex-col items-center justify-center relative overflow-hidden">
-        {/* Wireframe hand gesture mockup */}
-        <div className="w-14 h-14 rounded-full border border-dashed border-emerald-500/30 flex items-center justify-center relative">
-          <span className="text-[14px] text-emerald-400 animate-pulse">✋</span>
-          {/* Coordinates vector lines */}
-          <div className="absolute top-1/2 left-0 right-0 h-px bg-emerald-500/10 pointer-events-none" />
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-emerald-500/10 pointer-events-none" />
-        </div>
-        <div className="absolute top-1 left-1 text-[5px] text-emerald-400 font-mono tracking-widest uppercase">GESTURE_V1</div>
-        <div className="absolute bottom-1 left-1 text-[5px] text-cyan-400 font-mono uppercase font-bold">AGE: 24-28</div>
-      </div>
-      <div className="flex-grow flex flex-col justify-between font-mono text-[6.5px]">
-        <div className="space-y-1">
-          <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">INPUT:</span> <span className="text-white">WEBCAM</span></p>
-          <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">GESTURE:</span> <span className="text-emerald-400 font-bold">SWIPE_LEFT</span></p>
-          <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">ACTION:</span> <span className="text-cyan-400">NEXT_SLIDE</span></p>
-        </div>
-        <span className="text-[5.5px] text-gray-600">LOCAL LLM ACCURACY: 94%</span>
-      </div>
-    </div>
-  )
-}
 
 const Projects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
   const [filter, setFilter] = useState('all')
+  const [selectedSandbox, setSelectedSandbox] = useState(null)
+  
+  // MySQL Sandbox state variables
+  const [activeSqlIdx, setActiveSqlIdx] = useState(0)
+  const [isExecutingSql, setIsExecutingSql] = useState(false)
+  const [sqlQueries, setSqlQueries] = useState([
+    {
+      title: 'Fetch Active Shift Roster',
+      query: 'SELECT e.name, e.role, s.shift_name, s.hours_allotted, s.status FROM employees e INNER JOIN shifts s ON e.id = s.employee_id;',
+      data: [
+        { name: 'Aditya Hanashi', role: 'Founder/Admin', shift: 'Night Shift', hours: 45, status: 'Active' },
+        { name: 'Rohan Sharma', role: 'AI Operator', shift: 'Morning Shift', hours: 40, status: 'Active' },
+        { name: 'Sarah Jenkins', role: 'Support Agent', shift: 'Afternoon Shift', hours: 38, status: 'On Break' }
+      ]
+    },
+    {
+      title: 'Audit Weekly Compliance',
+      query: 'SELECT name, role, weekly_hours FROM employees WHERE weekly_hours > 40; -- MySQL Compliance Audit',
+      data: [
+        { name: 'Aditya Hanashi', role: 'Founder/Admin', shift: 'System Sync', hours: 52, status: 'Overtime +12h' }
+      ]
+    }
+  ])
+  const [sqlConsoleResult, setSqlConsoleResult] = useState(sqlQueries[0].data)
+  
+  // Coffeic Sandbox state variables
+  const [coffeicChoice, setCoffeicChoice] = useState('Espresso')
+  const [coffeicRecommendation, setCoffeicRecommendation] = useState('AI recommendation: Bold Nitro Blend - calculated via user intent telemetry.')
+
+  // Gesture Tracker state variables
+  const [gestureTriggered, setGestureTriggered] = useState('NONE')
+  const [faceAge, setFaceAge] = useState(24)
+
+  const handleSqlSelect = (idx) => {
+    setActiveSqlIdx(idx)
+    setIsExecutingSql(true)
+    setTimeout(() => {
+      setSqlConsoleResult(sqlQueries[idx].data)
+      setIsExecutingSql(false)
+    }, 550)
+  }
+
+  const triggerGestureSimulation = (gesture) => {
+    setGestureTriggered(gesture)
+    setFaceAge(Math.floor(Math.random() * 8) + 21)
+    setTimeout(() => {
+      setGestureTriggered('NONE')
+    }, 1500)
+  }
+
+  const handleCoffeicChoice = (drink) => {
+    setCoffeicChoice(drink)
+    const recs = {
+      'Espresso': 'AI recommendation: Dark Roasted Cocoa Shot - optimized for analytical stamina.',
+      'Cold Brew': 'AI recommendation: Mint Infused Ice Brew - optimized for creative flow.',
+      'Macchiato': 'AI recommendation: Sweetened Almond Milk Blend - optimized for communication metrics.'
+    }
+    setCoffeicRecommendation(recs[drink])
+  }
 
   const filteredProjects = projectsData.filter(
     (p) => filter === 'all' || p.category === filter
   )
 
   return (
-    <section className="section-padding relative" id="projects" ref={ref}>
-      <div className="absolute inset-0 grid-pattern opacity-[0.05] pointer-events-none" />
-      <div className="orb w-80 h-80 bg-purple-700/5 top-1/3 left-0 pointer-events-none" />
+    <section className="py-24 relative bg-black" id="projects" ref={ref}>
+      {/* Background aesthetics */}
+      <div className="absolute inset-0 grid-pattern opacity-[0.06] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-10%] w-96 h-96 rounded-full bg-purple-900/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-12"
-        >
-          <span className="tag tag-purple mb-4 inline-flex font-mono">Case Studies</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Our Custom <span className="gradient-text font-extrabold">Builds</span>
+        <div className="text-left mb-16">
+          <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">03 / Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
+            Selected <span className="gradient-text font-extrabold">Work</span>
           </h2>
-          <div className="title-underline" />
-          <p className="text-gray-400 max-w-2xl mx-auto mt-6">
-            Explore our curated portfolio of premium interfaces, robust back-end clusters, and Python AI algorithms.
+          <p className="text-gray-400 mt-4 text-xs sm:text-sm md:text-base leading-relaxed">
+            Click on any project to launch its interactive testing simulator (such as local MySQL queries, gesture algorithms, or system APIs).
           </p>
-        </motion.div>
+        </div>
 
-        {/* Categories Tab Selector */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-12"
-        >
+        {/* Tab Selector */}
+        <div className="flex justify-center mb-12">
           <div className="flex glass rounded-2xl p-1.5 border border-white/10">
             {[
-              { key: 'all', label: 'All Projects' },
+              { key: 'all', label: 'All Builds' },
               { key: 'frontend', label: '🖥️ Frontend' },
               { key: 'backend', label: '⚙️ Backend' },
-              { key: 'python-ai', label: '🐍 Python & AI' },
+              { key: 'python-ai', label: '🐍 Python & AI' }
             ].map(({ key, label }) => (
               <button
                 key={key}
                 onClick={() => setFilter(key)}
-                className={`relative px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                className={`relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   filter === key ? 'text-white' : 'text-gray-400 hover:text-gray-200'
                 }`}
               >
@@ -284,86 +183,322 @@ const Projects = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Grid of Projects */}
-        <motion.div 
-          layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => (
-              <motion.div
-                layout
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.45 }}
-                className="glass rounded-2xl p-6 border border-white/5 flex flex-col h-full hover:border-purple-500/20 group relative transition-all duration-300"
+        {/* Projects List Layout */}
+        <div className="flex flex-col gap-3">
+          {filteredProjects.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              onClick={() => setSelectedSandbox(project.id)}
+              className="glass rounded-[20px] p-6 md:px-8 md:py-6 border border-white/5 flex flex-col md:grid md:grid-cols-[auto_1fr_auto_auto] items-center gap-6 md:gap-8 hover:border-purple-500/25 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_0_1px_rgba(139,92,246,0.1)] group cursor-pointer"
+            >
+              {/* Project index */}
+              <span className="font-mono-jb text-[11px] text-purple-400/50 group-hover:text-purple-400 transition-colors min-w-[32px]">
+                0{idx + 1}
+              </span>
+
+              {/* Project details */}
+              <div className="text-left w-full">
+                <h3 className="text-lg font-bold font-syne text-white group-hover:text-purple-300 transition-colors mb-1">
+                  {project.name}
+                </h3>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-normal">
+                  {project.desc}
+                </p>
+              </div>
+
+              {/* Project stack */}
+              <div className="flex flex-wrap gap-1.5 md:justify-end w-full md:w-auto">
+                {project.tags.map(t => (
+                  <span key={t} className="font-mono-jb text-[9px] text-purple-300 bg-purple-950/25 border border-purple-500/10 px-2 py-0.5 rounded-[5px]">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Arrow */}
+              <span className="font-mono-jb text-sm text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1.5 transition-all duration-300">
+                →
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Zero Gravity Sandbox Overlay Modal */}
+      <AnimatePresence>
+        {selectedSandbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+          >
+            {/* Modal Container */}
+            <motion.div
+              initial={{ scale: 0.9, y: 30 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 30 }}
+              className="glass max-w-4xl w-full border border-purple-500/20 rounded-3xl overflow-hidden shadow-2xl relative"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedSandbox(null)}
+                className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:bg-red-500/10 hover:border-red-500/30 text-gray-400 hover:text-red-400 transition-all cursor-pointer font-bold font-orbitron"
               >
-                {/* Featured Badge */}
-                {project.isFeatured && (
-                  <div className="absolute top-4 right-4 flex items-center gap-1 bg-purple-500/15 border border-purple-500/30 rounded-full px-2.5 py-1 text-[9px] font-bold font-orbitron tracking-widest text-purple-300 uppercase shadow-[0_0_8px_rgba(139,92,246,0.2)]">
-                    <Sparkles size={10} className="animate-pulse" />
-                    <span>Featured</span>
+                ✕
+              </button>
+
+              {/* Title Header */}
+              <div className="bg-white/5 px-6 py-4 border-b border-white/5 flex items-center gap-3">
+                <Terminal size={16} className="text-purple-400 animate-pulse" />
+                <div>
+                  <h3 className="font-orbitron font-bold text-sm tracking-wide text-white">
+                    {projectsData.find(p => p.id === selectedSandbox)?.mockTitle}
+                  </h3>
+                  <p className="text-[10px] text-gray-500 font-mono tracking-wider">
+                    {projectsData.find(p => p.id === selectedSandbox)?.mockDesc}
+                  </p>
+                </div>
+              </div>
+
+              {/* SANDBOX INTERNAL GRAPHICS */}
+              <div className="p-6 md:p-8">
+                
+                {/* 1. MYSQL LABOUR MANAGEMENT SANDBOX */}
+                {selectedSandbox === 'labour-management' && (
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-3 gap-4">
+                      {sqlQueries.map((q, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleSqlSelect(idx)}
+                          className={`text-left p-3.5 rounded-xl border text-xs font-semibold font-mono transition-all duration-300 cursor-pointer ${
+                            activeSqlIdx === idx
+                              ? 'bg-blue-600/10 border-blue-500/30 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]'
+                              : 'bg-white/5 border-transparent text-gray-400 hover:bg-white/10 hover:text-white'
+                          }`}
+                        >
+                          {q.title}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Console Code Editor */}
+                    <div className="p-5 bg-black/60 font-mono text-[11px] text-emerald-400/90 rounded-2xl border border-white/5">
+                      <textarea
+                        readOnly
+                        value={sqlQueries[activeSqlIdx].query}
+                        className="w-full bg-transparent border-none text-emerald-400 font-mono h-14 focus:outline-none focus:ring-0 resize-none leading-relaxed"
+                      />
+                      <div className="flex justify-between items-center border-t border-white/5 pt-3 mt-3">
+                        <span className="text-[9px] text-gray-500">Query processed on local pluto_labor_db</span>
+                        <span className="text-[9px] text-emerald-400/80 uppercase font-bold tracking-widest">● MySQL Connected</span>
+                      </div>
+                    </div>
+
+                    {/* SQL Table Output */}
+                    <div className="overflow-x-auto glass rounded-2xl border border-white/5 p-4">
+                      <table className="w-full text-left text-xs font-medium text-gray-300">
+                        <thead className="bg-white/5 text-[9px] text-gray-500 font-mono uppercase tracking-widest">
+                          <tr>
+                            <th className="px-4 py-2 border-b border-white/5">Employee</th>
+                            <th className="px-4 py-2 border-b border-white/5">DB Role</th>
+                            <th className="px-4 py-2 border-b border-white/5">Roster Shift</th>
+                            <th className="px-4 py-2 border-b border-white/5 text-center">Tally</th>
+                            <th className="px-4 py-2 border-b border-white/5 text-right">MySQL Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <AnimatePresence mode="wait">
+                            {isExecutingSql ? (
+                              <tr>
+                                <td colSpan={5} className="py-8 text-center text-gray-500 font-mono">
+                                  <RefreshCw size={12} className="animate-spin inline-block mr-1.5 text-blue-400" />
+                                  Running local MySQL parser query...
+                                </td>
+                              </tr>
+                            ) : (
+                              sqlConsoleResult.map((row, i) => (
+                                <motion.tr
+                                  key={i}
+                                  initial={{ opacity: 0, y: 5 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.2, delay: i * 0.05 }}
+                                  className="border-b border-white/5 hover:bg-white/5"
+                                >
+                                  <td className="px-4 py-3 font-bold text-white font-orbitron">{row.name}</td>
+                                  <td className="px-4 py-3 font-mono text-gray-400">{row.role}</td>
+                                  <td className="px-4 py-3 font-mono text-gray-300">{row.shift}</td>
+                                  <td className="px-4 py-3 font-mono text-center text-white">{row.hours} hrs</td>
+                                  <td className="px-4 py-3 text-right">
+                                    <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                                      {row.status}
+                                    </span>
+                                  </td>
+                                </motion.tr>
+                              ))
+                            )}
+                          </AnimatePresence>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
 
-                {/* Simulated Mockup visual */}
-                <div className="mb-5 relative group-hover:scale-[1.02] transition-transform duration-300">
-                  <Mockup type={project.mockupType} />
-                </div>
+                {/* 2. COFFEIC SANDBOX */}
+                {selectedSandbox === 'coffeic' && (
+                  <div className="space-y-6">
+                    <p className="text-gray-400 text-sm">
+                      Simulate Coffeeic's client-side user intent custom blending algorithm. Select a base coffee to prompt the local context model:
+                    </p>
+                    <div className="flex gap-4">
+                      {['Espresso', 'Cold Brew', 'Macchiato'].map(drink => (
+                        <button
+                          key={drink}
+                          onClick={() => handleCoffeicChoice(drink)}
+                          className={`px-5 py-3 rounded-xl border font-semibold font-orbitron text-xs transition-all duration-300 cursor-pointer ${
+                            coffeicChoice === drink
+                              ? 'bg-amber-500/10 border-amber-500/30 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.15)]'
+                              : 'bg-white/5 border-transparent text-gray-400 hover:bg-white/10'
+                          }`}
+                        >
+                          ☕ {drink}
+                        </button>
+                      ))}
+                    </div>
+                    
+                    <div className="p-6 bg-amber-950/10 border border-amber-500/20 rounded-2xl text-xs font-mono text-amber-300/90 leading-relaxed shadow-[inset_0_0_20px_rgba(245,158,11,0.05)]">
+                      <p className="font-bold uppercase tracking-wider text-[10px] text-amber-500 mb-2">✦ Telemetry Prompt Output</p>
+                      {coffeicRecommendation}
+                    </div>
+                  </div>
+                )}
 
-                {/* Card Title */}
-                <div className="flex items-center gap-2 mb-3">
-                  <h3 className="text-xl font-bold font-orbitron text-white group-hover:text-purple-300 transition-colors duration-200">
-                    {project.name}
-                  </h3>
-                  <span className={`text-[8px] font-bold uppercase tracking-wider font-mono rounded px-2 py-0.5 border ${
-                    project.category === 'frontend' 
-                      ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' 
-                      : project.category === 'backend'
-                        ? 'bg-purple-500/10 border-purple-500/20 text-purple-400'
-                        : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
-                  }`}>
-                    {project.category.replace('-', ' ')}
-                  </span>
-                </div>
+                {/* 3. AGE & GESTURE SCANNER */}
+                {selectedSandbox === 'age-gesture-scanner' && (
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Fake Camera Feed Box */}
+                      <div className="relative aspect-video rounded-2xl bg-black border border-white/10 flex items-center justify-center overflow-hidden">
+                        {/* Wireframe Hand landmarks */}
+                        <div className="w-20 h-20 rounded-full border border-dashed border-emerald-500/30 flex items-center justify-center relative scale-110">
+                          <span className="text-3xl text-emerald-400 animate-pulse">✋</span>
+                          {/* Coordinates vector lines */}
+                          <div className="absolute top-1/2 left-0 right-0 h-px bg-emerald-500/20" />
+                          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-emerald-500/20" />
+                        </div>
+                        
+                        <div className="absolute top-3 left-3 text-[10px] text-emerald-400 font-mono tracking-widest uppercase">WEBCAM_STREAM_A</div>
+                        <div className="absolute bottom-3 left-3 text-[10px] text-cyan-400 font-mono uppercase font-bold bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-500/20">
+                          Estimated Age: {faceAge}
+                        </div>
+                        {gestureTriggered !== 'NONE' && (
+                          <div className="absolute inset-0 bg-emerald-500/10 flex items-center justify-center border border-emerald-500/40 animate-ping" />
+                        )}
+                      </div>
 
-                {/* Card Description */}
-                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-6 flex-grow">
-                  {project.description}
-                </p>
+                      {/* Gesture controls */}
+                      <div className="flex flex-col justify-center space-y-4">
+                        <p className="text-gray-400 text-xs sm:text-sm">
+                          Simulate local media pipelines mapping gestures. Tap a gesture below to trigger localized OS control hooks:
+                        </p>
+                        <div className="grid grid-cols-2 gap-3">
+                          <button
+                            onClick={() => triggerGestureSimulation('SWIPE_LEFT')}
+                            className="btn-outline py-3 rounded-xl font-mono text-[10px] uppercase font-bold text-gray-300 hover:text-white cursor-pointer"
+                          >
+                            👈 Swipe Left
+                          </button>
+                          <button
+                            onClick={() => triggerGestureSimulation('SWIPE_RIGHT')}
+                            className="btn-outline py-3 rounded-xl font-mono text-[10px] uppercase font-bold text-gray-300 hover:text-white cursor-pointer"
+                          >
+                            👉 Swipe Right
+                          </button>
+                        </div>
+                        
+                        <div className="p-4 bg-emerald-950/10 border border-emerald-500/20 rounded-xl font-mono text-[10px] text-emerald-300">
+                          <p className="font-bold uppercase tracking-wider text-[9px] mb-1">Gesture Event Logs</p>
+                          <p>STATE: <span className="text-white font-bold">{gestureTriggered}</span></p>
+                          <p>ACTION: <span className="text-cyan-400">{gestureTriggered === 'NONE' ? 'AWAITING_INPUT' : 'OS_NAV_TRIGGERED'}</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="tag tag-blue text-[10px]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {/* 4. APPLE WEBSITE CLONE */}
+                {selectedSandbox === 'apple-clone' && (
+                  <div className="space-y-6">
+                    <p className="text-gray-400 text-sm">
+                      Interact with Apple flagpole responsive hardware model wireframe previews:
+                    </p>
+                    <div className="relative h-48 rounded-2xl bg-black border border-white/10 flex items-center justify-center overflow-hidden">
+                      <motion.div
+                        animate={{ rotateY: 360, rotateX: [15, 30, 15] }}
+                        transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
+                        className="w-24 h-40 border-2 border-purple-500/40 rounded-2xl relative flex items-center justify-center"
+                        style={{ transformStyle: 'preserve-3d', perspective: '500px' }}
+                      >
+                        <div className="absolute w-2 h-2 rounded-full bg-purple-400 top-2" />
+                        <div className="w-[85%] h-[90%] border border-dashed border-blue-500/30 rounded-xl" />
+                      </motion.div>
+                      <div className="absolute bottom-3 left-3 text-[10px] text-gray-500 font-mono">DRAG MOUSE OVER PAGE TO ROTATE MESH</div>
+                    </div>
+                  </div>
+                )}
 
-                {/* CTA Action */}
-                <ScrollLink
-                  to="contact"
-                  smooth={true}
-                  duration={600}
-                  offset={-80}
-                  className="w-full btn-outline flex items-center justify-center gap-2 py-3 rounded-xl text-xs sm:text-sm font-semibold text-gray-300 hover:text-white cursor-pointer mt-auto group-hover:bg-purple-600/10 group-hover:border-purple-500/40"
-                >
-                  <span>Request Custom Build</span>
-                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </ScrollLink>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </div>
+                {/* 5. MOODY EMOTION CLASSIFIER */}
+                {selectedSandbox === 'moody' && (
+                  <div className="space-y-6">
+                    <p className="text-gray-400 text-sm">
+                      Read live output metrics from low-latency emotion telemetry classification models:
+                    </p>
+                    <div className="space-y-3 glass p-5 rounded-2xl border border-white/5">
+                      {[
+                        { label: 'CALM / COMPOSITIVE', val: 78, color: 'from-blue-500 to-indigo-500' },
+                        { label: 'ENGAGED / ATTENTIVE', val: 18, color: 'from-purple-500 to-pink-500' },
+                        { label: 'SURPRISE / ANOMALY', val: 4, color: 'from-amber-500 to-red-500' }
+                      ].map(bar => (
+                        <div key={bar.label} className="space-y-1">
+                          <div className="flex justify-between font-mono text-[9px] text-gray-400">
+                            <span>{bar.label}</span>
+                            <span className="font-bold text-white">{bar.val}%</span>
+                          </div>
+                          <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full bg-gradient-to-r ${bar.color}`} style={{ width: `${bar.val}%` }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* 6. ODONX LLM PIPELINE */}
+                {selectedSandbox === 'odonx' && (
+                  <div className="space-y-6">
+                    <p className="text-gray-400 text-sm">
+                      Inspect the routing checks executing on distributed LLM pipelines:
+                    </p>
+                    <div className="p-5 bg-black/60 border border-white/10 rounded-2xl font-mono text-[10px] space-y-2 text-gray-300">
+                      <p className="text-purple-400">⚡ Initializing Prompt Sanitizer...</p>
+                      <p className="text-green-400">✔ Input safety checks: PASSED (Prompt matches compliance policies)</p>
+                      <p className="text-cyan-400">▶ Routing context tokens to Optimal Node Cluster [Llama-3-70B]...</p>
+                      <p className="text-gray-500">Latency: 0.12s | Output tokens cached to Redis successfully.</p>
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

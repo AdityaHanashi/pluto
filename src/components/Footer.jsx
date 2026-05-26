@@ -56,7 +56,7 @@ const Footer = () => {
               smooth={true}
               duration={600}
               offset={-80}
-              className="flex items-center gap-2 font-orbitron font-bold text-white text-xl tracking-widest cursor-pointer inline-flex group"
+              className="flex items-center gap-2 font-syne font-bold text-white text-xl tracking-wide cursor-pointer inline-flex group"
             >
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold shadow-[0_0_10px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-transform duration-200">
                 P
@@ -93,15 +93,15 @@ const Footer = () => {
 
           {/* Col 2: Navigation Links */}
           <div className="lg:col-span-2 lg:pl-4 space-y-4">
-            <h4 className="text-xs font-bold font-orbitron uppercase text-white tracking-widest">
+            <h4 className="text-[10px] font-bold font-mono-jb uppercase text-white tracking-widest">
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
+            <ul className="space-y-2.5 text-xs font-semibold font-mono-jb uppercase tracking-wider">
               {[
                 { label: 'Home', to: 'home' },
                 { label: 'About', to: 'about' },
                 { label: 'AI Automation', to: 'ai-automation' },
-                { label: 'Labor Management', to: 'labor' },
+                { label: 'Projects', to: 'projects' },
                 { label: 'Contact', to: 'contact' },
               ].map((item) => (
                 <li key={item.to}>
@@ -110,7 +110,7 @@ const Footer = () => {
                     smooth={true}
                     duration={600}
                     offset={-80}
-                    className="hover:text-white transition-colors cursor-pointer block"
+                    className="hover:text-white text-gray-500 transition-colors cursor-pointer block"
                   >
                     {item.label}
                   </ScrollLink>
@@ -121,22 +121,22 @@ const Footer = () => {
 
           {/* Col 3: Contact info */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold font-orbitron uppercase text-white tracking-widest">
+            <h4 className="text-[10px] font-bold font-mono-jb uppercase text-white tracking-widest">
               Founder Details
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm">
-              <li className="text-gray-300 font-semibold font-orbitron">
+              <li className="text-gray-300 font-semibold font-syne">
                 Aditya Hanashi
               </li>
               <li className="flex items-center gap-2.5 group">
                 <Mail size={14} className="text-purple-400 shrink-0" />
-                <a href="mailto:buildwithpluto@gmail.com" className="hover:text-white transition-colors break-all">
+                <a href="mailto:buildwithpluto@gmail.com" className="hover:text-white transition-colors break-all font-mono-jb text-xs">
                   buildwithpluto@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={14} className="text-blue-400 shrink-0" />
-                <a href="tel:7022951232" className="hover:text-white transition-colors">
+                <a href="tel:7022951232" className="hover:text-white transition-colors font-mono-jb text-xs">
                   7022951232
                 </a>
               </li>
@@ -146,7 +146,7 @@ const Footer = () => {
                   href="https://github.com/pluto-system" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="hover:text-white transition-colors flex items-center gap-1"
+                  className="hover:text-white transition-colors flex items-center gap-1 font-mono-jb text-xs"
                 >
                   github: pluto-system
                   <ExternalLink size={10} className="text-gray-600" />
@@ -157,17 +157,17 @@ const Footer = () => {
 
           {/* Col 4: Systems Operations */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold font-orbitron uppercase text-white tracking-widest">
+            <h4 className="text-[10px] font-bold font-mono-jb uppercase text-white tracking-widest">
               Live Monitor
             </h4>
             <div className="glass border border-white/5 rounded-2xl p-4 space-y-2">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-mono font-bold text-green-400 uppercase tracking-widest">
+                <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest font-mono-jb">
                   Systems Nominal
                 </span>
               </div>
-              <p className="text-[10px] font-mono text-gray-500 leading-normal">
+              <p className="text-[10px] text-gray-500 leading-normal font-mono-jb">
                 Pluto network cluster is fully active. Response queues clear automatically under 12 hours.
               </p>
             </div>
@@ -179,7 +179,7 @@ const Footer = () => {
         <div className="h-px bg-white/5 mb-8" />
 
         {/* Bottom Bar Copyright */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-gray-500 font-mono-jb uppercase tracking-wider">
           <p>© {currentYear} Pluto.ai. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <button 

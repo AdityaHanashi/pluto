@@ -18,16 +18,12 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-left mb-16"
         >
-          <span className="tag tag-purple mb-4 inline-flex font-mono">Transmission</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Initialize <span className="gradient-text font-extrabold">Contact</span>
+          <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">05 / Contact</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
+            Let's build <span className="gradient-text font-extrabold">something great</span>
           </h2>
-          <div className="title-underline" />
-          <p className="text-gray-400 max-w-xl mx-auto mt-6">
-            Submit your parameters below. Our neural pipelines will route your enquiry directly.
-          </p>
         </motion.div>
 
         {/* Contact Layout */}
@@ -47,13 +43,13 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-center gap-2 border-b border-white/10 pb-4">
                 <Terminal size={18} className="text-purple-400" />
-                <h3 className="text-base font-bold font-orbitron text-white tracking-widest uppercase">
+                <h3 className="text-sm font-bold font-mono-jb text-white tracking-widest uppercase">
                   SYSTEM_STATUS
                 </h3>
               </div>
 
               {/* Status checklist */}
-              <div className="space-y-4 font-mono text-xs text-gray-400">
+              <div className="space-y-4 font-mono-jb text-xs text-gray-400">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={14} className="text-green-400" />
                   <span>Netlify Form Bridge: <span className="text-green-400 font-bold">READY</span></span>
@@ -64,7 +60,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={14} className="text-green-400" />
-                  <span>Submissions Host: <span className="text-cyan-400 font-bold font-orbitron">NETLIFY</span></span>
+                  <span>Submissions Host: <span className="text-cyan-400 font-bold">NETLIFY</span></span>
                 </div>
                 <div className="flex items-center gap-3">
                   <ShieldCheck size={14} className="text-green-400" />
@@ -76,14 +72,14 @@ const Contact = () => {
             {/* Quick response stats */}
             <div className="mt-8 pt-6 border-t border-white/10 space-y-4">
               <div className="glass rounded-2xl p-4 border border-white/5">
-                <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                <p className="text-[10px] font-mono-jb text-gray-500 uppercase tracking-widest">
                   Average Response
                 </p>
-                <p className="text-xl font-bold font-orbitron text-white mt-1">
+                <p className="text-lg font-bold font-mono-jb text-white mt-1">
                   &lt; 12 Hours Latency
                 </p>
               </div>
-              <div className="text-[10px] font-mono text-gray-500 leading-relaxed">
+              <div className="text-[10px] font-mono-jb text-gray-500 leading-relaxed">
                 By submitting, you route this lead through Netlify Forms directly to the founder inbox.
               </div>
             </div>
@@ -113,9 +109,9 @@ const Contact = () => {
                 {/* Netlify hidden field required for processing submissions */}
                 <input type="hidden" name="form-name" value="contact" />
 
-                {/* Name field */}
+                 {/* Name field */}
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold font-orbitron uppercase tracking-widest text-purple-400" htmlFor="name">
+                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400" htmlFor="name">
                     Name
                   </label>
                   <div className="relative group">
@@ -135,7 +131,7 @@ const Contact = () => {
 
                 {/* Email field */}
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold font-orbitron uppercase tracking-widest text-purple-400" htmlFor="email">
+                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400" htmlFor="email">
                     Email
                   </label>
                   <div className="relative group">
@@ -155,7 +151,7 @@ const Contact = () => {
 
                 {/* Message field */}
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold font-orbitron uppercase tracking-widest text-purple-400" htmlFor="message">
+                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400" htmlFor="message">
                     Message
                   </label>
                   <div className="relative group">
@@ -176,9 +172,8 @@ const Contact = () => {
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full btn-primary flex items-center justify-center gap-2.5 py-4 rounded-2xl text-sm font-bold text-white shadow-[0_0_20px_rgba(139,92,246,0.3)] group cursor-pointer"
+                  className="w-full btn-primary flex items-center justify-center gap-2 py-4 rounded-lg text-xs font-semibold tracking-wider text-black bg-purple-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(139,92,246,0.3)] transition-all cursor-pointer uppercase font-mono-jb"
                 >
-                  <Send size={15} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   <span>Send Message</span>
                 </button>
               </form>
