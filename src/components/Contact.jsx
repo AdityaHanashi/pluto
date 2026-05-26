@@ -1,14 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Send, User, Mail, MessageSquare, Terminal, CheckCircle2, ShieldCheck } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, User, MessageSquare } from 'lucide-react'
 
 const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
 
   return (
     <section className="section-padding relative overflow-hidden" id="contact" ref={ref}>
-      <div className="absolute inset-0 grid-pattern opacity-[0.04] pointer-events-none" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-600/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -26,66 +26,62 @@ const Contact = () => {
           </h2>
         </motion.div>
 
-        {/* Contact Layout */}
-        <div className="grid lg:grid-cols-12 gap-12 items-stretch max-w-5xl mx-auto">
+        {/* Simplified Layout */}
+        <div className="grid lg:grid-cols-12 gap-12 items-center max-w-5xl mx-auto">
           
-          {/* Left: Futuristic status console */}
+          {/* Left Column: Direct info & statement */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col justify-between glass rounded-3xl p-6 md:p-8 border border-white/5 relative overflow-hidden"
-            style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}
+            className="lg:col-span-5 space-y-8"
           >
-            {/* Visual glow element */}
-            <div className="absolute -left-12 -bottom-12 w-28 h-28 rounded-full bg-blue-500/5 blur-2xl pointer-events-none" />
-
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 border-b border-white/10 pb-4">
-                <Terminal size={18} className="text-purple-400" />
-                <h3 className="text-sm font-bold font-mono-jb text-white tracking-widest uppercase">
-                  SYSTEM_STATUS
-                </h3>
-              </div>
-
-              {/* Status checklist */}
-              <div className="space-y-4 font-mono-jb text-xs text-gray-400">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={14} className="text-green-400" />
-                  <span>Netlify Form Bridge: <span className="text-green-400 font-bold">READY</span></span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={14} className="text-green-400" />
-                  <span>PGP Encryption Tunnel: <span className="text-green-400 font-bold">ACTIVE</span></span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 size={14} className="text-green-400" />
-                  <span>Submissions Host: <span className="text-cyan-400 font-bold">NETLIFY</span></span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <ShieldCheck size={14} className="text-green-400" />
-                  <span>No Database Storage: <span className="text-gray-300 font-bold">COMPLIANT</span></span>
-                </div>
-              </div>
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold font-syne text-white leading-snug">
+                Let's turn your ideas into automated systems.
+              </h3>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                Whether you need custom calling agent pipelines, responsive frontends, or automated database connections, we build solutions that deliver measurable efficiency.
+              </p>
             </div>
 
-            {/* Quick response stats */}
-            <div className="mt-8 pt-6 border-t border-white/10 space-y-4">
-              <div className="glass rounded-2xl p-4 border border-white/5">
-                <p className="text-[10px] font-mono-jb text-gray-500 uppercase tracking-widest">
-                  Average Response
-                </p>
-                <p className="text-lg font-bold font-mono-jb text-white mt-1">
-                  &lt; 12 Hours Latency
-                </p>
-              </div>
-              <div className="text-[10px] font-mono-jb text-gray-500 leading-relaxed">
-                By submitting, you route this lead through Netlify Forms directly to the founder inbox.
-              </div>
+            {/* Quick Details */}
+            <div className="space-y-4">
+              {[
+                { icon: Mail, label: 'Email', value: 'buildwithpluto@gmail.com', href: 'mailto:buildwithpluto@gmail.com' },
+                { icon: Phone, label: 'Phone', value: '7022951232', href: 'tel:7022951232' },
+                { icon: MapPin, label: 'Location', value: 'Remote / Global', href: null }
+              ].map((item, idx) => {
+                const Icon = item.icon
+                const CardWrapper = item.href ? 'a' : 'div'
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.3 + idx * 0.1 }}
+                  >
+                    <CardWrapper
+                      href={item.href || undefined}
+                      className={`flex items-center gap-4 glass rounded-2xl px-5 py-4 border border-white/5 transition-all duration-300 block ${item.href ? 'hover:bg-purple-500/5 hover:border-purple-500/20 group' : ''}`}
+                    >
+                      <div className={`w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 ${item.href ? 'group-hover:scale-110 transition-transform' : ''}`}>
+                        <Icon size={18} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold font-mono-jb text-gray-500 uppercase tracking-widest">{item.label}</p>
+                        <p className="text-gray-300 text-sm font-semibold mt-0.5 tracking-wide group-hover:text-white transition-colors">
+                          {item.value}
+                        </p>
+                      </div>
+                    </CardWrapper>
+                  </motion.div>
+                )
+              })}
             </div>
           </motion.div>
 
-          {/* Right: Netlify Form */}
+          {/* Right Column: Clean Form */}
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -95,11 +91,11 @@ const Contact = () => {
             <div 
               className="glass rounded-3xl p-6 md:p-8 border border-white/5 relative"
               style={{ 
-                boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(139, 92, 246, 0.1)',
-                borderColor: 'rgba(139, 92, 246, 0.15)'
+                boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(124, 58, 237, 0.05)',
+                borderColor: 'rgba(124, 58, 237, 0.1)'
               }}
             >
-              {/* Form definition using exact Netlify Forms configuration */}
+              {/* Form definition using Netlify Forms configuration */}
               <form 
                 name="contact" 
                 method="POST" 
@@ -172,8 +168,9 @@ const Contact = () => {
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full btn-primary flex items-center justify-center gap-2 py-4 rounded-lg text-xs font-semibold tracking-wider text-black bg-purple-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(139,92,246,0.3)] transition-all cursor-pointer uppercase font-mono-jb"
+                  className="w-full btn-primary flex items-center justify-center gap-2 py-4 rounded-lg text-xs font-semibold tracking-wider text-black bg-purple-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(124, 58, 237, 0.3)] transition-all cursor-pointer uppercase font-mono-jb"
                 >
+                  <Send size={12} />
                   <span>Send Message</span>
                 </button>
               </form>

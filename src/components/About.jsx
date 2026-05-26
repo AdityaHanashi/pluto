@@ -48,8 +48,12 @@ const About = () => {
                 <div className="w-full h-full rounded-full bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10" />
                   {/* Cyber avatar visual */}
-                  <div className="relative w-40 h-40 rounded-full bg-black/60 border border-purple-500/20 flex items-center justify-center">
-                    <User size={64} className="text-purple-400/80 animate-pulse" />
+                  <div className="relative w-40 h-40 rounded-full bg-black/60 border border-purple-500/20 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src="/avatar.png" 
+                      alt="Aditya Hanashi" 
+                      className="w-full h-full object-cover object-center scale-105"
+                    />
                     {/* Simulated laser scan */}
                     <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 top-0 animate-bounce" style={{ animationDuration: '4s' }} />
                   </div>
