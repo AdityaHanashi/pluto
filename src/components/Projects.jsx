@@ -7,24 +7,24 @@ import { Laptop, Server, Code2, Cpu, Sparkles, Terminal, ArrowUpRight } from 'lu
 const projectsData = [
   // FRONTEND PROJECTS (2)
   {
-    id: 'buildtrack',
-    name: 'BuildTrack',
-    category: 'frontend',
-    isFeatured: true,
-    description: 'A premium, high-converting project management dashboard with real-time kanban boards, custom velocity charts, and autonomous issue assigning.',
-    tags: ['React', 'Tailwind', 'Recharts'],
-    mockupType: 'dashboard',
-    url: 'https://buildtrack.pluto.ai'
-  },
-  {
     id: 'coffeeic',
     name: 'Coffeeic',
     category: 'frontend',
     isFeatured: true,
-    description: 'Stunning storefront UI for a premium coffee brand, powered by a client-side AI barista chatbot suggesting custom blends based on user taste profiles.',
-    tags: ['Vite', 'Framer Motion', 'Vanilla CSS'],
+    description: 'A premium, high-fidelity storefront and booking application for a futuristic coffee shop, featuring a client-side AI recommendation engine for custom blends.',
+    tags: ['React', 'Framer Motion', 'Tailwind CSS'],
     mockupType: 'storefront',
     url: 'https://coffeeic.pluto.ai'
+  },
+  {
+    id: 'apple-clone',
+    name: 'Apple Website Clone',
+    category: 'frontend',
+    isFeatured: true,
+    description: 'A cinematic clone of the Apple flagship landing pages featuring custom hardware modeling previews, viewport scroll-linked animations, and responsive assets.',
+    tags: ['React', 'Vite', 'CSS Gradients'],
+    mockupType: 'apple',
+    url: 'https://apple.pluto.ai'
   },
   // BACKEND PROJECTS (3)
   {
@@ -32,67 +32,74 @@ const projectsData = [
     name: 'Moody',
     category: 'backend',
     isFeatured: true,
-    description: 'Fast, secure sentiment analysis engine using computer vision webcam streams to process emotional cues and output data via low-latency REST endpoints.',
-    tags: ['Python', 'FastAPI', 'OpenCV'],
+    description: 'Low-latency emotion telemetry API backend processing real-time video feeds to classify facial expressions and output telemetry for business audits.',
+    tags: ['Node.js', 'Express', 'OpenCV Bindings'],
     mockupType: 'vision',
-    url: 'https://api.moody.pluto.ai'
+    url: 'https://moody.pluto.ai'
   },
   {
-    id: 'nexusapi',
-    name: 'NexusAPI',
+    id: 'odonx',
+    name: 'OdonX',
     category: 'backend',
     isFeatured: false,
-    description: 'An AI-agent routing orchestrator that balances inbound requests across different LLM clusters based on cost, context limits, and token speeds.',
-    tags: ['Node.js', 'Redis', 'Express'],
-    mockupType: 'terminal',
-    url: 'https://nexus.pluto.ai'
+    description: 'A distributed LLM-powered backend pipeline handling parallel context chunking, prompt safety auditing, and autonomous routing to optimal cloud models.',
+    tags: ['Python', 'FastAPI', 'Redis Cache'],
+    mockupType: 'odonx',
+    url: 'https://odonx.pluto.ai'
   },
   {
-    id: 'synapserag',
-    name: 'SynapseRAG',
+    id: 'labour-management',
+    name: 'Labour Management System',
     category: 'backend',
     isFeatured: false,
-    description: 'Document indexing pipeline featuring real-time PDF splitting, vector embedding indexing, and a semantic retrieval cache operating under 40ms.',
-    tags: ['PyTorch', 'MongoDB', 'Docker'],
-    mockupType: 'rag',
-    url: 'https://rag.synapse.pluto.ai'
+    description: 'Automated shift roster scheduling engine that uses intelligent allocation pipelines to assign factory workers based on availability, certs, and union rules.',
+    tags: ['MongoDB', 'Express', 'JWT Auth'],
+    mockupType: 'labour',
+    url: 'https://roster.pluto.ai'
+  },
+  // PYTHON LLM PROJECTS (1)
+  {
+    id: 'age-gesture-scanner',
+    name: 'Age & Gesture Scanner',
+    category: 'python-ai',
+    isFeatured: true,
+    description: 'A Python system powered by convolutional networks and local LLMs that estimates age groups and maps hand gestures to execute local OS navigation controls.',
+    tags: ['Python', 'PyTorch', 'MediaPipe', 'LLM'],
+    mockupType: 'gesture',
+    url: 'https://scanner.pluto.ai'
   }
 ]
 
 const Mockup = ({ type }) => {
-  if (type === 'dashboard') {
+  if (type === 'storefront') {
     return (
-      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 font-mono text-[9px] relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
+      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
         <div className="flex items-center justify-between border-b border-white/5 pb-1">
           <div className="flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-500" />
             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
           </div>
-          <span className="text-[7px] text-gray-600">buildtrack.io/dashboard</span>
+          <span className="text-[7px] text-gray-600 font-mono">coffeeic.pluto.ai</span>
         </div>
-        <div className="grid grid-cols-3 gap-2 flex-grow">
-          <div className="bg-purple-500/10 border border-purple-500/20 rounded p-1.5 flex flex-col justify-between">
-            <span className="text-gray-500 text-[6px] uppercase">Sprint status</span>
-            <span className="text-purple-400 font-bold text-[10px]">94%</span>
+        <div className="flex items-center gap-3 mt-1">
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-amber-600 to-amber-900 flex items-center justify-center text-white text-base font-bold shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+            ☕
           </div>
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded p-1.5 flex flex-col justify-between">
-            <span className="text-gray-500 text-[6px] uppercase">AI agents</span>
-            <span className="text-blue-400 font-bold text-[10px]">5 Active</span>
+          <div className="flex-grow space-y-1">
+            <div className="h-2 bg-white/10 rounded w-[85%]" />
+            <div className="h-1.5 bg-white/5 rounded w-[55%]" />
+            <div className="flex gap-1 mt-1">
+              <span className="px-1 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[5px] text-amber-400 font-mono font-bold uppercase">AI Barista</span>
+              <span className="px-1 py-0.5 rounded bg-green-500/10 border border-green-500/20 text-[5px] text-green-400 font-mono font-bold uppercase">Online</span>
+            </div>
           </div>
-          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded p-1.5 flex flex-col justify-between">
-            <span className="text-gray-500 text-[6px] uppercase">Velocity</span>
-            <span className="text-cyan-400 font-bold text-[10px]">+18.4%</span>
-          </div>
-        </div>
-        <div className="h-4 bg-white/5 rounded overflow-hidden relative">
-          <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 w-[78%] rounded" />
         </div>
       </div>
     )
   }
 
-  if (type === 'storefront') {
+  if (type === 'apple') {
     return (
       <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 relative overflow-hidden group-hover:border-blue-500/30 transition-colors">
         <div className="flex items-center justify-between border-b border-white/5 pb-1">
@@ -100,19 +107,18 @@ const Mockup = ({ type }) => {
             <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
             <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
           </div>
-          <span className="text-[7px] text-gray-600 font-mono">coffeeic.com</span>
+          <span className="text-[7px] text-gray-600 font-mono">apple.pluto.ai/iphone</span>
         </div>
-        <div className="flex items-center gap-3 mt-1">
-          <div className="w-12 h-12 rounded-lg bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center text-white text-xs font-bold font-orbitron shadow-lg">
-            ☕
+        <div className="flex-grow flex items-center justify-center gap-4 relative">
+          <div className="w-8 h-10 rounded bg-zinc-900 border border-white/20 flex flex-col items-center justify-center text-[10px] relative">
+            {/* Apple Logo Placeholder */}
+            <span className="text-gray-400 font-bold scale-110"></span>
+            <div className="absolute top-0.5 w-4 h-0.5 bg-black rounded" />
           </div>
-          <div className="flex-grow space-y-1">
-            <div className="h-2 bg-white/10 rounded w-[80%]" />
-            <div className="h-1.5 bg-white/5 rounded w-[50%]" />
-            <div className="flex gap-1.5 mt-1.5">
-              <span className="px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-[6px] text-amber-400 font-mono font-bold">SMART REC</span>
-              <span className="px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-[6px] text-blue-400 font-mono font-bold">READY</span>
-            </div>
+          <div className="space-y-1 font-mono text-[7px]">
+            <p className="text-white font-bold">iPhone 16 Pro Clone</p>
+            <p className="text-gray-500">60 FPS WebGL rendering</p>
+            <div className="h-1 bg-blue-500 w-[90%] rounded-full mt-1" />
           </div>
         </div>
       </div>
@@ -123,57 +129,92 @@ const Mockup = ({ type }) => {
     return (
       <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-2.5 flex gap-2 relative overflow-hidden group-hover:border-cyan-500/30 transition-colors">
         <div className="w-[45%] bg-zinc-950 border border-white/5 rounded flex flex-col items-center justify-center relative">
-          <div className="w-7 h-7 rounded-full border border-dashed border-cyan-500/40 flex items-center justify-center animate-spin-slow">
-            <div className="w-4 h-4 rounded-full bg-cyan-500/20" />
+          <div className="w-8 h-8 rounded-full border border-dashed border-cyan-500/40 flex items-center justify-center animate-spin-slow">
+            <div className="w-5 h-5 rounded-full bg-cyan-500/10 flex items-center justify-center text-[8px]">😊</div>
           </div>
           <div className="absolute inset-0 border border-cyan-500/20 rounded pointer-events-none" />
-          <div className="absolute top-1 left-1 text-[5px] text-cyan-400 font-mono tracking-widest uppercase">CAM01</div>
-          <div className="absolute bottom-1 right-1 text-[5px] text-green-400 font-mono animate-pulse uppercase">REC</div>
+          <div className="absolute top-1 left-1 text-[5px] text-cyan-400 font-mono tracking-widest uppercase">NODE_01</div>
+          <div className="absolute bottom-1 right-1 text-[5px] text-green-400 font-mono animate-pulse uppercase">FEED_OK</div>
         </div>
-        <div className="flex-grow flex flex-col gap-1.5 font-mono text-[6.5px]">
+        <div className="flex-grow flex flex-col gap-1 font-mono text-[6.5px]">
           <div className="p-1 bg-zinc-900 border border-white/5 rounded flex items-center justify-between">
-            <span className="text-gray-500">ATTENTION</span>
-            <span className="text-cyan-400 font-bold">98.2%</span>
+            <span className="text-gray-500">EMOTION</span>
+            <span className="text-cyan-400 font-bold">HAPPY</span>
           </div>
           <div className="p-1 bg-zinc-900 border border-white/5 rounded flex items-center justify-between">
-            <span className="text-gray-500">ENGAGED</span>
-            <span className="text-green-400 font-bold">TRUE</span>
+            <span className="text-gray-500">CONFIDENCE</span>
+            <span className="text-green-400 font-bold">98.4%</span>
           </div>
           <div className="p-1 bg-zinc-900 border border-white/5 rounded flex items-center justify-between">
-            <span className="text-gray-500">MOOD</span>
-            <span className="text-purple-400 font-bold">CREATIVE</span>
+            <span className="text-gray-500">LATENCY</span>
+            <span className="text-purple-400 font-bold">12ms</span>
           </div>
         </div>
       </div>
     )
   }
 
-  if (type === 'terminal') {
+  if (type === 'odonx') {
     return (
-      <div className="w-full h-36 bg-zinc-950 border border-white/10 rounded-lg p-3 flex flex-col gap-1.5 font-mono text-[7px] text-emerald-400 relative overflow-hidden group-hover:border-emerald-500/30 transition-colors">
-        <div className="flex items-center gap-1 border-b border-white/5 pb-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-          <span className="text-[6px] text-gray-600">nexus-router ~ bash</span>
+      <div className="w-full h-36 bg-zinc-950 border border-white/10 rounded-lg p-3 flex flex-col gap-1.5 font-mono text-[7px] text-purple-400 relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
+        <div className="flex items-center gap-1 border-b border-white/5 pb-1 justify-between">
+          <span className="text-purple-400 font-bold">ODONX CORE API</span>
+          <span className="text-green-400 font-bold">ONLINE</span>
         </div>
-        <p className="text-gray-500">$ npm run router::listen</p>
-        <p className="text-green-400">&gt; Starting Nexus routing matrix...</p>
-        <p className="text-cyan-400">&gt; LLM Clusters bound: 4 endpoints.</p>
-        <p className="text-yellow-400">&gt; Average throughput: 10,420 rps [OK]</p>
-        <div className="absolute bottom-1 right-2 w-1.5 h-3 bg-green-500 animate-pulse" />
+        <p className="text-gray-500">$ python -m odonx.main</p>
+        <p className="text-cyan-300">&gt; Prompt context: 8,192 tokens</p>
+        <p className="text-green-300">&gt; Distributed LLM route: GPT-4o [100% OK]</p>
+        <p className="text-yellow-400">&gt; Tokens/sec: 142.4 tps</p>
+        <div className="absolute bottom-1 right-2 w-1.5 h-3 bg-purple-500 animate-pulse" />
       </div>
     )
   }
 
-  return (
-    <div className="w-full h-36 bg-zinc-950 border border-white/10 rounded-lg p-3 flex flex-col gap-1 font-mono text-[7.5px] text-gray-400 relative overflow-hidden group-hover:border-purple-500/30 transition-colors">
-      <div className="flex items-center gap-1 border-b border-white/5 pb-1 justify-between">
-        <span className="text-purple-400 font-bold">RAG ENGINE</span>
-        <span className="text-green-400 animate-pulse">SYNCED</span>
+  if (type === 'labour') {
+    return (
+      <div className="w-full h-36 bg-black/40 border border-white/10 rounded-lg p-3 flex flex-col gap-2 relative overflow-hidden group-hover:border-indigo-500/30 transition-colors">
+        <div className="flex items-center justify-between border-b border-white/5 pb-1 font-mono text-[7px] text-gray-500">
+          <span>ROSTER MANAGER</span>
+          <span className="text-green-400 font-bold">ACTIVE</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 flex-grow">
+          <div className="bg-zinc-900 border border-white/5 rounded p-1 flex flex-col justify-between">
+            <span className="text-[6px] text-gray-500 uppercase font-mono">Shift A allocation</span>
+            <span className="text-white font-bold text-[8px] font-mono">14 Workers</span>
+          </div>
+          <div className="bg-zinc-900 border border-white/5 rounded p-1 flex flex-col justify-between">
+            <span className="text-[6px] text-gray-500 uppercase font-mono">Compliance check</span>
+            <span className="text-green-400 font-bold text-[8px] font-mono">PASSED</span>
+          </div>
+        </div>
+        <div className="h-3 bg-zinc-900 rounded overflow-hidden relative border border-white/5">
+          <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-[85%] rounded" />
+        </div>
       </div>
-      <div className="space-y-1 mt-1">
-        <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">INDEXED DOCS:</span> <span className="text-white font-bold">14,242 PDFs</span></p>
-        <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">CHUNK OVERLAP:</span> <span className="text-white">128 tokens</span></p>
-        <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">RETRIEVAL EXP:</span> <span className="text-cyan-400 font-bold">34ms latency</span></p>
+    )
+  }
+
+  // age-gesture-scanner
+  return (
+    <div className="w-full h-36 bg-zinc-950 border border-white/10 rounded-lg p-2.5 flex gap-2 relative overflow-hidden group-hover:border-emerald-500/30 transition-colors">
+      <div className="w-[50%] bg-black border border-white/5 rounded flex flex-col items-center justify-center relative overflow-hidden">
+        {/* Wireframe hand gesture mockup */}
+        <div className="w-14 h-14 rounded-full border border-dashed border-emerald-500/30 flex items-center justify-center relative">
+          <span className="text-[14px] text-emerald-400 animate-pulse">✋</span>
+          {/* Coordinates vector lines */}
+          <div className="absolute top-1/2 left-0 right-0 h-px bg-emerald-500/10 pointer-events-none" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-emerald-500/10 pointer-events-none" />
+        </div>
+        <div className="absolute top-1 left-1 text-[5px] text-emerald-400 font-mono tracking-widest uppercase">GESTURE_V1</div>
+        <div className="absolute bottom-1 left-1 text-[5px] text-cyan-400 font-mono uppercase font-bold">AGE: 24-28</div>
+      </div>
+      <div className="flex-grow flex flex-col justify-between font-mono text-[6.5px]">
+        <div className="space-y-1">
+          <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">INPUT:</span> <span className="text-white">WEBCAM</span></p>
+          <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">GESTURE:</span> <span className="text-emerald-400 font-bold">SWIPE_LEFT</span></p>
+          <p className="flex justify-between border-b border-white/5 pb-0.5"><span className="text-gray-600">ACTION:</span> <span className="text-cyan-400">NEXT_SLIDE</span></p>
+        </div>
+        <span className="text-[5.5px] text-gray-600">LOCAL LLM ACCURACY: 94%</span>
       </div>
     </div>
   )
@@ -201,13 +242,13 @@ const Projects = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span className="tag tag-purple mb-4 inline-flex">Case Studies</span>
+          <span className="tag tag-purple mb-4 inline-flex font-mono">Case Studies</span>
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            SaaS &amp; AI <span className="gradient-text">Projects</span>
+            Our Custom <span className="gradient-text font-extrabold">Builds</span>
           </h2>
           <div className="title-underline" />
           <p className="text-gray-400 max-w-2xl mx-auto mt-6">
-            Explore our curated portfolio of premium digital storefronts and robust back-end AI orchestrators.
+            Explore our curated portfolio of premium interfaces, robust back-end clusters, and Python AI algorithms.
           </p>
         </motion.div>
 
@@ -220,9 +261,10 @@ const Projects = () => {
         >
           <div className="flex glass rounded-2xl p-1.5 border border-white/10">
             {[
-              { key: 'all', label: 'All Products' },
+              { key: 'all', label: 'All Projects' },
               { key: 'frontend', label: '🖥️ Frontend' },
               { key: 'backend', label: '⚙️ Backend' },
+              { key: 'python-ai', label: '🐍 Python & AI' },
             ].map(({ key, label }) => (
               <button
                 key={key}
@@ -278,12 +320,14 @@ const Projects = () => {
                   <h3 className="text-xl font-bold font-orbitron text-white group-hover:text-purple-300 transition-colors duration-200">
                     {project.name}
                   </h3>
-                  <span className={`text-[9px] font-bold uppercase tracking-wider font-mono rounded px-2 py-0.5 border ${
+                  <span className={`text-[8px] font-bold uppercase tracking-wider font-mono rounded px-2 py-0.5 border ${
                     project.category === 'frontend' 
                       ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' 
-                      : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
+                      : project.category === 'backend'
+                        ? 'bg-purple-500/10 border-purple-500/20 text-purple-400'
+                        : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
                   }`}>
-                    {project.category}
+                    {project.category.replace('-', ' ')}
                   </span>
                 </div>
 
