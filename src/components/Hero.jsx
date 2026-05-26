@@ -79,13 +79,13 @@ const Hero = () => {
             </ScrollLink>
             
             <ScrollLink
-              to="services"
+              to="ai-automation"
               smooth={true}
               duration={600}
               offset={-80}
               className="btn-outline inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-sm font-semibold text-gray-200 hover:text-white cursor-pointer"
             >
-              <Globe size={16} className="text-blue-400" /> Explore Services
+              <Globe size={16} className="text-blue-400" /> Explore Automation
             </ScrollLink>
           </motion.div>
         </div>

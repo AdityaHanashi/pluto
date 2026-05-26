@@ -99,10 +99,9 @@ const Footer = () => {
             <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
               {[
                 { label: 'Home', to: 'home' },
-                { label: 'Services', to: 'services' },
-                { label: 'Solutions', to: 'solutions' },
-                { label: 'Projects', to: 'projects' },
                 { label: 'About', to: 'about' },
+                { label: 'AI Automation', to: 'ai-automation' },
+                { label: 'Labor Management', to: 'labor' },
                 { label: 'Contact', to: 'contact' },
               ].map((item) => (
                 <li key={item.to}>

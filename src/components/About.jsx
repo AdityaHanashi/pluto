@@ -133,77 +133,60 @@ const About = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-7 space-y-6"
+            className="lg:col-span-7 space-y-8"
           >
-            {/* Mission Box */}
-            <div className="glass rounded-2xl p-6 md:p-8 border border-white/5 glow-border relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Target size={120} className="text-purple-400" />
-              </div>
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20 shrink-0">
-                  <Target size={22} />
+            {/* Mission Section */}
+            <div className="space-y-4">
+              <div className="flex gap-4 items-center mb-2">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20 shrink-0">
+                  <Target size={18} />
                 </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-2 font-orbitron">The Mission</h4>
-                  <p className="text-gray-400 leading-relaxed text-sm">
-                    Pluto.ai operates on a simple, singular premise: <span className="text-purple-300 font-semibold">bringing the immense potential of intelligent automation</span> to forward-thinking businesses. We don't just write code; we design neural ecosystems that automate workflows, drive conversions, and create immense value.
-                  </p>
-                </div>
+                <h4 className="text-lg font-bold text-white font-orbitron">The Mission</h4>
               </div>
+              <p className="text-gray-400 leading-relaxed text-sm md:text-base">
+                Pluto.ai designs high-fidelity neural agents and operational voice pipelines. We replace manual administrative tasks with automated intelligence, turning computational pipelines into direct business value.
+              </p>
             </div>
 
             {/* Core Competencies Box */}
-            <div className="glass rounded-2xl p-6 md:p-8 border border-white/5 glow-border-blue relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Cpu size={120} className="text-blue-400" />
+            <div className="space-y-4 pt-4">
+              <div className="flex gap-4 items-center mb-2">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20 shrink-0">
+                  <Cpu size={18} />
+                </div>
+                <h4 className="text-lg font-bold text-white font-orbitron">Intelligent Systems</h4>
               </div>
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20 shrink-0">
-                  <Cpu size={22} />
-                </div>
-                <div className="w-full">
-                  <h4 className="text-xl font-bold text-white mb-2 font-orbitron">What We Do</h4>
-                  <p className="text-gray-400 leading-relaxed text-sm mb-4">
-                    From standalone AI agents to end-to-end full-stack SaaS applications, we customize automation specifically mapped to your metrics.
-                  </p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {[
-                      'AI Automations',
-                      'AI Voice Callers',
-                      'Autonomous Agents',
-                      'Web Studios',
-                      'SaaS Platforms',
-                      'Custom Chatbots',
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-gray-400 bg-white/5 border border-white/5 rounded-lg px-3 py-2 font-mono">
-                        <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <p className="text-gray-400 leading-relaxed text-sm">
+                From self-contained calling streams to integrated MySQL databases, we orchestrate workflows that sync with your operational KPIs.
+              </p>
+              <div className="flex flex-wrap gap-2.5 pt-2">
+                {[
+                  'Voice Automations',
+                  'Cognitive Chatbots',
+                  'n8n Pipelines',
+                  'MySQL Roster Hubs',
+                  'Autonomous Agents'
+                ].map((item, i) => (
+                  <span key={i} className="inline-flex items-center gap-1.5 text-xs text-purple-300 bg-purple-950/20 border border-purple-500/15 rounded-full px-3.5 py-1.5 font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Security & Reliability Box */}
-            <div className="glass rounded-2xl p-6 md:p-8 border border-white/5 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Shield size={120} className="text-cyan-400" />
-              </div>
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20 shrink-0">
-                  <Shield size={22} />
+            {/* Commitment Section */}
+            <div className="space-y-4 pt-4">
+              <div className="flex gap-4 items-center mb-2">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20 shrink-0">
+                  <Shield size={18} />
                 </div>
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-2 font-orbitron">The Commitment</h4>
-                  <p className="text-gray-400 leading-relaxed text-sm">
-                    We maintain absolute clarity in our engineering pipelines. Everything we build is structured to deploy smoothly on modern hosting providers like Netlify, ensuring robust uptime, fast loading speeds, and solid operations.
-                  </p>
-                </div>
+                <h4 className="text-lg font-bold text-white font-orbitron">Technical Integrity</h4>
               </div>
+              <p className="text-gray-400 leading-relaxed text-sm">
+                Clean architectures built using modern react interfaces and secure relational databases. Tested to deploy securely on modern platforms like Netlify.
+              </p>
             </div>
-
           </motion.div>
         </div>
       </div>

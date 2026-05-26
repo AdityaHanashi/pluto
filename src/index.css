@@ -153,15 +153,15 @@ body {
 /* Glassmorphism */
 .glass {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-purple {
   background: rgba(139, 92, 246, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
@@ -247,7 +247,7 @@ body {
 
 /* Section spacing */
 .section-padding {
-  padding: 100px 0;
+  padding: clamp(80px, 12vh, 160px) 0;
 }
 
 /* Grid pattern */
