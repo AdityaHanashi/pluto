@@ -143,7 +143,7 @@ const Projects = () => {
       <div className="absolute inset-0 grid-pattern opacity-[0.06] pointer-events-none" />
       <div className="absolute top-[20%] left-[-10%] w-96 h-96 rounded-full bg-purple-900/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
+      <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Header */}
         <div className="text-left mb-16">
@@ -193,8 +193,14 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
+              whileHover={{ 
+                scale: 1.02, 
+                y: -5,
+                borderColor: "rgba(168, 85, 247, 0.35)",
+                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(124, 58, 237, 0.12)"
+              }}
               onClick={() => setSelectedSandbox(project.id)}
-              className="glass rounded-[20px] p-6 md:px-8 md:py-6 border border-white/5 flex flex-col md:grid md:grid-cols-[auto_1fr_auto_auto] items-center gap-6 md:gap-8 hover:border-purple-500/25 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),0_0_0_1px_rgba(139,92,246,0.1)] group cursor-pointer"
+              className="glass rounded-[20px] p-6 md:px-8 md:py-6 border border-white/5 flex flex-col md:grid md:grid-cols-[auto_1fr_auto_auto] items-center gap-6 md:gap-8 group cursor-pointer transition-colors duration-300"
             >
               {/* Project index */}
               <span className="font-mono-jb text-[11px] text-purple-400/50 group-hover:text-purple-400 transition-colors min-w-[32px]">
@@ -240,9 +246,10 @@ const Projects = () => {
           >
             {/* Modal Container */}
             <motion.div
-              initial={{ scale: 0.9, y: 30 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 30 }}
+              initial={{ opacity: 0, scale: 0.93, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 40 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="glass max-w-4xl w-full border border-purple-500/20 rounded-3xl overflow-hidden shadow-2xl relative"
             >
               {/* Close Button */}

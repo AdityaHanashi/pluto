@@ -17,7 +17,7 @@ const About = () => {
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
       <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-purple-700/10 blur-[100px] pointer-events-none" />
       
-      <div className="max-w-6xl mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
+      <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Section Header */}
         <motion.div
@@ -40,7 +40,7 @@ const About = () => {
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left"
+            className="lg:col-span-4 flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             {/* Pulsing Avatar Halo */}
             <div className="relative mb-8 w-56 h-72 flex items-center justify-center">
@@ -72,9 +72,14 @@ const About = () => {
 
             {/* Title / details */}
             <h3 className="text-3xl font-bold font-syne text-white mb-2">Aditya Hanashi</h3>
-            <p className="text-purple-400 font-semibold text-sm tracking-widest uppercase mb-6 font-mono-jb">
-              Founder &bull; Pluto.ai
-            </p>
+            <div className="mb-6 flex flex-col items-center lg:items-start">
+              <span className="text-purple-400 font-semibold text-xs tracking-widest uppercase font-mono-jb">
+                Founder & Chief Tech Architect
+              </span>
+              <span className="text-gray-500 font-bold text-[9px] tracking-wider uppercase font-mono mt-1">
+                AI Automation &bull; Website Builder &bull; Cybersecurity
+              </span>
+            </div>
 
             {/* Quick Contact Panel */}
             <div className="flex flex-col gap-3 w-full max-w-sm">
@@ -133,7 +138,7 @@ const About = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-7 space-y-8"
+            className="lg:col-span-8 lg:pl-6 space-y-8"
           >
             {/* Mission Section */}
             <div className="space-y-4">
