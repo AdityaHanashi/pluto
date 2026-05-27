@@ -13,7 +13,7 @@ const Contact = () => {
       <div className="absolute bottom-[20%] right-[20%] w-[450px] h-[450px] rounded-full bg-cyan-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-emerald-500/4 blur-[140px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
 
-      <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
+      <div className="max-w-[98%] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Header */}
         <motion.div
@@ -29,7 +29,7 @@ const Contact = () => {
         </motion.div>
 
         {/* Simplified Layout matching referral theme */}
-        <div className="grid lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-12 items-start w-full mx-auto">
           
           {/* Left Column: Direct contact info */}
           <motion.div
@@ -51,7 +51,7 @@ const Contact = () => {
             <div className="space-y-4">
               {[
                 { icon: Mail, label: 'Email', value: 'buildwithpluto@gmail.com', href: 'mailto:buildwithpluto@gmail.com' },
-                { icon: Phone, label: 'Phone', value: '7022951232', href: 'tel:7022951232' },
+                { icon: Phone, label: 'Phone', value: '+91 7022951232', href: 'tel:+917022951232' },
                 { icon: MapPin, label: 'Location', value: 'Remote / Global', href: null }
               ].map((item, idx) => {
                 const Icon = item.icon

@@ -45,7 +45,7 @@ const Footer = () => {
       <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-emerald-500/5 blur-[100px] animate-blob pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-cyan-500/5 blur-[100px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-[98%] mx-auto px-6 relative z-10">
         
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
@@ -135,8 +135,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={14} className="text-blue-400 shrink-0" />
-                <a href="tel:7022951232" className="hover:text-white transition-colors font-mono-jb text-xs">
-                  7022951232
+                <a href="tel:+917022951232" className="hover:text-white transition-colors font-mono-jb text-xs">
+                  +91 7022951232
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

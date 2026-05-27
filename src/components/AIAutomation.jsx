@@ -102,7 +102,7 @@ const AIAutomation = () => {
       <div className="absolute top-[45%] left-[40%] w-[400px] h-[400px] rounded-full bg-emerald-500/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
 
       {/* Main Glassmorphic Wrapper Panel for Section */}
-      <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
+      <div className="max-w-[98%] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Header */}
         <div className="text-center mb-16">
