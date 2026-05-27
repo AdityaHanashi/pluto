@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
@@ -31,6 +31,24 @@ const tools = [
 
 const Technologies = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
+  const [angleY, setAngleY] = useState(0)
+  const [angleX, setAngleX] = useState(0)
+  const isHovered = useRef(false)
+
+  useEffect(() => {
+    let handle
+    const update = () => {
+      if (!isHovered.current) {
+        setAngleY(prev => (prev + 0.0018) % (2 * Math.PI))
+        setAngleX(prev => (prev + 0.0006) % (2 * Math.PI))
+      }
+      handle = requestAnimationFrame(update)
+    }
+    handle = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(handle)
+  }, [])
+
+  const radius = 230 // radius of 3D sphere
 
   return (
     <section className="section-padding relative overflow-hidden bg-black/40" id="technologies" ref={ref}>
@@ -44,7 +62,7 @@ const Technologies = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">02 / Skills</span>
           <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
@@ -53,52 +71,73 @@ const Technologies = () => {
           <div className="title-underline mt-4" />
         </motion.div>
 
-        {/* Floating Bubble Cloud */}
-        <div className="flex flex-wrap justify-center items-center gap-5 md:gap-7 max-w-5xl mx-auto py-8">
+        {/* 3D Rotating Sphere Area */}
+        <div 
+          className="relative w-full max-w-2xl h-[520px] mx-auto flex items-center justify-center overflow-visible select-none"
+          onMouseEnter={() => { isHovered.current = true }}
+          onMouseLeave={() => { isHovered.current = false }}
+        >
           {tools.map((tech, idx) => {
             const Icon = tech.icon
+            const N = tools.length
             
-            // Generate non-synchronized float parameters based on index
-            const xAnim = idx % 2 === 0 ? [0, 8, -6, 5, 0] : [0, -7, 6, -4, 0]
-            const yAnim = idx % 3 === 0 ? [0, -12, 7, -9, 0] : (idx % 3 === 1 ? [0, -8, 5, -6, 0] : [0, -10, 6, -8, 0])
+            // Distribute items evenly using Fibonacci sphere / golden spiral distribution
+            const phi = Math.acos(-1 + (2 * idx) / N)
+            const theta = Math.sqrt(N * Math.PI) * phi + angleY
+            const currentPhi = phi + angleX
+            
+            // Calculate 3D sphere coordinates
+            const radX = Math.sin(currentPhi) * Math.cos(theta) * radius
+            const radY = Math.cos(currentPhi) * radius
+            const radZ = Math.sin(currentPhi) * Math.sin(theta) * radius
+            
+            // Tilt sphere slightly on X-axis for better perspective
+            const tilt = 0.25
+            const rotatedY = radY * Math.cos(tilt) - radZ * Math.sin(tilt)
+            const rotatedZ = radZ * Math.cos(tilt) + radY * Math.sin(tilt)
+            
+            // Map rotated coordinates to 2D UI properties
+            const scale = 0.65 + (rotatedZ + radius) / (2 * radius) * 0.55 // scale range [0.65, 1.20]
+            const opacity = 0.35 + (rotatedZ + radius) / (2 * radius) * 0.65 // opacity range [0.35, 1.00]
+            const blurAmount = Math.max(0, (radius - rotatedZ) * 0.018) // blur range based on depth
+            const zIndex = Math.round(rotatedZ + radius)
             
             return (
-              <motion.div
+              <div
                 key={tech.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { 
-                  opacity: 1, 
-                  scale: 1,
-                  x: xAnim,
-                  y: yAnim
-                } : {}}
-                transition={inView ? {
-                  opacity: { duration: 0.6, delay: idx * 0.03 },
-                  scale: { duration: 0.6, delay: idx * 0.03 },
-                  x: { duration: 6 + (idx % 5) * 1.5, repeat: Infinity, ease: 'easeInOut', delay: (idx % 4) * 0.4 },
-                  y: { duration: 6.5 + (idx % 4) * 1.5, repeat: Infinity, ease: 'easeInOut', delay: (idx % 4) * 0.4 }
-                } : {}}
-                whileHover={{ 
-                  scale: 1.18, 
-                  borderColor: tech.color,
-                  boxShadow: `0 0 25px ${tech.shadow}`,
-                  zIndex: 20,
-                  transition: { duration: 0.2, ease: 'easeOut' }
+                className="absolute transition-all duration-75"
+                style={{
+                  transform: `translate3d(${radX}px, ${rotatedY}px, 0) scale(${scale})`,
+                  opacity: opacity,
+                  zIndex: zIndex,
+                  filter: `blur(${blurAmount}px)`,
+                  left: 'calc(50% - 56px)', // Centered offset (half of w-28)
+                  top: 'calc(50% - 56px)'   // Centered offset (half of h-28)
                 }}
-                className="glass w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center p-3 text-center cursor-pointer transition-all duration-300 border border-white/5 relative group select-none shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
               >
-                {/* Icon Container */}
-                <div 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center mb-1.5 transition-colors group-hover:bg-white/10"
-                  style={{ color: tech.color }}
+                <motion.div
+                  className="glass w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center p-3 text-center cursor-pointer transition-all duration-300 border border-white/5 relative group shadow-[0_4px_20px_rgba(0,0,0,0.3)] bg-black/60"
+                  whileHover={{ 
+                    scale: 1.15, 
+                    borderColor: tech.color,
+                    boxShadow: `0 0 25px ${tech.shadow}`,
+                    zIndex: zIndex + 100,
+                    transition: { duration: 0.18 }
+                  }}
                 >
-                  <Icon size={20} className="stroke-[1.75]" />
-                </div>
-                {/* Text Label */}
-                <span className="text-[9px] md:text-[10px] font-bold font-mono-jb text-gray-400 group-hover:text-white uppercase tracking-wider transition-colors duration-300">
-                  {tech.name}
-                </span>
-              </motion.div>
+                  {/* Icon Container */}
+                  <div 
+                    className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center mb-1 transition-colors group-hover:bg-white/10"
+                    style={{ color: tech.color }}
+                  >
+                    <Icon size={18} className="stroke-[1.75]" />
+                  </div>
+                  {/* Text Label */}
+                  <span className="text-[9px] font-bold font-mono-jb text-gray-400 group-hover:text-white uppercase tracking-wider transition-colors duration-200">
+                    {tech.name}
+                  </span>
+                </motion.div>
+              </div>
             )
           })}
         </div>

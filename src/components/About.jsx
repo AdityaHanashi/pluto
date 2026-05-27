@@ -52,7 +52,7 @@ const About = () => {
                     <img 
                       src="/avatar.png" 
                       alt="Aditya Hanashi" 
-                      className="w-full h-full object-cover object-center scale-105"
+                      className="w-full h-full object-cover object-[50%_12%] scale-[1.75]"
                     />
                     {/* Simulated laser scan */}
                     <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 top-0 animate-bounce" style={{ animationDuration: '4s' }} />

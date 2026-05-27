@@ -10,6 +10,7 @@ import Technologies from './components/Technologies'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ParticleField from './components/ParticleField'
+import Chatbot from './components/Chatbot'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -34,6 +35,7 @@ function App() {
         <section id="technologies"><Technologies /></section>
         <section id="contact"><Contact /></section>
       </main>
+      <Chatbot />
       <Footer />
     </div>
   )

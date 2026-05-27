@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, Phone, MapPin, Send, User, MessageSquare } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 
 const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
@@ -26,10 +26,10 @@ const Contact = () => {
           </h2>
         </motion.div>
 
-        {/* Simplified Layout */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center max-w-5xl mx-auto">
+        {/* Simplified Layout matching referral theme */}
+        <div className="grid lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
           
-          {/* Left Column: Direct info & statement */}
+          {/* Left Column: Direct contact info */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -81,7 +81,7 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Clean Form */}
+          {/* Right Column: Complete Form Section matching referral image */}
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -91,87 +91,125 @@ const Contact = () => {
             <div 
               className="glass rounded-3xl p-6 md:p-8 border border-white/5 relative"
               style={{ 
-                boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(124, 58, 237, 0.05)',
-                borderColor: 'rgba(124, 58, 237, 0.1)'
+                boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 35px rgba(124, 58, 237, 0.04)',
+                borderColor: 'rgba(255, 255, 255, 0.06)'
               }}
             >
-              {/* Form definition using Netlify Forms configuration */}
+              {/* Form Header */}
+              <div className="mb-6 pb-6 border-b border-white/5">
+                <h3 className="text-2xl font-bold font-syne text-white tracking-wide">
+                  Send a Message
+                </h3>
+                <p className="text-gray-400 text-xs md:text-sm mt-1">
+                  I respond to every inquiry personally — usually within a business day.
+                </p>
+              </div>
+
+              {/* Netlify Form */}
               <form 
                 name="contact" 
                 method="POST" 
                 data-netlify="true"
-                className="space-y-6"
+                className="space-y-5"
               >
-                {/* Netlify hidden field required for processing submissions */}
                 <input type="hidden" name="form-name" value="contact" />
 
-                 {/* Name field */}
-                <div className="space-y-2">
-                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400" htmlFor="name">
-                    Name
-                  </label>
-                  <div className="relative group">
-                    <div className="absolute inset-y-0 left-4 flex items-center text-gray-500 group-focus-within:text-purple-400 transition-colors">
-                      <User size={16} />
-                    </div>
+                {/* Row 1: Name and Email */}
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="space-y-1.5">
+                    <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="name">
+                      Your Name
+                    </label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      placeholder="Your Name"
+                      placeholder="Jane Smith"
                       required
-                      className="w-full bg-black/50 border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-white placeholder-gray-600 text-sm focus:border-purple-500/50 transition-all duration-300 font-medium"
+                      className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
                     />
                   </div>
-                </div>
-
-                {/* Email field */}
-                <div className="space-y-2">
-                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400" htmlFor="email">
-                    Email
-                  </label>
-                  <div className="relative group">
-                    <div className="absolute inset-y-0 left-4 flex items-center text-gray-500 group-focus-within:text-purple-400 transition-colors">
-                      <Mail size={16} />
-                    </div>
+                  
+                  <div className="space-y-1.5">
+                    <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="email">
+                      Email Address
+                    </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      placeholder="Your Email"
+                      placeholder="jane@company.com"
                       required
-                      className="w-full bg-black/50 border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-white placeholder-gray-600 text-sm focus:border-purple-500/50 transition-all duration-300 font-medium"
+                      className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
                     />
                   </div>
                 </div>
 
-                {/* Message field */}
-                <div className="space-y-2">
-                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400" htmlFor="message">
-                    Message
+                {/* Row 2: Contact Number */}
+                <div className="space-y-1.5">
+                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="phone">
+                    Contact Number <span className="text-orange-500">*</span>
                   </label>
-                  <div className="relative group">
-                    <div className="absolute left-4 top-4 text-gray-500 group-focus-within:text-purple-400 transition-colors">
-                      <MessageSquare size={16} />
-                    </div>
-                    <textarea
-                      id="message"
-                      name="message"
-                      placeholder="Your Message"
-                      rows={5}
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+91 98765 43210"
+                    required
+                    className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                  />
+                </div>
+
+                {/* Row 3: Inquiry Type */}
+                <div className="space-y-1.5">
+                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="inquiryType">
+                    Inquiry Type
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
                       required
-                      className="w-full bg-black/50 border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-white placeholder-gray-600 text-sm focus:border-purple-500/50 transition-all duration-300 resize-none font-medium"
-                    />
+                      defaultValue=""
+                      className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer"
+                    >
+                      <option value="" disabled>Select a topic...</option>
+                      <option value="ai-automation">AI Automations</option>
+                      <option value="website-design">Website Design / Builder</option>
+                      <option value="saas-platform">Custom SaaS Platform</option>
+                      <option value="cybersecurity">Cybersecurity Consultation</option>
+                      <option value="other">Other</option>
+                    </select>
+                    {/* Select arrow */}
+                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
-                {/* Submit button */}
+                {/* Row 4: Project Details */}
+                <div className="space-y-1.5">
+                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="message">
+                    Project Details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project, the problem you're solving, and your timeline..."
+                    rows={4}
+                    required
+                    className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 resize-none font-medium"
+                  />
+                </div>
+
+                {/* Row 5: Submit Button */}
                 <button
                   type="submit"
-                  className="w-full btn-primary flex items-center justify-center gap-2 py-4 rounded-lg text-xs font-semibold tracking-wider text-black bg-purple-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(124, 58, 237, 0.3)] transition-all cursor-pointer uppercase font-mono-jb"
+                  className="w-full btn-primary flex items-center justify-center gap-2 py-4 rounded-xl text-xs font-bold tracking-wider text-black bg-blue-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(245,158,11,0.25)] transition-all cursor-pointer uppercase font-mono-jb mt-2"
                 >
-                  <Send size={12} />
-                  <span>Send Message</span>
+                  <span>Send Message &rarr;</span>
                 </button>
               </form>
             </div>
