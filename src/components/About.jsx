@@ -15,7 +15,8 @@ const About = () => {
     >
       {/* Background aesthetics */}
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
-      <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-purple-700/10 blur-[100px] pointer-events-none" />
+      <div className="absolute top-[20%] right-[10%] w-[380px] h-[380px] rounded-full bg-emerald-500/5 blur-[120px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[5%] w-[420px] h-[420px] rounded-full bg-amber-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
       
       <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         

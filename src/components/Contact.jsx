@@ -9,7 +9,9 @@ const Contact = () => {
   return (
     <section className="section-padding relative overflow-hidden" id="contact" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-600/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[20%] w-[450px] h-[450px] rounded-full bg-amber-500/5 blur-[130px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[20%] w-[450px] h-[450px] rounded-full bg-cyan-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-emerald-500/4 blur-[140px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
 
       <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         

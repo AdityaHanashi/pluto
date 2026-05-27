@@ -39,10 +39,11 @@ const Footer = () => {
   return (
     <footer className="relative bg-black/95 text-gray-400 border-t border-white/5 pt-16 pb-8 overflow-hidden">
       {/* Decorative Gradient Line Separator */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent shadow-[0_0_10px_rgba(139,92,246,0.3)]" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 via-amber-500/30 via-cyan-500/40 via-purple-500/40 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.2)]" />
       
       {/* Background flare */}
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-purple-900/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-emerald-500/5 blur-[100px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-cyan-500/5 blur-[100px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         

@@ -97,8 +97,9 @@ const AIAutomation = () => {
   return (
     <section className="py-24 relative overflow-hidden bg-black/40" id="ai-automation">
       {/* Cinematic Lights */}
-      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-900/10 blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-900/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[15%] right-[-5%] w-[450px] h-[450px] rounded-full bg-cyan-500/6 blur-[130px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-[15%] left-[-5%] w-[450px] h-[450px] rounded-full bg-amber-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-[45%] left-[40%] w-[400px] h-[400px] rounded-full bg-emerald-500/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
 
       {/* Main Glassmorphic Wrapper Panel for Section */}
       <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">

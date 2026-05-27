@@ -29,9 +29,10 @@ const Hero = () => {
       />
 
       {/* Cinematic Lighting Flares */}
-      <div className="absolute top-[20%] left-[15%] w-96 h-96 rounded-full bg-purple-600/15 blur-[120px] animate-blob" />
-      <div className="absolute bottom-[20%] right-[15%] w-[450px] h-[450px] rounded-full bg-blue-600/10 blur-[130px] animate-blob" style={{ animationDelay: '3s' }} />
-      <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-80 h-80 rounded-full bg-cyan-600/10 blur-[100px] animate-blob" style={{ animationDelay: '6s' }} />
+      <div className="absolute top-[15%] left-[10%] w-[380px] h-[380px] rounded-full bg-amber-500/8 blur-[120px] animate-blob" />
+      <div className="absolute top-[35%] right-[15%] w-[420px] h-[420px] rounded-full bg-emerald-500/8 blur-[130px] animate-blob" style={{ animationDelay: '2s' }} />
+      <div className="absolute bottom-[20%] left-[20%] w-[450px] h-[450px] rounded-full bg-cyan-500/8 blur-[140px] animate-blob" style={{ animationDelay: '4s' }} />
+      <div className="absolute top-[50%] left-[45%] w-[380px] h-[380px] rounded-full bg-purple-600/10 blur-[120px] animate-blob" style={{ animationDelay: '6s' }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center w-full">
         {/* Left: Text Content */}

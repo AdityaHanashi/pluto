@@ -141,7 +141,8 @@ const Projects = () => {
     <section className="py-24 relative bg-black" id="projects" ref={ref}>
       {/* Background aesthetics */}
       <div className="absolute inset-0 grid-pattern opacity-[0.06] pointer-events-none" />
-      <div className="absolute top-[20%] left-[-10%] w-96 h-96 rounded-full bg-purple-900/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-[15%] left-[-5%] w-[400px] h-[400px] rounded-full bg-purple-600/6 blur-[125px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[-5%] w-[400px] h-[400px] rounded-full bg-emerald-500/5 blur-[125px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
 
       <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         

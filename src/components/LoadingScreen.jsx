@@ -41,8 +41,10 @@ const LoadingScreen = () => {
       >
         {/* Animated background */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="orb w-96 h-96 bg-purple-600/20 -top-20 -left-20" style={{ animationDelay: '0s' }} />
-          <div className="orb w-80 h-80 bg-blue-600/20 -bottom-20 -right-20" style={{ animationDelay: '3s' }} />
+          <div className="orb w-96 h-96 bg-emerald-500/25 -top-20 -left-20" style={{ animationDelay: '0s' }} />
+          <div className="orb w-80 h-80 bg-amber-500/20 -bottom-20 -right-20" style={{ animationDelay: '2s' }} />
+          <div className="orb w-96 h-96 bg-cyan-500/20 -top-10 right-20" style={{ animationDelay: '4s' }} />
+          <div className="orb w-80 h-80 bg-purple-600/20 bottom-20 -left-10" style={{ animationDelay: '6s' }} />
         </div>
 
         {/* Grid */}
@@ -57,12 +59,12 @@ const LoadingScreen = () => {
         >
           {/* Logo icon */}
           <div className="relative mb-6">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-3xl font-bold font-orbitron animate-glow-pulse">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 via-amber-500 via-cyan-500 to-purple-600 flex items-center justify-center text-3xl font-bold font-orbitron animate-glow-pulse">
               P
             </div>
             {/* Orbit rings */}
-            <div className="absolute inset-0 rounded-full border border-purple-500/30 animate-spin-slow scale-150" />
-            <div className="absolute inset-0 rounded-full border border-blue-500/20 animate-spin-slow scale-[2.2]" style={{ animationDuration: '12s', animationDirection: 'reverse' }} />
+            <div className="absolute inset-0 rounded-full border border-emerald-500/30 animate-spin-slow scale-150" />
+            <div className="absolute inset-0 rounded-full border border-cyan-500/20 animate-spin-slow scale-[2.2]" style={{ animationDuration: '12s', animationDirection: 'reverse' }} />
           </div>
 
           <motion.h1
@@ -86,7 +88,7 @@ const LoadingScreen = () => {
           {/* Progress bar */}
           <div className="w-80 h-[2px] bg-gray-800 rounded-full overflow-hidden relative mb-4">
             <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400"
+              className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-amber-500 via-cyan-500 to-purple-600"
               style={{ width: `${progress}%` }}
               transition={{ ease: 'linear' }}
             />
@@ -99,7 +101,7 @@ const LoadingScreen = () => {
           <AnimatePresence mode="wait">
             <motion.p
               key={phase}
-              className="text-purple-400/80 text-sm tracking-wider font-mono"
+              className="text-emerald-400/80 text-sm tracking-wider font-mono"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -114,7 +116,7 @@ const LoadingScreen = () => {
 
         {/* Scanning line effect */}
         <motion.div
-          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-60"
+          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-60"
           animate={{ y: ['0vh', '100vh'] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
         />

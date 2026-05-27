@@ -35,7 +35,9 @@ const Technologies = () => {
   return (
     <section className="py-24 relative overflow-hidden bg-black/40" id="technologies" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.04] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-700/5 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[20%] w-[400px] h-[400px] rounded-full bg-cyan-500/6 blur-[130px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] rounded-full bg-amber-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-emerald-500/5 blur-[140px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
 
       {/* Main Glassmorphic Wrapper Panel for Section */}
       <div className="max-w-[94%] xl:max-w-[1360px] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
@@ -62,8 +64,19 @@ const Technologies = () => {
               <motion.div
                 key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: idx * 0.03 }}
+                animate={inView ? { 
+                  opacity: 1, 
+                  y: [0, -6, 0] 
+                } : {}}
+                transition={{ 
+                  opacity: { duration: 0.5, delay: idx * 0.03 },
+                  y: inView ? {
+                    duration: 3 + (idx % 3) * 0.6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: idx * 0.15
+                  } : { duration: 0.5, delay: idx * 0.03 }
+                }}
                 className="glass rounded-2xl p-4 flex flex-col items-center justify-center text-center border border-white/5 relative group cursor-pointer transition-all duration-300 bg-black/40 h-28"
                 whileHover={{ 
                   scale: 1.05, 
