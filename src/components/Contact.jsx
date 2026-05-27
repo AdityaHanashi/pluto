@@ -1,10 +1,59 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
+  const formRef = useRef()
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    
+    if (status === 'sending') return
+
+    setStatus('sending')
+    setErrorMsg('')
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS configuration is missing environment variables.')
+      setStatus('error')
+      setErrorMsg('Configuration keys are missing. Please verify your environment variables.')
+      return
+    }
+
+    emailjs.sendForm(
+      serviceId,
+      templateId,
+      formRef.current,
+      publicKey
+    )
+    .then((result) => {
+      console.log('EmailJS Success:', result.text)
+      setStatus('success')
+      if (formRef.current) {
+        formRef.current.reset()
+      }
+      setTimeout(() => {
+        setStatus('idle')
+      }, 5000)
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error)
+      setStatus('error')
+      setErrorMsg(error.text || 'Failed to send message. Please try again.')
+      setTimeout(() => {
+        setStatus('idle')
+      }, 5000)
+    })
+  }
 
   return (
     <section className="section-padding relative overflow-hidden" id="contact" ref={ref}>
@@ -107,15 +156,12 @@ const Contact = () => {
                 </p>
               </div>
 
-              {/* Netlify Form */}
+              {/* EmailJS Contact Form */}
               <form 
-                name="contact" 
-                method="POST" 
-                data-netlify="true"
+                ref={formRef}
+                onSubmit={handleSubmit}
                 className="space-y-6"
               >
-                <input type="hidden" name="form-name" value="contact" />
-
                 {/* Row 1: Name and Email */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -128,7 +174,8 @@ const Contact = () => {
                       name="name"
                       placeholder="Jane Smith"
                       required
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium"
+                      disabled={status === 'sending'}
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                   
@@ -142,7 +189,8 @@ const Contact = () => {
                       name="email"
                       placeholder="jane@company.com"
                       required
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium"
+                      disabled={status === 'sending'}
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -158,7 +206,8 @@ const Contact = () => {
                     name="phone"
                     placeholder="+91 98765 43210"
                     required
-                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium"
+                    disabled={status === 'sending'}
+                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
@@ -173,7 +222,8 @@ const Contact = () => {
                       name="inquiryType"
                       required
                       defaultValue=""
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white text-base focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer"
+                      disabled={status === 'sending'}
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white text-base focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="" disabled>Select a topic...</option>
                       <option value="ai-automation">AI Automations</option>
@@ -202,17 +252,77 @@ const Contact = () => {
                     placeholder="Tell me about your project, the problem you're solving, and your timeline..."
                     rows={8}
                     required
-                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 min-h-[220px] font-medium"
+                    disabled={status === 'sending'}
+                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 min-h-[220px] font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
 
-                {/* Row 5: Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full btn-primary flex items-center justify-center gap-2 py-4 rounded-xl text-xs font-bold tracking-wider text-black bg-blue-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(245,158,11,0.25)] transition-all cursor-pointer uppercase font-mono-jb mt-2"
-                >
-                  <span>Send Message &rarr;</span>
-                </button>
+                {/* Row 5: Submit Button and Status Messages */}
+                <div className="space-y-4">
+                  <button
+                    type="submit"
+                    disabled={status === 'sending' || status === 'success'}
+                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl text-xs font-bold tracking-wider text-black transition-all cursor-pointer uppercase font-mono-jb mt-2 border border-transparent
+                      ${status === 'sending' ? 'bg-blue-400/80 text-white cursor-wait opacity-80' : ''}
+                      ${status === 'success' ? 'bg-emerald-500 text-white cursor-default' : ''}
+                      ${status === 'error' ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-[0_8px_30px_rgba(225,29,72,0.25)]' : ''}
+                      ${status === 'idle' ? 'bg-blue-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(59,130,246,0.25)]' : ''}
+                    `}
+                  >
+                    {status === 'sending' && (
+                      <>
+                        <Loader2 className="animate-spin" size={16} />
+                        <span>Sending Inquiry...</span>
+                      </>
+                    )}
+                    {status === 'success' && (
+                      <>
+                        <CheckCircle2 size={16} />
+                        <span>Message Sent Successfully!</span>
+                      </>
+                    )}
+                    {status === 'error' && (
+                      <>
+                        <AlertCircle size={16} />
+                        <span>Try Again</span>
+                      </>
+                    )}
+                    {status === 'idle' && (
+                      <>
+                        <span>Send Message &rarr;</span>
+                      </>
+                    )}
+                  </button>
+
+                  {/* Elegant Alert Alerts using Framer Motion */}
+                  {status === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-start gap-3"
+                    >
+                      <CheckCircle2 size={16} className="shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-bold">Inquiry Sent!</p>
+                        <p className="text-emerald-400/80 mt-1">Thank you for reaching out. I'll personally review your inquiry and get back to you shortly.</p>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {status === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs flex items-start gap-3"
+                    >
+                      <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-bold">Submission Failed</p>
+                        <p className="text-rose-400/80 mt-1">{errorMsg}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
               </form>
             </div>
           </motion.div>
