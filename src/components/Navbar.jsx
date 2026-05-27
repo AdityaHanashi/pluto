@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Zap, ChevronRight } from 'lucide-react'
+import { Menu, X, ChevronRight } from 'lucide-react'
 import { Link as ScrollLink } from 'react-scroll'
 
 const navItems = [
-  { label: 'Home', to: 'home' },
   { label: 'About', to: 'about' },
-  { label: 'AI Automation', to: 'ai-automation' },
+  { label: 'Skills', to: 'technologies' },
   { label: 'Projects', to: 'projects' },
+  { label: 'Services', to: 'ai-automation' },
   { label: 'Contact', to: 'contact' },
 ]
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
     <nav
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'py-4 bg-black/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(139,92,246,0.1)]'
+          ? 'py-4 bg-black/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(124,58,237,0.06)]'
           : 'py-6 bg-transparent'
       }`}
     >
@@ -41,18 +41,18 @@ const Navbar = () => {
           offset={-80}
           className="flex items-center gap-2 font-syne font-bold text-white text-xl tracking-wide cursor-pointer group"
         >
-          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(139,92,246,0.5)] group-hover:shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300">
+          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(124,58,237,0.4)] group-hover:shadow-[0_0_25px_rgba(124,58,237,0.7)] transition-all duration-300">
             <span className="relative z-10 text-sm">P</span>
             <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
-          <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent group-hover:to-blue-400 transition-all duration-300">
-            PLUTO.AI
+          <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent group-hover:to-blue-400 transition-all duration-300 uppercase">
+            Pluto.ai
           </span>
         </ScrollLink>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <ul className="flex items-center gap-2">
+          <ul className="flex items-center gap-1.5">
             {navItems.map((item) => (
               <li key={item.to}>
                 <ScrollLink
@@ -63,7 +63,7 @@ const Navbar = () => {
                   duration={600}
                   offset={-80}
                   onSetActive={() => setActiveSection(item.to)}
-                  className="relative px-4 py-2 text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer block text-gray-400 hover:text-white uppercase font-mono-jb"
+                  className="relative px-3.5 py-2 text-xs font-bold tracking-widest transition-all duration-300 cursor-pointer block text-gray-400 hover:text-white uppercase font-mono-jb"
                   activeClass="text-purple-400"
                 >
                   {item.label}
@@ -72,7 +72,7 @@ const Navbar = () => {
                     style={{
                       opacity: activeSection === item.to ? 1 : 0,
                       transform: activeSection === item.to ? 'translate(-50%, 4px) scale(1)' : 'translate(-50%, 4px) scale(0)',
-                      boxShadow: '0 0 8px #8b5cf6'
+                      boxShadow: '0 0 8px #7c3aed'
                     }}
                   />
                 </ScrollLink>
@@ -80,15 +80,15 @@ const Navbar = () => {
             ))}
           </ul>
 
+          {/* Styled exact "Hire Me" button in gold/amber */}
           <ScrollLink
             to="contact"
             smooth={true}
             duration={600}
             offset={-80}
-            className="btn-outline flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-semibold tracking-wider uppercase font-mono-jb text-purple-400 hover:bg-purple-500 hover:text-black hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all cursor-pointer"
+            className="border border-blue-500 text-blue-500 flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-bold tracking-widest uppercase font-mono-jb hover:bg-blue-500 hover:text-black hover:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all duration-300 cursor-pointer"
           >
-            <Zap size={12} className="animate-pulse" />
-            <span>Contact Us</span>
+            <span>Hire Me</span>
           </ScrollLink>
         </div>
 
@@ -122,10 +122,10 @@ const Navbar = () => {
                     duration={600}
                     offset={-80}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between py-3 px-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-200 cursor-pointer"
+                    className="flex items-center justify-between py-3 px-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-200 cursor-pointer uppercase"
                     activeClass="bg-purple-900/20 text-purple-400 border-purple-500/20"
                   >
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-semibold text-xs tracking-wider font-mono-jb">{item.label}</span>
                     <ChevronRight size={16} className="text-gray-600 group-hover:text-gray-400" />
                   </ScrollLink>
                 </li>
@@ -137,10 +137,9 @@ const Navbar = () => {
                   duration={600}
                   offset={-80}
                   onClick={() => setIsOpen(false)}
-                  className="btn-primary w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold text-white cursor-pointer"
+                  className="btn-primary w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-bold text-black cursor-pointer uppercase tracking-wider font-mono-jb"
                 >
-                  <Zap size={14} />
-                  <span>Start a Project</span>
+                  <span>Hire Me</span>
                 </ScrollLink>
               </li>
             </ul>

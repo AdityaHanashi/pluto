@@ -1,9 +1,20 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link as ScrollLink } from 'react-scroll'
-import { Zap, Globe, Sparkles, Cpu, Terminal, ArrowDown } from 'lucide-react'
+import { Zap, Terminal, ArrowDown, Activity, PhoneCall, Layers, Network } from 'lucide-react'
 
 const Hero = () => {
+  const [activeTab, setActiveTab] = useState('relays')
+  const [waveHeights, setWaveHeights] = useState([15, 30, 45, 20, 60, 35, 10, 40, 25, 55, 30, 15])
+
+  // Simple wave animation simulation
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWaveHeights(prev => prev.map(() => Math.floor(Math.random() * 55) + 12))
+    }, 180)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section 
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20"
@@ -87,38 +98,170 @@ const Hero = () => {
               offset={-80}
               className="btn-outline inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg text-xs font-semibold tracking-wider text-gray-400 hover:text-white border border-white/10 hover:border-white/20 transition-all cursor-pointer uppercase font-mono-jb"
             >
-              Our Automation
+              Our Services
             </ScrollLink>
           </motion.div>
         </div>
 
-        {/* Right: Premium Profile JSON Terminal Card */}
+        {/* Right: Premium Interactive Glassmorphic Console Dashboard */}
         <div className="lg:col-span-5 flex justify-center items-center relative w-full">
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="w-full bg-[#070712]/70 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+            className="w-full bg-[#070712]/50 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative"
           >
-            <div className="bg-white/3 px-4 py-3 border-b border-white/10 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-              <span className="font-mono-jb text-[10px] text-gray-500 ml-auto">pluto.profile.json</span>
+            {/* Console Header Bar */}
+            <div className="bg-white/[0.03] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+              {/* Colored Dots */}
+              <div className="flex gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+              </div>
+              
+              {/* Tab Selector Buttons */}
+              <div className="flex gap-1 bg-white/5 border border-white/10 rounded-lg p-0.5">
+                {[
+                  { id: 'relays', label: 'Relays', icon: Network },
+                  { id: 'voice', label: 'Voice Bot', icon: PhoneCall },
+                  { id: 'telemetry', label: 'Telemetry', icon: Activity }
+                ].map((tab) => {
+                  const Icon = tab.icon
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[9px] font-bold font-mono-jb uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                        activeTab === tab.id 
+                          ? 'bg-purple-600/80 text-white shadow-md' 
+                          : 'text-gray-500 hover:text-gray-300'
+                      }`}
+                    >
+                      <Icon size={10} />
+                      {tab.label}
+                    </button>
+                  )
+                })}
+              </div>
             </div>
-            <div className="p-6 font-mono-jb text-xs leading-loose text-left text-gray-400">
-              <span className="text-gray-600">{`{`}</span><br />
-              &nbsp;&nbsp;<span className="text-purple-400">"name"</span>: <span className="text-emerald-400">"Pluto.ai"</span>,<br />
-              &nbsp;&nbsp;<span className="text-purple-400">"specialization"</span>: <span className="text-gray-600">[</span><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-emerald-400">"GenAI & RAG Systems"</span>,<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-emerald-400">"Agentic AI"</span>,<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-emerald-400">"Workflow Automation"</span><br />
-              &nbsp;&nbsp;<span className="text-gray-600">]</span>,<br />
-              &nbsp;&nbsp;<span className="text-purple-400">"github"</span>: <span className="text-emerald-400">"pluto-system"</span>,<br />
-              &nbsp;&nbsp;<span className="text-purple-400">"available"</span>: <span className="text-blue-400">true</span>,<br />
-              &nbsp;&nbsp;<span className="text-purple-400">"status"</span>: <span className="text-emerald-400">"active_operations"</span><br />
-              <span className="text-gray-600">{`}`}</span>
-              <span className="inline-block w-2 h-4 bg-purple-400 ml-1 animate-pulse" />
+
+            {/* Tab Contents */}
+            <div className="p-5 font-mono-jb text-[11px] leading-relaxed text-left text-gray-400 h-[220px] flex flex-col justify-between">
+              <AnimatePresence mode="wait">
+                {activeTab === 'relays' && (
+                  <motion.div
+                    key="relays"
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-3.5"
+                  >
+                    <div className="flex items-center justify-between text-[10px] text-purple-400 border-b border-white/5 pb-2">
+                      <span>ACTIVE PIPELINES</span>
+                      <span className="animate-pulse flex items-center gap-1 text-green-400 font-bold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                        RUNNING
+                      </span>
+                    </div>
+                    <div className="space-y-1.5 text-gray-300 text-xs">
+                      <div><span className="text-purple-400">&gt;_ </span><span className="text-gray-500">RELAY_SYNC: </span><span className="text-emerald-400">POST /relays/crm-lead-sync ... OK</span></div>
+                      <div><span className="text-purple-400">&gt;_ </span><span className="text-gray-500">DB_RELATION: </span><span className="text-emerald-400">MYSQL_QUERY SELECT roster ... SUCCESS</span></div>
+                      <div><span className="text-purple-400">&gt;_ </span><span className="text-gray-500">EVENT_LOOP:  </span><span className="text-emerald-400">N8N_TRIGGER webhook-trigger ... DONE</span></div>
+                    </div>
+                    <div className="text-[10px] text-gray-500 border-t border-white/5 pt-2 flex items-center gap-1.5 mt-2">
+                      <Layers size={11} className="text-purple-500" />
+                      Orchestrator relay loops synced with VAPI callers.
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeTab === 'voice' && (
+                  <motion.div
+                    key="voice"
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
+                  >
+                    <div className="flex items-center justify-between text-[10px] text-blue-400 border-b border-white/5 pb-2">
+                      <span>VOICE PIPELINE LATENCY</span>
+                      <span className="flex items-center gap-1 text-blue-400 font-bold animate-pulse">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                        CONNECTED
+                      </span>
+                    </div>
+
+                    {/* Audio Wave Visualizer */}
+                    <div className="flex items-end justify-center gap-1 h-12 py-1 bg-white/[0.02] border border-white/5 rounded-xl">
+                      {waveHeights.map((h, i) => (
+                        <div 
+                          key={i} 
+                          className="w-1 bg-gradient-to-t from-purple-500 to-blue-500 rounded-full transition-all duration-150"
+                          style={{ height: `${h}%` }}
+                        />
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 text-[10px] text-gray-400 mt-2">
+                      <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                        <span className="text-gray-500 block uppercase">Stream State</span>
+                        <span className="text-xs text-white font-bold font-mono">ACTIVE_INBOUND</span>
+                      </div>
+                      <div className="bg-white/5 p-2 rounded-lg border border-white/5">
+                        <span className="text-gray-500 block uppercase">Vapi Latency</span>
+                        <span className="text-xs text-emerald-400 font-bold font-mono">~ 480ms response</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeTab === 'telemetry' && (
+                  <motion.div
+                    key="telemetry"
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4"
+                  >
+                    <div className="flex items-center justify-between text-[10px] text-cyan-400 border-b border-white/5 pb-2">
+                      <span>SYSTEM TELEMETRY STATUS</span>
+                      <span className="text-emerald-400 font-bold">100% HEALTH</span>
+                    </div>
+                    
+                    {/* Telemetry Progress Bars */}
+                    <div className="space-y-2.5">
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[9px] text-gray-500 font-bold">
+                          <span>AGENT COMPUTATIONAL LOAD</span>
+                          <span className="text-white">12% CPU</span>
+                        </div>
+                        <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                          <div className="bg-purple-500 h-1.5 rounded-full" style={{ width: '12%' }} />
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[9px] text-gray-500 font-bold">
+                          <span>MEMORY BUFFER LOAD</span>
+                          <span className="text-white">340MB / 1024MB</span>
+                        </div>
+                        <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                          <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: '33.2%' }} />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text-[9px] text-gray-500 mt-2 font-mono flex items-center gap-1">
+                      <Terminal size={11} className="text-cyan-500" />
+                      All nodes reporting nominal states.
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>

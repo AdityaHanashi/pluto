@@ -17,7 +17,7 @@ const About = () => {
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
       <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-purple-700/10 blur-[100px] pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Section Header */}
         <motion.div
@@ -52,7 +52,7 @@ const About = () => {
                     <img 
                       src="/avatar.png" 
                       alt="Aditya Hanashi" 
-                      className="w-full h-full object-cover object-[50%_12%] scale-[1.75]"
+                      className="w-full h-full object-cover object-center scale-105"
                     />
                     {/* Simulated laser scan */}
                     <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 top-0 animate-bounce" style={{ animationDuration: '4s' }} />

@@ -33,14 +33,24 @@ const Technologies = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
   const [angleY, setAngleY] = useState(0)
   const [angleX, setAngleX] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(1200)
   const isHovered = useRef(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     let handle
     const update = () => {
       if (!isHovered.current) {
-        setAngleY(prev => (prev + 0.0018) % (2 * Math.PI))
-        setAngleX(prev => (prev + 0.0006) % (2 * Math.PI))
+        setAngleY(prev => (prev + 0.0016) % (2 * Math.PI))
+        setAngleX(prev => (prev + 0.0005) % (2 * Math.PI))
       }
       handle = requestAnimationFrame(update)
     }
@@ -48,7 +58,11 @@ const Technologies = () => {
     return () => cancelAnimationFrame(handle)
   }, [])
 
-  const radius = 230 // radius of 3D sphere
+  // Calculate dynamic responsive radius dimensions
+  const isDesktop = windowWidth >= 1024
+  const radiusX = isDesktop ? Math.min(500, windowWidth * 0.38) : Math.min(170, windowWidth * 0.35)
+  const radiusY = isDesktop ? 150 : 130
+  const radiusZ = isDesktop ? 220 : 150
 
   return (
     <section className="section-padding relative overflow-hidden bg-black/40" id="technologies" ref={ref}>
@@ -71,9 +85,9 @@ const Technologies = () => {
           <div className="title-underline mt-4" />
         </motion.div>
 
-        {/* 3D Rotating Sphere Area */}
+        {/* 3D Rotating Sphere Area covering full space horizontally */}
         <div 
-          className="relative w-full max-w-2xl h-[520px] mx-auto flex items-center justify-center overflow-visible select-none"
+          className="relative w-full h-[480px] mx-auto flex items-center justify-center overflow-visible select-none"
           onMouseEnter={() => { isHovered.current = true }}
           onMouseLeave={() => { isHovered.current = false }}
         >
@@ -86,21 +100,21 @@ const Technologies = () => {
             const theta = Math.sqrt(N * Math.PI) * phi + angleY
             const currentPhi = phi + angleX
             
-            // Calculate 3D sphere coordinates
-            const radX = Math.sin(currentPhi) * Math.cos(theta) * radius
-            const radY = Math.cos(currentPhi) * radius
-            const radZ = Math.sin(currentPhi) * Math.sin(theta) * radius
+            // Calculate 3D sphere coordinates using widened X axis
+            const radX = Math.sin(currentPhi) * Math.cos(theta) * radiusX
+            const radY = Math.cos(currentPhi) * radiusY
+            const radZ = Math.sin(currentPhi) * Math.sin(theta) * radiusZ
             
             // Tilt sphere slightly on X-axis for better perspective
-            const tilt = 0.25
+            const tilt = 0.22
             const rotatedY = radY * Math.cos(tilt) - radZ * Math.sin(tilt)
             const rotatedZ = radZ * Math.cos(tilt) + radY * Math.sin(tilt)
             
             // Map rotated coordinates to 2D UI properties
-            const scale = 0.65 + (rotatedZ + radius) / (2 * radius) * 0.55 // scale range [0.65, 1.20]
-            const opacity = 0.35 + (rotatedZ + radius) / (2 * radius) * 0.65 // opacity range [0.35, 1.00]
-            const blurAmount = Math.max(0, (radius - rotatedZ) * 0.018) // blur range based on depth
-            const zIndex = Math.round(rotatedZ + radius)
+            const scale = 0.65 + (rotatedZ + radiusZ) / (2 * radiusZ) * 0.55 // scale range [0.65, 1.20]
+            const opacity = 0.35 + (rotatedZ + radiusZ) / (2 * radiusZ) * 0.65 // opacity range [0.35, 1.00]
+            const blurAmount = Math.max(0, (radiusZ - rotatedZ) * 0.016) // blur range based on depth
+            const zIndex = Math.round(rotatedZ + radiusZ)
             
             return (
               <div

@@ -11,7 +11,7 @@ const Contact = () => {
       <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-600/5 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Header */}
         <motion.div
@@ -126,7 +126,7 @@ const Contact = () => {
                       name="name"
                       placeholder="Jane Smith"
                       required
-                      className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
                     />
                   </div>
                   
@@ -140,7 +140,7 @@ const Contact = () => {
                       name="email"
                       placeholder="jane@company.com"
                       required
-                      className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
                     />
                   </div>
                 </div>
@@ -156,7 +156,7 @@ const Contact = () => {
                     name="phone"
                     placeholder="+91 98765 43210"
                     required
-                    className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
                   />
                 </div>
 
@@ -171,7 +171,7 @@ const Contact = () => {
                       name="inquiryType"
                       required
                       defaultValue=""
-                      className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer"
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer"
                     >
                       <option value="" disabled>Select a topic...</option>
                       <option value="ai-automation">AI Automations</option>
@@ -200,7 +200,7 @@ const Contact = () => {
                     placeholder="Tell me about your project, the problem you're solving, and your timeline..."
                     rows={4}
                     required
-                    className="w-full bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 resize-none font-medium"
+                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 resize-none font-medium"
                   />
                 </div>
 

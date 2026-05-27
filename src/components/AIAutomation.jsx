@@ -40,9 +40,9 @@ const serviceDetails = {
     description: 'We orchestrate end-to-end automations connecting corporate databases directly to custom language model interfaces.',
     whatWeBuild: [
       'Inbound & outbound call appointment voice bots (Vapi/Retell).',
-      'Cognitive chatbot agents trained on corporate wikis and databases.',
+      'Cognitive chatbot agents trained on corporate databases.',
       'Custom n8n and API relays between ERPs and CRM pipelines.',
-      'Advanced RAG systems for intelligent document parsing and queries.',
+      'Advanced RAG systems for intelligent document queries.',
       'Autonomous lead qualification & email routing flows.'
     ],
     toolsUsed: ['n8n', 'Python', 'OpenCV', 'PyTorch', 'AI Automation', 'AI Agents', 'RAG Systems', 'MongoDB']
@@ -50,7 +50,7 @@ const serviceDetails = {
   'Website Builder': {
     title: 'Website Builder',
     tagline: 'Premium frontend interfaces & functional web applications.',
-    description: 'We engineer high-fidelity visual frontends and full-stack web products designed to scale seamlessly.',
+    description: 'We engineer high-fidelity frontends and full-stack web products designed to scale.',
     whatWeBuild: [
       'Highly interactive and animated Landing Pages.',
       'Premium custom SaaS Platform interfaces.',
@@ -59,18 +59,6 @@ const serviceDetails = {
       'Robust e-commerce storefront architectures.'
     ],
     toolsUsed: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MERN Stack']
-  },
-  'Cybersecurity': {
-    title: 'Cybersecurity',
-    tagline: 'Threat scanning & secure relational databases.',
-    description: 'State-of-the-art diagnostic and hardening tools currently under development.',
-    whatWeBuild: [
-      'Yet to Launch — coming soon!',
-      'Database query compliance checks.',
-      'Vulnerability scanning automation (Teaser).',
-      'Secure data encryption frameworks.'
-    ],
-    toolsUsed: ['Node.js', 'Python', 'Express.js', 'MongoDB']
   }
 }
 
@@ -97,6 +85,8 @@ const AIAutomation = () => {
   const [selectedService, setSelectedService] = useState(null)
 
   const handleCardClick = (title) => {
+    // If the card clicked is Cybersecurity, do not launch any modal (LAUNCHING SOON)
+    if (title === 'Cybersecurity') return
     setSelectedService(serviceDetails[title] || null)
   }
 
@@ -105,15 +95,16 @@ const AIAutomation = () => {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden bg-black" id="ai-automation">
+    <section className="py-24 relative overflow-hidden bg-black/40" id="ai-automation">
       {/* Cinematic Lights */}
       <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-900/10 blur-[130px] pointer-events-none" />
       <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-blue-900/10 blur-[130px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      {/* Main Glassmorphic Wrapper Panel for Section */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -136,13 +127,13 @@ const AIAutomation = () => {
             Core <span className="gradient-text font-extrabold">Services</span>
           </motion.h2>
           <div className="title-underline mt-4" />
-          <p className="text-gray-400 mt-6 text-sm max-w-md mx-auto">
-            Click on any service card below to view detailed deliverables and technical tools.
+          <p className="text-gray-400 mt-6 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            Click on AI Automations or Website Builder below to view detailed deliverables and technical tools.
           </p>
         </div>
 
         {/* 3-Column Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
           {automationCards.map((card, idx) => {
             const Icon = card.icon
             return (
@@ -153,10 +144,10 @@ const AIAutomation = () => {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
                 onClick={() => handleCardClick(card.title)}
-                className={`glass bg-gradient-to-b ${card.glow} border ${card.isLocked ? 'border-red-500/15' : 'border-white/5'} rounded-3xl p-8 transition-all duration-500 flex flex-col justify-between relative group overflow-hidden cursor-pointer ${
+                className={`glass bg-gradient-to-b ${card.glow} border rounded-3xl p-7 transition-all duration-500 flex flex-col justify-between relative group overflow-hidden ${
                   card.isLocked 
-                    ? 'opacity-85 hover:opacity-100 hover:border-red-500/35 hover:shadow-[0_0_35px_rgba(239,68,68,0.08)]' 
-                    : 'hover:border-purple-500/20 hover:shadow-[0_0_35px_rgba(124,58,237,0.15)]'
+                    ? 'border-red-500/15 cursor-default opacity-80' 
+                    : 'border-white/5 cursor-pointer hover:border-purple-500/20 hover:shadow-[0_0_35px_rgba(124,58,237,0.12)]'
                 }`}
               >
                 {/* Background locked grid pattern for cybersecurity */}
@@ -180,29 +171,29 @@ const AIAutomation = () => {
                   </div>
 
                   {/* Icon */}
-                  <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${
+                  <div className={`w-11 h-11 rounded-xl border flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-350 ${
                     card.isLocked 
                       ? 'bg-red-500/5 border-red-500/25 text-red-400' 
                       : 'bg-purple-500/10 border-purple-500/20 text-purple-400'
                   }`}>
-                    <Icon size={22} />
+                    <Icon size={20} />
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-xl font-bold font-syne tracking-wide mb-4 transition-colors ${
-                    card.isLocked ? 'text-gray-300 group-hover:text-red-300' : 'text-white group-hover:text-purple-300'
+                  <h3 className={`text-lg font-bold font-syne tracking-wide mb-3 transition-colors ${
+                    card.isLocked ? 'text-gray-300' : 'text-white group-hover:text-purple-300'
                   }`}>
                     {card.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-6">
                     {card.desc}
                   </p>
                 </div>
 
                 {/* Features Checklist */}
-                <div className="border-t border-white/5 pt-6 mt-auto">
+                <div className="border-t border-white/5 pt-5 mt-auto">
                   <h4 className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-3">Capabilities</h4>
                   <ul className="space-y-2 text-xs text-gray-400 font-medium">
                     {card.features.map((feat, fIdx) => (
@@ -229,55 +220,55 @@ const AIAutomation = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleClose}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer"
+              className="absolute inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
             />
             
-            {/* Modal Box */}
+            {/* Modal Box with generous padding and overflow-visible */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.93, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl bg-[#08080f]/95 border border-white/10 rounded-3xl p-6 md:p-8 overflow-hidden glass shadow-2xl z-10"
+              exit={{ opacity: 0, scale: 0.93, y: 15 }}
+              className="relative w-full max-w-2xl bg-[#07070f]/98 border border-white/10 rounded-3xl p-8 md:p-10 overflow-visible glass shadow-2xl z-10"
             >
               {/* Top Accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500" />
               
-              {/* Close Button */}
+              {/* Close Button offset from padding */}
               <button 
                 onClick={handleClose}
-                className="absolute top-5 right-5 p-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-purple-500/30 transition-all"
+                className="absolute top-6 right-6 p-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 hover:border-purple-500/30 transition-all"
               >
-                <X size={18} />
+                <X size={16} />
               </button>
 
-              {/* Title Section */}
-              <div className="mb-6">
-                <span className="text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400">
+              {/* Title Section with safe top-padding offset */}
+              <div className="mb-6 pt-4">
+                <span className="text-[10px] font-bold font-mono-jb uppercase tracking-widest text-purple-400 block mb-1">
                   Detailed Service Breakdown
                 </span>
-                <h3 className="text-2xl md:text-3xl font-bold font-syne text-white mt-1">
+                <h3 className="text-2xl md:text-3xl font-bold font-syne text-white">
                   {selectedService.title}
                 </h3>
-                <p className="text-gray-400 text-xs md:text-sm mt-1.5 italic font-medium">
+                <p className="text-gray-400 text-xs md:text-sm mt-1 italic font-medium">
                   {selectedService.tagline}
                 </p>
-                <p className="text-gray-300 text-sm mt-3 leading-relaxed">
+                <p className="text-gray-300 text-xs md:text-sm mt-3.5 leading-relaxed">
                   {selectedService.description}
                 </p>
               </div>
 
-              {/* Two Column details split */}
-              <div className="grid md:grid-cols-2 gap-6 pt-4 border-t border-white/5">
+              {/* Two Column details split with spacing */}
+              <div className="grid md:grid-cols-2 gap-8 pt-6 border-t border-white/5">
                 {/* Left Column: What We Build */}
                 <div>
-                  <h4 className="text-xs font-bold font-mono-jb uppercase tracking-widest text-purple-300 mb-3.5">
+                  <h4 className="text-xs font-bold font-mono-jb uppercase tracking-widest text-purple-300 mb-4">
                     What We Build / Do
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3.5">
                     {selectedService.whatWeBuild.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2.5 text-xs text-gray-300 leading-relaxed">
+                      <li key={index} className="flex items-start gap-2 text-xs text-gray-300 leading-relaxed py-0.5">
                         <CheckCircle2 size={15} className="text-purple-400 mt-0.5 shrink-0" />
-                        <span>{item}</span>
+                        <span className="flex-1">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -285,18 +276,18 @@ const AIAutomation = () => {
 
                 {/* Right Column: Technologies Used */}
                 <div>
-                  <h4 className="text-xs font-bold font-mono-jb uppercase tracking-widest text-blue-300 mb-3.5">
+                  <h4 className="text-xs font-bold font-mono-jb uppercase tracking-widest text-blue-300 mb-4">
                     Technologies We Use
                   </h4>
-                  <div className="flex flex-wrap gap-2.5">
+                  <div className="flex flex-wrap gap-2">
                     {selectedService.toolsUsed.map((tool) => {
                       const style = techColors[tool] || { color: '#ffffff', shadow: 'rgba(255,255,255,0.05)' }
                       return (
                         <div 
                           key={tool} 
-                          className="glass rounded-xl px-3.5 py-2 text-xs font-semibold font-mono-jb text-gray-300 flex items-center gap-1.5 border border-white/5 hover:text-white transition-all cursor-default select-none"
+                          className="glass rounded-xl px-3 py-1.5 text-[10px] font-semibold font-mono-jb text-gray-300 flex items-center gap-1.5 border border-white/5 hover:text-white transition-all cursor-default select-none whitespace-nowrap"
                           style={{
-                            borderColor: `rgba(${parseInt(style.color.slice(1,3),16) || 124}, ${parseInt(style.color.slice(3,5),16) || 58}, ${parseInt(style.color.slice(5,7),16) || 237}, 0.25)`,
+                            borderColor: `rgba(${parseInt(style.color.slice(1,3),16) || 124}, ${parseInt(style.color.slice(3,5),16) || 58}, ${parseInt(style.color.slice(5,7),16) || 237}, 0.2)`,
                             boxShadow: `0 0 10px ${style.shadow}`
                           }}
                         >

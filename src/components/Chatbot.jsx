@@ -147,12 +147,19 @@ const Chatbot = () => {
       let matched = false
 
       // Section check
-      const sections = ['home', 'about', 'projects', 'tools', 'contact']
-      for (const s of sections) {
-        if (typedText.includes(s)) {
-          const success = scrollToSection(s)
+      const sections = [
+        { key: 'about', target: 'about' },
+        { key: 'projects', target: 'projects' },
+        { key: 'tools', target: 'technologies' },
+        { key: 'skills', target: 'technologies' },
+        { key: 'services', target: 'ai-automation' },
+        { key: 'contact', target: 'contact' }
+      ]
+      for (const item of sections) {
+        if (typedText.includes(item.key)) {
+          const success = scrollToSection(item.target)
           if (success) {
-            botResponse = `Scrolling you directly to the ${s.toUpperCase()} section. Do you need any of our services there?`
+            botResponse = `Scrolling you directly to the ${item.key.toUpperCase()} section. Do you need any of our services there?`
             nextOptionsType = 'services'
             matched = true
             break
@@ -219,11 +226,10 @@ const Chatbot = () => {
   ]
 
   const sectionOptions = [
-    { label: 'Home', action: 'scroll_to', value: 'home' },
     { label: 'About', action: 'scroll_to', value: 'about' },
-    { label: 'Services', action: 'scroll_to', value: 'ai-automation' },
+    { label: 'Skills', action: 'scroll_to', value: 'technologies' },
     { label: 'Projects', action: 'scroll_to', value: 'projects' },
-    { label: 'Tools', action: 'scroll_to', value: 'technologies' },
+    { label: 'Services', action: 'scroll_to', value: 'ai-automation' },
     { label: 'Contact', action: 'scroll_to', value: 'contact' }
   ]
 
