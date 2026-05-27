@@ -134,7 +134,7 @@ const AIAutomation = () => {
         </div>
 
         {/* 3-Column Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 items-stretch w-full mx-auto">
           {automationCards.map((card, idx) => {
             const Icon = card.icon
             return (
