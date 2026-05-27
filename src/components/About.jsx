@@ -46,7 +46,7 @@ const About = () => {
             {/* Pulsing Avatar Halo */}
             <div className="relative mb-8 w-56 h-72 flex items-center justify-center">
               <div className="rotating-border-rect w-full h-full flex items-center justify-center p-[3px] rounded-2xl">
-                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center relative z-10 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10" />
                   {/* Cyber avatar visual */}
                   <div className="relative w-full h-full rounded-2xl bg-black/60 border border-purple-500/20 flex items-center justify-center overflow-hidden">

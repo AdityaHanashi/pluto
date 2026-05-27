@@ -5,7 +5,7 @@ import {
   Code2, Palette, Braces, Atom, Wind, 
   Terminal, Network, Database, Layers, 
   Binary, GitFork, Eye, Cpu, FileSpreadsheet, 
-  Grid, Zap, Bot, SearchCode 
+  Grid, Zap, Bot, SearchCode, Sparkles, Brain 
 } from 'lucide-react'
 
 const tools = [
@@ -27,6 +27,10 @@ const tools = [
   { name: 'AI Automation', icon: Zap, color: '#a855f7', shadow: 'rgba(168, 85, 247, 0.3)' },
   { name: 'AI Agents', icon: Bot, color: '#3b82f6', shadow: 'rgba(59, 130, 246, 0.3)' },
   { name: 'RAG Systems', icon: SearchCode, color: '#06b6d4', shadow: 'rgba(6, 182, 212, 0.3)' },
+  { name: 'Claude Agent', icon: Brain, color: '#d9775f', shadow: 'rgba(217, 119, 95, 0.25)' },
+  { name: 'OpenAI', icon: Bot, color: '#10a37f', shadow: 'rgba(16, 163, 127, 0.3)' },
+  { name: 'Gemini', icon: Sparkles, color: '#4b5ef8', shadow: 'rgba(75, 94, 248, 0.3)' },
+  { name: 'Ollama', icon: Terminal, color: '#ffffff', shadow: 'rgba(255, 255, 255, 0.2)' },
 ]
 
 const Technologies = () => {
