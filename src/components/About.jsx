@@ -43,16 +43,16 @@ const About = () => {
             className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             {/* Pulsing Avatar Halo */}
-            <div className="relative mb-8">
-              <div className="rotating-border w-48 h-48 flex items-center justify-center p-[3px] rounded-full">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
+            <div className="relative mb-8 w-56 h-72 flex items-center justify-center">
+              <div className="rotating-border-rect w-full h-full flex items-center justify-center p-[3px] rounded-2xl">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10" />
                   {/* Cyber avatar visual */}
-                  <div className="relative w-40 h-40 rounded-full bg-black/60 border border-purple-500/20 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-full rounded-2xl bg-black/60 border border-purple-500/20 flex items-center justify-center overflow-hidden">
                     <img 
                       src="/avatar.png" 
                       alt="Aditya Hanashi" 
-                      className="w-full h-full object-cover object-center scale-105"
+                      className="w-full h-full object-cover object-top scale-100"
                     />
                     {/* Simulated laser scan */}
                     <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-40 top-0 animate-bounce" style={{ animationDuration: '4s' }} />
@@ -61,7 +61,7 @@ const About = () => {
               </div>
               
               {/* Active Indicator dot */}
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 glass px-3.5 py-1.5 rounded-full border border-purple-500/30">
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 glass px-3.5 py-1.5 rounded-full border border-purple-500/30">
                 <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping absolute" />
                 <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
                 <span className="text-[10px] text-green-300 font-bold uppercase tracking-wider font-mono">

@@ -34,7 +34,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 space-y-8"
+            className="lg:col-span-4 space-y-8"
           >
             <div className="space-y-4">
               <h3 className="text-2xl font-bold font-syne text-white leading-snug">
@@ -81,15 +81,15 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Complete Form Section matching referral image */}
+          {/* Right Column: Complete Form Section matching referral image (Enlarged) */}
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7"
+            className="lg:col-span-8"
           >
             <div 
-              className="glass rounded-3xl p-6 md:p-8 border border-white/5 relative"
+              className="glass rounded-3xl p-6 md:p-10 border border-white/5 relative"
               style={{ 
                 boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 35px rgba(124, 58, 237, 0.04)',
                 borderColor: 'rgba(255, 255, 255, 0.06)'
@@ -110,13 +110,13 @@ const Contact = () => {
                 name="contact" 
                 method="POST" 
                 data-netlify="true"
-                className="space-y-5"
+                className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
 
                 {/* Row 1: Name and Email */}
-                <div className="grid md:grid-cols-2 gap-5">
-                  <div className="space-y-1.5">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
                     <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="name">
                       Your Name
                     </label>
@@ -126,11 +126,11 @@ const Contact = () => {
                       name="name"
                       placeholder="Jane Smith"
                       required
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium"
                     />
                   </div>
                   
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="email">
                       Email Address
                     </label>
@@ -140,13 +140,13 @@ const Contact = () => {
                       name="email"
                       placeholder="jane@company.com"
                       required
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium"
                     />
                   </div>
                 </div>
 
                 {/* Row 2: Contact Number */}
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="phone">
                     Contact Number <span className="text-orange-500">*</span>
                   </label>
@@ -156,12 +156,12 @@ const Contact = () => {
                     name="phone"
                     placeholder="+91 98765 43210"
                     required
-                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 font-medium"
+                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium"
                   />
                 </div>
 
                 {/* Row 3: Inquiry Type */}
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="inquiryType">
                     Inquiry Type
                   </label>
@@ -171,7 +171,7 @@ const Contact = () => {
                       name="inquiryType"
                       required
                       defaultValue=""
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer"
+                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white text-base focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer"
                     >
                       <option value="" disabled>Select a topic...</option>
                       <option value="ai-automation">AI Automations</option>
@@ -181,7 +181,7 @@ const Contact = () => {
                       <option value="other">Other</option>
                     </select>
                     {/* Select arrow */}
-                    <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-500">
+                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-gray-500">
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                         <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                       </svg>
@@ -190,7 +190,7 @@ const Contact = () => {
                 </div>
 
                 {/* Row 4: Project Details */}
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="message">
                     Project Details
                   </label>
@@ -198,9 +198,9 @@ const Contact = () => {
                     id="message"
                     name="message"
                     placeholder="Tell me about your project, the problem you're solving, and your timeline..."
-                    rows={4}
+                    rows={8}
                     required
-                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 text-sm focus:border-blue-500/50 transition-all duration-300 resize-none font-medium"
+                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 min-h-[220px] font-medium"
                   />
                 </div>
 

@@ -245,7 +245,7 @@ const Chatbot = () => {
     optionsType === 'services' ? serviceOptions : mainOptions
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans">
+    <div className="fixed bottom-6 z-50 font-sans" style={{ right: '24px' }}>
       
       {/* Floating Toggle Button */}
       <motion.button
@@ -268,13 +268,13 @@ const Chatbot = () => {
             initial={{ opacity: 0, scale: 0.85, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 30 }}
-            className="absolute bottom-18 right-0 w-[350px] max-h-[500px] h-[500px] flex flex-col bg-[#07070e]/95 border border-white/10 rounded-2xl overflow-hidden glass shadow-2xl"
+            className="absolute bottom-20 right-0 w-[calc(100vw-48px)] sm:w-[380px] md:w-[400px] h-[550px] max-h-[80vh] flex flex-col bg-[#07070e]/95 border border-white/10 rounded-2xl overflow-hidden glass shadow-2xl"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 px-4 py-3.5 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 px-4 py-4 border-b border-white/10 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                  <Bot size={16} />
+                <div className="w-8.5 h-8.5 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                  <Bot size={18} />
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-white tracking-wide uppercase font-syne">
@@ -288,21 +288,21 @@ const Chatbot = () => {
               </div>
               <button 
                 onClick={clearChat}
-                className="text-[9px] font-bold font-mono-jb text-gray-500 hover:text-gray-300 transition-colors uppercase tracking-wider px-2 py-1 rounded bg-white/5 border border-white/5"
+                className="text-[9px] font-bold font-mono-jb text-gray-500 hover:text-gray-300 transition-colors uppercase tracking-wider px-2 py-1.5 rounded bg-white/5 border border-white/5 cursor-pointer"
               >
                 Clear
               </button>
             </div>
 
             {/* Chat Messages Log */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-thin scrollbar-thumb-purple-500/10 scrollbar-track-transparent">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-purple-500/10 scrollbar-track-transparent">
               {messages.map((msg) => (
                 <div 
                   key={msg.id} 
                   className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div 
-                    className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs font-medium leading-relaxed ${
+                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs sm:text-[13px] font-medium leading-relaxed ${
                       msg.sender === 'user'
                         ? 'bg-purple-600 text-white rounded-tr-none'
                         : 'bg-white/5 border border-white/5 text-gray-200 rounded-tl-none'
@@ -320,12 +320,12 @@ const Chatbot = () => {
 
             {/* Inline option buttons */}
             {showOptions && currentOptions.length > 0 && (
-              <div className="px-4 py-2.5 border-t border-white/5 bg-black/40 flex flex-wrap gap-1.5 justify-start">
+              <div className="px-4 py-3 border-t border-white/5 bg-black/40 flex flex-wrap gap-2 justify-start">
                 {currentOptions.map((opt, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleOptionClick(opt)}
-                    className="text-[10px] font-semibold bg-purple-950/20 border border-purple-500/25 hover:border-purple-500/50 hover:bg-purple-900/30 text-purple-300 px-3 py-1.5 rounded-full transition-all cursor-pointer"
+                    className="text-[11px] font-semibold bg-purple-950/20 border border-purple-500/25 hover:border-purple-500/50 hover:bg-purple-900/30 text-purple-300 px-3.5 py-2 rounded-full transition-all cursor-pointer"
                   >
                     {opt.label}
                   </button>
@@ -336,21 +336,21 @@ const Chatbot = () => {
             {/* Input Form Footer */}
             <form 
               onSubmit={handleSendText}
-              className="px-4 py-3 border-t border-white/10 bg-black/60 flex items-center gap-2"
+              className="px-4 py-3.5 border-t border-white/10 bg-black/60 flex items-center gap-2"
             >
               <input
                 type="text"
                 placeholder="Ask assistant or choose option..."
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                className="flex-1 bg-[#08080f]/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-gray-600 focus:border-purple-500/50 focus:outline-none transition-colors"
+                className="flex-1 bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-purple-500/50 focus:outline-none transition-colors"
               />
               <button
                 type="submit"
-                className="p-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.3)] shrink-0"
+                className="p-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.3)] shrink-0"
                 aria-label="Send message"
               >
-                <Send size={12} />
+                <Send size={14} />
               </button>
             </form>
           </motion.div>

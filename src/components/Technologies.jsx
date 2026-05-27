@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
@@ -31,127 +31,63 @@ const tools = [
 
 const Technologies = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
-  const [angleY, setAngleY] = useState(0)
-  const [angleX, setAngleX] = useState(0)
-  const [windowWidth, setWindowWidth] = useState(1200)
-  const isHovered = useRef(false)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', handleResize)
-    handleResize()
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  useEffect(() => {
-    let handle
-    const update = () => {
-      if (!isHovered.current) {
-        setAngleY(prev => (prev + 0.0016) % (2 * Math.PI))
-        setAngleX(prev => (prev + 0.0005) % (2 * Math.PI))
-      }
-      handle = requestAnimationFrame(update)
-    }
-    handle = requestAnimationFrame(update)
-    return () => cancelAnimationFrame(handle)
-  }, [])
-
-  // Calculate dynamic responsive radius dimensions
-  const isDesktop = windowWidth >= 1024
-  const radiusX = isDesktop ? Math.min(500, windowWidth * 0.38) : Math.min(170, windowWidth * 0.35)
-  const radiusY = isDesktop ? 150 : 130
-  const radiusZ = isDesktop ? 220 : 150
 
   return (
-    <section className="section-padding relative overflow-hidden bg-black/40" id="technologies" ref={ref}>
+    <section className="py-24 relative overflow-hidden bg-black/40" id="technologies" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.04] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-700/5 blur-[130px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      {/* Main Glassmorphic Wrapper Panel for Section */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">02 / Skills</span>
           <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
             Tools
           </h2>
-          <div className="title-underline mt-4" />
+          <div className="title-underline mt-4 mx-auto" />
         </motion.div>
 
-        {/* 3D Rotating Sphere Area covering full space horizontally */}
-        <div 
-          className="relative w-full h-[480px] mx-auto flex items-center justify-center overflow-visible select-none"
-          onMouseEnter={() => { isHovered.current = true }}
-          onMouseLeave={() => { isHovered.current = false }}
-        >
+        {/* Clean responsive grid where all 18 tools are fully visible */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-5xl mx-auto mt-8">
           {tools.map((tech, idx) => {
             const Icon = tech.icon
-            const N = tools.length
-            
-            // Distribute items evenly using Fibonacci sphere / golden spiral distribution
-            const phi = Math.acos(-1 + (2 * idx) / N)
-            const theta = Math.sqrt(N * Math.PI) * phi + angleY
-            const currentPhi = phi + angleX
-            
-            // Calculate 3D sphere coordinates using widened X axis
-            const radX = Math.sin(currentPhi) * Math.cos(theta) * radiusX
-            const radY = Math.cos(currentPhi) * radiusY
-            const radZ = Math.sin(currentPhi) * Math.sin(theta) * radiusZ
-            
-            // Tilt sphere slightly on X-axis for better perspective
-            const tilt = 0.22
-            const rotatedY = radY * Math.cos(tilt) - radZ * Math.sin(tilt)
-            const rotatedZ = radZ * Math.cos(tilt) + radY * Math.sin(tilt)
-            
-            // Map rotated coordinates to 2D UI properties
-            const scale = 0.65 + (rotatedZ + radiusZ) / (2 * radiusZ) * 0.55 // scale range [0.65, 1.20]
-            const opacity = 0.35 + (rotatedZ + radiusZ) / (2 * radiusZ) * 0.65 // opacity range [0.35, 1.00]
-            const blurAmount = Math.max(0, (radiusZ - rotatedZ) * 0.016) // blur range based on depth
-            const zIndex = Math.round(rotatedZ + radiusZ)
-            
             return (
-              <div
+              <motion.div
                 key={tech.name}
-                className="absolute transition-all duration-75"
-                style={{
-                  transform: `translate3d(${radX}px, ${rotatedY}px, 0) scale(${scale})`,
-                  opacity: opacity,
-                  zIndex: zIndex,
-                  filter: `blur(${blurAmount}px)`,
-                  left: 'calc(50% - 56px)', // Centered offset (half of w-28)
-                  top: 'calc(50% - 56px)'   // Centered offset (half of h-28)
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: idx * 0.03 }}
+                className="glass rounded-2xl p-4 flex flex-col items-center justify-center text-center border border-white/5 relative group cursor-pointer transition-all duration-300 bg-black/40 h-28"
+                whileHover={{ 
+                  scale: 1.05, 
+                  borderColor: tech.color,
+                  boxShadow: `0 0 20px ${tech.shadow}`,
+                  backgroundColor: 'rgba(255, 255, 255, 0.02)'
                 }}
               >
-                <motion.div
-                  className="glass w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center p-3 text-center cursor-pointer transition-all duration-300 border border-white/5 relative group shadow-[0_4px_20px_rgba(0,0,0,0.3)] bg-black/60"
-                  whileHover={{ 
-                    scale: 1.15, 
-                    borderColor: tech.color,
-                    boxShadow: `0 0 25px ${tech.shadow}`,
-                    zIndex: zIndex + 100,
-                    transition: { duration: 0.18 }
+                {/* Icon Container */}
+                <div 
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110"
+                  style={{ 
+                    backgroundColor: `${tech.color}15`, 
+                    color: tech.color,
+                    border: `1px solid ${tech.color}25`
                   }}
                 >
-                  {/* Icon Container */}
-                  <div 
-                    className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center mb-1 transition-colors group-hover:bg-white/10"
-                    style={{ color: tech.color }}
-                  >
-                    <Icon size={18} className="stroke-[1.75]" />
-                  </div>
-                  {/* Text Label */}
-                  <span className="text-[9px] font-bold font-mono-jb text-gray-400 group-hover:text-white uppercase tracking-wider transition-colors duration-200">
-                    {tech.name}
-                  </span>
-                </motion.div>
-              </div>
+                  <Icon size={20} className="stroke-[1.75]" />
+                </div>
+                {/* Text Label */}
+                <span className="text-[10px] font-bold font-mono-jb text-gray-400 group-hover:text-white uppercase tracking-wider transition-colors duration-200">
+                  {tech.name}
+                </span>
+              </motion.div>
             )
           })}
         </div>

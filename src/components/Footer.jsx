@@ -72,8 +72,6 @@ const Footer = () => {
             <div className="flex gap-3 pt-2">
               {[
                 { icon: GithubIcon, href: 'https://github.com/pluto-system', color: 'hover:text-purple-400', isGithub: true },
-                { icon: TwitterIcon, href: 'https://twitter.com/pluto_ai', color: 'hover:text-blue-400' },
-                { icon: LinkedinIcon, href: 'https://linkedin.com/company/pluto-ai', color: 'hover:text-cyan-400' },
               ].map((item, idx) => {
                 const Icon = item.icon
                 return (

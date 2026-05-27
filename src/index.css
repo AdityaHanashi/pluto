@@ -324,6 +324,21 @@ body {
   z-index: -1;
 }
 
+.rotating-border-rect {
+  position: relative;
+  border-radius: 16px;
+}
+
+.rotating-border-rect::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 16px;
+  background: conic-gradient(from 0deg, #7c3aed, #f59e0b, #06b6d4, #7c3aed);
+  animation: spin-slow 4s linear infinite;
+  z-index: -1;
+}
+
 /* Timeline */
 .timeline-line {
   background: linear-gradient(180deg, #7c3aed, #f59e0b, #06b6d4);
