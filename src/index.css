@@ -334,19 +334,16 @@ body {
 .rotating-border-rect {
   position: relative;
   border-radius: 16px;
-  overflow: hidden;
 }
 
 .rotating-border-rect::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  inset: -12px;
+  border-radius: 20px;
   background: conic-gradient(from 0deg, #10b981, #f59e0b, #06b6d4, #8b5cf6, #10b981);
-  animation: spin-slow 4s linear infinite;
-  z-index: 1;
+  animation: spin-slow 8s linear infinite;
+  z-index: -1;
 }
 
 /* Timeline */

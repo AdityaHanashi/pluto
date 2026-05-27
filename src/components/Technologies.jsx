@@ -5,13 +5,16 @@ import {
   Code2, Palette, Braces, Atom, Wind, 
   Terminal, Network, Database, Layers, 
   Binary, GitFork, Eye, Cpu, FileSpreadsheet, 
-  Grid, Zap, Bot, SearchCode, Sparkles, Brain 
+  Grid, Zap, Bot, SearchCode, Sparkles, Brain,
+  Box, Compass, Cloud, Flame, GitBranch, FolderGit
 } from 'lucide-react'
+import GithubIcon from './GithubIcon'
 
 const tools = [
   { name: 'HTML', icon: Code2, color: '#e34f26', shadow: 'rgba(227, 79, 38, 0.25)' },
   { name: 'CSS', icon: Palette, color: '#1572b6', shadow: 'rgba(21, 114, 182, 0.25)' },
   { name: 'JavaScript', icon: Braces, color: '#f7df1e', shadow: 'rgba(247, 223, 30, 0.2)' },
+  { name: 'TypeScript', icon: Braces, color: '#3178c6', shadow: 'rgba(49, 120, 198, 0.25)' },
   { name: 'React', icon: Atom, color: '#61dafb', shadow: 'rgba(97, 218, 251, 0.3)' },
   { name: 'Tailwind CSS', icon: Wind, color: '#06b6d4', shadow: 'rgba(6, 182, 212, 0.3)' },
   { name: 'Node.js', icon: Terminal, color: '#339933', shadow: 'rgba(51, 153, 51, 0.25)' },
@@ -31,6 +34,14 @@ const tools = [
   { name: 'OpenAI', icon: Bot, color: '#10a37f', shadow: 'rgba(16, 163, 127, 0.3)' },
   { name: 'Gemini', icon: Sparkles, color: '#4b5ef8', shadow: 'rgba(75, 94, 248, 0.3)' },
   { name: 'Ollama', icon: Terminal, color: '#ffffff', shadow: 'rgba(255, 255, 255, 0.2)' },
+  { name: 'Git', icon: GitBranch, color: '#f05032', shadow: 'rgba(240, 80, 50, 0.25)' },
+  { name: 'GitHub', icon: GithubIcon, color: '#ffffff', shadow: 'rgba(255, 255, 255, 0.15)' },
+  { name: 'Bitbucket', icon: FolderGit, color: '#0052cc', shadow: 'rgba(0, 82, 204, 0.3)' },
+  { name: 'GitLab', icon: Flame, color: '#fc6d26', shadow: 'rgba(252, 109, 38, 0.25)' },
+  { name: 'Docker', icon: Box, color: '#2496ed', shadow: 'rgba(36, 150, 237, 0.3)' },
+  { name: 'Kubernetes', icon: Compass, color: '#326ce5', shadow: 'rgba(50, 108, 229, 0.3)' },
+  { name: 'AWS', icon: Cloud, color: '#ff9900', shadow: 'rgba(255, 153, 0, 0.3)' },
+  { name: 'PostgreSQL', icon: Database, color: '#336791', shadow: 'rgba(51, 103, 145, 0.25)' },
 ]
 
 const Technologies = () => {
