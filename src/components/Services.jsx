@@ -47,9 +47,9 @@ const ServiceCard = ({ service, index, inView }) => {
         borderColor: hovered ? service.glow.replace('0.3', '0.5') : 'rgba(255,255,255,0.05)',
       }}
     >
-      {/* Background card lighting flare */}
+      {/* Background card lighting flare - Hidden on mobile to prevent hanging */}
       <div 
-        className="absolute -right-16 -top-16 w-32 h-32 rounded-full bg-white/5 blur-2xl group-hover:bg-white/10 transition-colors" 
+        className="absolute -right-16 -top-16 w-32 h-32 rounded-full bg-white/5 blur-2xl group-hover:bg-white/10 transition-colors hidden md:block" 
         style={{ background: `radial-gradient(circle, ${service.glow} 0%, transparent 70%)` }}
       />
 
@@ -86,9 +86,9 @@ const Services = () => {
 
   return (
     <section className="section-padding relative" id="services" ref={ref}>
-      {/* Floating flares */}
-      <div className="orb w-96 h-96 bg-purple-700/5 bottom-0 left-0 pointer-events-none" />
-      <div className="orb w-[500px] h-[500px] bg-blue-700/5 top-20 right-0 pointer-events-none" style={{ animationDelay: '4s' }} />
+      {/* Floating flares - Hidden on mobile for performance */}
+      <div className="orb w-96 h-96 bg-purple-700/5 bottom-0 left-0 pointer-events-none hidden md:block" />
+      <div className="orb w-[500px] h-[500px] bg-blue-700/5 top-20 right-0 pointer-events-none hidden md:block" style={{ animationDelay: '4s' }} />
 
       <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
@@ -108,14 +108,15 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Tab selector */}
+        {/* Unified Control Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-12"
+          className="flex flex-col items-center mb-12 glass rounded-3xl p-2 md:p-3 border border-white/10 w-full max-w-4xl mx-auto shadow-2xl bg-black/20"
         >
-          <div className="flex glass rounded-2xl p-1.5 border border-white/10 flex-wrap justify-center gap-1">
+          {/* Main Categories */}
+          <div className={`flex flex-wrap justify-center gap-2 w-full p-2 ${tab === 'design' ? 'border-b border-white/5 pb-4 mb-4' : ''}`}>
             {[
               { key: 'ai', label: '🤖 AI & Automation' },
               { key: 'web', label: '🌐 Web Studio' },
@@ -124,8 +125,8 @@ const Services = () => {
               <button
                 key={key}
                 onClick={() => setTab(key)}
-                className={`relative px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  tab === key ? 'text-white' : 'text-gray-400 hover:text-gray-200'
+                className={`relative px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  tab === key ? 'text-white' : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
                 }`}
               >
                 {tab === key && (
@@ -139,6 +140,45 @@ const Services = () => {
               </button>
             ))}
           </div>
+
+          {/* Sub-tabs for Design Showcase (Animated inside the same bar) */}
+          <AnimatePresence mode="wait">
+            {tab === 'design' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="flex flex-wrap justify-center gap-3 w-full pb-2 px-2"
+              >
+                {[
+                  { key: 'basic', label: '🌱 Tier 01: Basic', desc: '₹5,000 - ₹8,000' },
+                  { key: 'intermediate', label: '🚀 Tier 02: Intermediate', desc: '₹8,000 - ₹12,000', popular: true },
+                  { key: 'advanced', label: '👑 Tier 03: Advanced', desc: '₹12,000 - ₹18,000' }
+                ].map((tier) => (
+                  <button
+                    key={tier.key}
+                    onClick={() => setDesignTier(tier.key)}
+                    className={`relative px-4 py-2 sm:py-2.5 rounded-2xl border text-[11px] sm:text-xs font-semibold transition-all duration-300 cursor-pointer flex flex-col items-center gap-0.5 min-w-[140px]
+                      ${designTier === tier.key
+                        ? 'border-purple-500/50 bg-purple-950/20 text-white shadow-[0_0_20px_rgba(139,92,246,0.2)]'
+                        : 'border-white/5 bg-white/5 text-gray-400 hover:text-gray-200 hover:bg-white/10'
+                      }
+                    `}
+                  >
+                    {tier.popular && (
+                      <span className="absolute -top-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-[8px] text-white font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow">
+                        Popular
+                      </span>
+                    )}
+                    <span className="relative z-10 flex items-center gap-1">
+                      {tier.label}
+                    </span>
+                    <span className="text-[9px] text-gray-500 font-mono font-medium">{tier.desc}</span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         {/* Cards Grid / Design Showcase */}
@@ -149,36 +189,7 @@ const Services = () => {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto pt-4">
-            {/* Design Tier Sub-tabs */}
-            <div className="flex flex-wrap justify-center gap-4">
-              {[
-                { key: 'basic', label: '🌱 Tier 01: Basic', desc: '₹5,000 - ₹8,000' },
-                { key: 'intermediate', label: '🚀 Tier 02: Intermediate', desc: '₹8,000 - ₹12,000', popular: true },
-                { key: 'advanced', label: '👑 Tier 03: Advanced', desc: '₹12,000 - ₹18,000' }
-              ].map((tier) => (
-                <button
-                  key={tier.key}
-                  onClick={() => setDesignTier(tier.key)}
-                  className={`relative px-5 py-3 rounded-2xl border text-sm font-semibold transition-all duration-300 cursor-pointer flex flex-col items-center gap-1 min-w-[160px]
-                    ${designTier === tier.key
-                      ? 'border-purple-500/50 bg-purple-950/20 text-white shadow-[0_0_20px_rgba(139,92,246,0.2)]'
-                      : 'border-white/5 bg-white/5 text-gray-400 hover:text-gray-200 hover:bg-white/10'
-                    }
-                  `}
-                >
-                  {tier.popular && (
-                    <span className="absolute -top-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-[9px] text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
-                      Popular
-                    </span>
-                  )}
-                  <span className="relative z-10 flex items-center gap-1.5">
-                    {tier.label}
-                  </span>
-                  <span className="text-[10px] text-gray-500 font-mono font-medium">{tier.desc}</span>
-                </button>
-              ))}
-            </div>
+          <div className="w-full max-w-[1400px] mx-auto">
 
             {/* Viewport Frame */}
             <motion.div

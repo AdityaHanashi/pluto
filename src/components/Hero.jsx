@@ -93,7 +93,7 @@ const Hero = () => {
             </ScrollLink>
             
             <ScrollLink
-              to="ai-automation"
+              to="services"
               smooth={true}
               duration={600}
               offset={-80}
