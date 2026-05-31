@@ -18,7 +18,7 @@ const About = () => {
       <div className="absolute top-[20%] right-[10%] w-[380px] h-[380px] rounded-full bg-emerald-500/5 blur-[120px] animate-blob pointer-events-none" />
       <div className="absolute bottom-[20%] left-[5%] w-[420px] h-[420px] rounded-full bg-amber-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
       
-      <div className="max-w-[98%] mx-auto px-6 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
+      <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
         
         {/* Section Header */}
         <motion.div

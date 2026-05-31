@@ -74,7 +74,7 @@ const ServiceCard = ({ service, index, inView }) => {
 const Services = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
   const [tab, setTab] = useState('ai')
-  const [designTier, setDesignTier] = useState('intermediate')
+  const [designTier, setDesignTier] = useState('basic')
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
 
   // Map design tier keys to their raw HTML templates
@@ -90,7 +90,7 @@ const Services = () => {
       <div className="orb w-96 h-96 bg-purple-700/5 bottom-0 left-0 pointer-events-none" />
       <div className="orb w-[500px] h-[500px] bg-blue-700/5 top-20 right-0 pointer-events-none" style={{ animationDelay: '4s' }} />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -143,13 +143,13 @@ const Services = () => {
 
         {/* Cards Grid / Design Showcase */}
         {tab !== 'design' ? (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
             {(tab === 'ai' ? aiServices : webServices).map((service, idx) => (
               <ServiceCard key={service.title} service={service} index={idx} inView={inView} />
             ))}
           </div>
         ) : (
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-8 w-full max-w-[1400px] mx-auto">
             {/* Design Tier Sub-tabs */}
             <div className="flex flex-wrap justify-center gap-4">
               {[

@@ -28,13 +28,13 @@ const Hero = () => {
         }}
       />
 
-      {/* Cinematic Lighting Flares */}
-      <div className="absolute top-[15%] left-[10%] w-[380px] h-[380px] rounded-full bg-amber-500/8 blur-[120px] animate-blob" />
-      <div className="absolute top-[35%] right-[15%] w-[420px] h-[420px] rounded-full bg-emerald-500/8 blur-[130px] animate-blob" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-[20%] left-[20%] w-[450px] h-[450px] rounded-full bg-cyan-500/8 blur-[140px] animate-blob" style={{ animationDelay: '4s' }} />
-      <div className="absolute top-[50%] left-[45%] w-[380px] h-[380px] rounded-full bg-purple-600/10 blur-[120px] animate-blob" style={{ animationDelay: '6s' }} />
+      {/* Cinematic Lighting Flares - Hide some on mobile to prevent hanging */}
+      <div className="absolute top-[15%] left-[10%] w-[380px] h-[380px] rounded-full bg-amber-500/8 blur-[120px] animate-blob hidden md:block" />
+      <div className="absolute top-[35%] right-[15%] w-[300px] md:w-[420px] h-[300px] md:h-[420px] rounded-full bg-emerald-500/8 blur-[100px] md:blur-[130px] animate-blob" style={{ animationDelay: '2s' }} />
+      <div className="absolute bottom-[20%] left-[20%] w-[450px] h-[450px] rounded-full bg-cyan-500/8 blur-[140px] animate-blob hidden md:block" style={{ animationDelay: '4s' }} />
+      <div className="absolute top-[50%] left-[45%] w-[250px] md:w-[380px] h-[250px] md:h-[380px] rounded-full bg-purple-600/10 blur-[90px] md:blur-[120px] animate-blob" style={{ animationDelay: '6s' }} />
 
-      <div className="max-w-[98%] mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center w-full">
+      <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 md:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
         {/* Left: Text Content */}
         <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
           
