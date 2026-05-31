@@ -4,7 +4,7 @@ import CustomCursor from './components/CustomCursor'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import AIAutomation from './components/AIAutomation'
+import Services from './components/Services'
 import Projects from './components/Projects'
 import Technologies from './components/Technologies'
 import Contact from './components/Contact'
@@ -30,7 +30,7 @@ function App() {
       <main>
         <section id="home"><Hero /></section>
         <section id="about"><About /></section>
-        <section id="ai-automation"><AIAutomation /></section>
+        <section id="services"><Services /></section>
         <section id="projects"><Projects /></section>
         <section id="technologies"><Technologies /></section>
         <section id="contact"><Contact /></section>

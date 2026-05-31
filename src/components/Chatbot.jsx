@@ -102,7 +102,7 @@ const Chatbot = () => {
     } else if (action === 'select_service') {
       if (value === 'cybersecurity') {
         botResponse = 'Cybersecurity systems are launching soon! We are building vulnerability audit pipelines. Meanwhile, feel free to fill out the contact form below to join our early waitlist.'
-      } else if (value === 'ai-automation') {
+      } else if (value === 'services') {
         botResponse = 'We specialize in low-latency AI calling agents, n8n relays, and custom database integrations. Please fill out the contact form below to get started!'
       } else if (value === 'website-builder') {
         botResponse = 'We build high-performance React frontends, landing pages, corporate portfolios, and SaaS designs. Please fill out the contact form below with your requirements!'
@@ -152,7 +152,7 @@ const Chatbot = () => {
         { key: 'projects', target: 'projects' },
         { key: 'tools', target: 'technologies' },
         { key: 'skills', target: 'technologies' },
-        { key: 'services', target: 'ai-automation' },
+        { key: 'services', target: 'services' },
         { key: 'contact', target: 'contact' }
       ]
       for (const item of sections) {
@@ -169,7 +169,7 @@ const Chatbot = () => {
 
       // Special check for services scroll
       if (!matched && (typedText.includes('service') || typedText.includes('offer'))) {
-        const success = scrollToSection('ai-automation')
+        const success = scrollToSection('services')
         if (success) {
           botResponse = `Scrolling to the SERVICES section. Here are our main offerings. What can we build for you?`
           nextOptionsType = 'services'
@@ -229,12 +229,12 @@ const Chatbot = () => {
     { label: 'About', action: 'scroll_to', value: 'about' },
     { label: 'Skills', action: 'scroll_to', value: 'technologies' },
     { label: 'Projects', action: 'scroll_to', value: 'projects' },
-    { label: 'Services', action: 'scroll_to', value: 'ai-automation' },
+    { label: 'Services', action: 'scroll_to', value: 'services' },
     { label: 'Contact', action: 'scroll_to', value: 'contact' }
   ]
 
   const serviceOptions = [
-    { label: 'AI Automations', action: 'select_service', value: 'ai-automation' },
+    { label: 'AI Automations', action: 'select_service', value: 'services' },
     { label: 'Website Builder', action: 'select_service', value: 'website-builder' },
     { label: 'Cybersecurity', action: 'select_service', value: 'cybersecurity' },
     { label: 'Back', action: 'navigate_main', value: null }
