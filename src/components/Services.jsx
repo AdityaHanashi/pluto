@@ -154,8 +154,8 @@ const Services = () => {
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 { key: 'basic', label: '🌱 Tier 01: Basic', desc: '₹5,000 - ₹8,000' },
-                { key: 'intermediate', label: '🚀 Tier 02: Intermediate', desc: '₹8,000 - ₹20,000', popular: true },
-                { key: 'advanced', label: '👑 Tier 03: Advanced', desc: '₹20,000 - ₹25,000' }
+                { key: 'intermediate', label: '🚀 Tier 02: Intermediate', desc: '₹8,000 - ₹12,000', popular: true },
+                { key: 'advanced', label: '👑 Tier 03: Advanced', desc: '₹12,000 - ₹18,000' }
               ].map((tier) => (
                 <button
                   key={tier.key}

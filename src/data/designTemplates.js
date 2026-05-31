@@ -906,7 +906,7 @@ export const intermediateTemplate = `<!DOCTYPE html>
         <h1 class="hero-headline">Built to<br><span class="grad">Convert.</span></h1>
         <p class="hero-sub">A fully custom-designed page with scroll animations, email integrations, and analytics — for startups and growing brands that mean business.</p>
         <div class="cta-row">
-          <a class="cta-primary" href="https://wa.me/917022951232?text=Hi%2C%20I'm%20interested%20in%20the%20*Intermediate%20Landing%20Page%20Package*%20%F0%9F%91%8B%0A%0A%F0%9F%93%A6%20*Package%20Details%3A*%0A%E2%80%A2%20Price%3A%20%E2%82%B98%2C000%20%E2%80%93%20%E2%82%B920%2C000%20(one-time)%20%2B%20Shift-wise%20pay%0A%E2%80%A2%20Sections%3A%208%E2%80%9310%20(Nav%2C%20Hero%2C%20Features%2C%20Social%20Proof%2C%20Testimonials%2C%20Pricing%2C%20FAQ%2C%20Lead%20Form%2C%20Footer)%0A%E2%80%A2%20Tech%3A%20Next.js%2C%20Tailwind%20CSS%2C%20Framer%20Motion%0A%E2%80%A2%20Scroll%20animations%3A%20Yes%0A%E2%80%A2%20Email%20integration%3A%20Mailchimp%20%2F%20Brevo%0A%E2%80%A2%20Analytics%3A%20GA4%20%2B%20Meta%20Pixel%0A%E2%80%A2%20Delivery%3A%205%E2%80%9310%20days%0A%E2%80%A2%20Revisions%3A%202%20rounds%0A%0ACan%20you%20please%20share%20more%20details%20and%20help%20me%20get%20started%3F" target="_blank">Get Started on WhatsApp →</a>
+          <a class="cta-primary" href="https://wa.me/917022951232?text=Hi%2C%20I'm%20interested%20in%20the%20*Intermediate%20Landing%20Page%20Package*%20%F0%9F%91%8B%0A%0A%F0%9F%93%A6%20*Package%20Details%3A*%0A%E2%80%A2%20Price%3A%20%E2%82%B98%2C000%20%E2%80%93%20%E2%82%B912%2C000%20(one-time)%20%2B%20Shift-wise%20pay%0A%E2%80%A2%20Sections%3A%208%E2%80%9310%20(Nav%2C%20Hero%2C%20Features%2C%20Social%20Proof%2C%20Testimonials%2C%20Pricing%2C%20FAQ%2C%20Lead%20Form%2C%20Footer)%0A%E2%80%A2%20Tech%3A%20Next.js%2C%20Tailwind%20CSS%2C%20Framer%20Motion%0A%E2%80%A2%20Scroll%20animations%3A%20Yes%0A%E2%80%A2%20Email%20integration%3A%20Mailchimp%20%2F%20Brevo%0A%E2%80%A2%20Analytics%3A%20GA4%20%2B%20Meta%20Pixel%0A%E2%80%A2%20Delivery%3A%205%E2%80%9310%20days%0A%E2%80%A2%20Revisions%3A%202%20rounds%0A%0ACan%20you%20please%20share%20more%20details%20and%20help%20me%20get%20started%3F" target="_blank">Get Started on WhatsApp →</a>
           <a class="cta-outline" href="https://buildwithplutoai.netlify.app/" target="_blank">View Portfolio ↗</a>
         </div>
         <div class="hero-meta">
@@ -1024,7 +1024,7 @@ export const intermediateTemplate = `<!DOCTYPE html>
         <p class="best-for-text">Startups, SaaS, SMBs, coaches, agencies</p>
       </div>
       <div class="price-block">
-        <p class="price-big">₹8,000 – ₹20,000</p>
+        <p class="price-big">₹8,000 – ₹12,000</p>
         <p class="price-sub">One-time · No recurring fees (Shift-wise pay)</p>
       </div>
     </div>
@@ -1437,7 +1437,7 @@ export const advancedTemplate = `<!DOCTYPE html>
       <h1 class="hero-headline">Your Brand's<br><span class="italic">Finest Hour.</span></h1>
       <p class="hero-sub">A conversion-engineered masterpiece. Copywriting, A/B testing, CRM pipelines, video backgrounds, heatmaps — every detail crafted to perform at the highest level.</p>
       <div class="cta-row">
-        <a class="cta-primary" href="https://wa.me/917022951232?text=Hi%2C%20I'm%20interested%20in%20the%20*Advanced%20Landing%20Page%20Package*%20%F0%9F%91%8B%0A%0A%F0%9F%93%A6%20*Package%20Details%3A*%0A%E2%80%A2%20Price%3A%20%E2%82%B920%2C000%20%E2%80%93%20%E2%82%B925%2C000%20(custom%20quote)%20%2B%20Shift-wise%20pay%0A%E2%80%A2%20Sections%3A%2010%E2%80%9314%20(Full%20funnel%20%E2%80%94%20Video%20hero%2C%20Case%20studies%2C%20Pricing%20table%2C%20Lead%20quiz%2C%20Exit%20popup%20%26%20more)%0A%E2%80%A2%20Tech%3A%20Next.js%2014%2C%20Tailwind%2C%20Framer%20Motion%2C%20Sanity%20CMS%2C%20PostHog%2C%20HubSpot%0A%E2%80%A2%20Includes%3A%20Copywriting%2C%20A%2FB%20testing%2C%20CRM%20integration%2C%20Full%20SEO%2C%20Heatmaps%0A%E2%80%A2%20Delivery%3A%203%20weeks%0A%E2%80%A2%20Revisions%3A%203%20rounds%20%2B%2030-day%20support%0A%0ACan%20you%20please%20share%20more%20details%20and%20send%20me%20a%20custom%20proposal%3F" target="_blank">Request a Proposal</a>
+        <a class="cta-primary" href="https://wa.me/917022951232?text=Hi%2C%20I'm%20interested%20in%20the%20*Advanced%20Landing%20Page%20Package*%20%F0%9F%91%8B%0A%0A%F0%9F%93%A6%20*Package%20Details%3A*%0A%E2%80%A2%20Price%3A%20%E2%82%B912%2C000%20%E2%80%93%20%E2%82%B918%2C000%20(custom%20quote)%20%2B%20Shift-wise%20pay%0A%E2%80%A2%20Sections%3A%2010%E2%80%9314%20(Full%20funnel%20%E2%80%94%20Video%20hero%2C%20Case%20studies%2C%20Pricing%20table%2C%20Lead%20quiz%2C%20Exit%20popup%20%26%20more)%0A%E2%80%A2%20Tech%3A%20Next.js%2014%2C%20Tailwind%2C%20Framer%20Motion%2C%20Sanity%20CMS%2C%20PostHog%2C%20HubSpot%0A%E2%80%A2%20Includes%3A%20Copywriting%2C%20A%2FB%20testing%2C%20CRM%20integration%2C%20Full%20SEO%2C%20Heatmaps%0A%E2%80%A2%20Delivery%3A%203%20weeks%0A%E2%80%A2%20Revisions%3A%203%20rounds%20%2B%2030-day%20support%0A%0ACan%20you%20please%20share%20more%20details%20and%20send%20me%20a%20custom%20proposal%3F" target="_blank">Request a Proposal</a>
         <a class="cta-outline" href="https://buildwithplutoai.netlify.app/" target="_blank">View Case Studies ↗</a>
       </div>
     </div>
@@ -1569,7 +1569,7 @@ export const advancedTemplate = `<!DOCTYPE html>
         <p class="best-for-text">Funded startups, established brands, agencies,<br>product launches, high-ticket services</p>
       </div>
       <div class="price-block">
-        <p class="price-big">₹20,000 – ₹25,000</p>
+        <p class="price-big">₹12,000 – ₹18,000</p>
         <p class="price-sub">One-time · No recurring fees (Shift-wise pay)</p>
       </div>
     </div>
