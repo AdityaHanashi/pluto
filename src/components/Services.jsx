@@ -149,7 +149,7 @@ const Services = () => {
             ))}
           </div>
         ) : (
-          <div className="space-y-8 w-full max-w-[1400px] mx-auto">
+          <div className="flex flex-col gap-8 w-full max-w-[1400px] mx-auto pt-4">
             {/* Design Tier Sub-tabs */}
             <div className="flex flex-wrap justify-center gap-4">
               {[

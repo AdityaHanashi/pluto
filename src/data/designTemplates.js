@@ -10,23 +10,9 @@ export const basicTemplate = `<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #ECEAF6;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
-  }
+  body { background: #0F0E17; font-family: \'Plus Jakarta Sans\', sans-serif; margin: 0; padding: 0; }
  
-  .poster {
-    width: 680px;
-    background: #0F0E17;
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-  }
+  .poster { width: 100%; min-height: 100vh; background: #0F0E17; position: relative; overflow-x: hidden; border-radius: 0; }
  
   /* Purple glow blobs */
   .blob1 {
@@ -560,23 +546,8 @@ export const intermediateTemplate = `<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #0A1628;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
-  }
-  .poster {
-    width: 680px;
-    background: #0D1F3C;
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    border: 1px solid rgba(56,189,248,0.12);
-  }
+  body { background: #0D1F3C; font-family: \'Plus Jakarta Sans\', sans-serif; margin: 0; padding: 0; }
+  .poster { width: 100%; min-height: 100vh; background: #0D1F3C; position: relative; overflow-x: hidden; border-radius: 0; }
   .blob1 {
     position: absolute;
     width: 350px; height: 350px;
@@ -1044,21 +1015,8 @@ export const advancedTemplate = `<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #0A1628;
-    font-family: 'Jost', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
-  }
-  .poster {
-    width: 680px;
-    background: #0D1F3C;
-    position: relative;
-    overflow: hidden;
-  }
+  body { background: #0D1F3C; font-family: \'Jost\', sans-serif; margin: 0; padding: 0; }
+  .poster { width: 100%; min-height: 100vh; background: #0D1F3C; position: relative; overflow-x: hidden; border-radius: 0; }
  
   /* Subtle texture lines */
   .poster::before {
