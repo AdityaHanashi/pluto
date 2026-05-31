@@ -549,9 +549,9 @@ export const basicTemplate = `<!DOCTYPE html>
 </div>
 </body>
 </html>
-\`;
+`;
 
-export const intermediateTemplate = \`<!DOCTYPE html>
+export const intermediateTemplate = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1033,7 +1033,7 @@ export const intermediateTemplate = \`<!DOCTYPE html>
 </div>
 </body>
 </html>
-\`;
+`;
 
 export const advancedTemplate = `<!DOCTYPE html>
 <html lang="en">
