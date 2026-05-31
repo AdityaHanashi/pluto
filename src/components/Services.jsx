@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {
   Bot, Workflow, Mic, Phone, Link2, Database, Brain, Layers,
-  Globe, Code2, LayoutDashboard, Briefcase, Monitor, Cpu, Zap, Server
+  Globe, Code2, LayoutDashboard, Briefcase, Monitor, Cpu, Zap, Server,
+  Maximize2, X, Sparkles
 } from 'lucide-react'
+import { basicTemplate, intermediateTemplate, advancedTemplate } from '../data/designTemplates'
 
 const aiServices = [
   { icon: Bot, title: 'AI Automation', desc: 'End-to-end intelligent automation pipelines that eliminate repetitive tasks and supercharge productivity.', color: 'from-purple-600 to-indigo-600', glow: 'rgba(139,92,246,0.3)' },
@@ -72,6 +74,15 @@ const ServiceCard = ({ service, index, inView }) => {
 const Services = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
   const [tab, setTab] = useState('ai')
+  const [designTier, setDesignTier] = useState('intermediate')
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+
+  // Map design tier keys to their raw HTML templates
+  const designTemplates = {
+    basic: basicTemplate,
+    intermediate: intermediateTemplate,
+    advanced: advancedTemplate,
+  }
 
   return (
     <section className="section-padding relative" id="services" ref={ref}>
@@ -104,10 +115,11 @@ const Services = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-12"
         >
-          <div className="flex glass rounded-2xl p-1.5 border border-white/10">
+          <div className="flex glass rounded-2xl p-1.5 border border-white/10 flex-wrap justify-center gap-1">
             {[
               { key: 'ai', label: '🤖 AI & Automation' },
               { key: 'web', label: '🌐 Web Studio' },
+              { key: 'design', label: '🎨 Design Services' },
             ].map(({ key, label }) => (
               <button
                 key={key}
@@ -129,13 +141,144 @@ const Services = () => {
           </div>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {(tab === 'ai' ? aiServices : webServices).map((service, idx) => (
-            <ServiceCard key={service.title} service={service} index={idx} inView={inView} />
-          ))}
-        </div>
+        {/* Cards Grid / Design Showcase */}
+        {tab !== 'design' ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {(tab === 'ai' ? aiServices : webServices).map((service, idx) => (
+              <ServiceCard key={service.title} service={service} index={idx} inView={inView} />
+            ))}
+          </div>
+        ) : (
+          <div className="space-y-8 max-w-4xl mx-auto">
+            {/* Design Tier Sub-tabs */}
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                { key: 'basic', label: '🌱 Tier 01: Basic', desc: '₹5,000 - ₹8,000' },
+                { key: 'intermediate', label: '🚀 Tier 02: Intermediate', desc: '₹8,000 - ₹20,000', popular: true },
+                { key: 'advanced', label: '👑 Tier 03: Advanced', desc: '₹20,000 - ₹25,000' }
+              ].map((tier) => (
+                <button
+                  key={tier.key}
+                  onClick={() => setDesignTier(tier.key)}
+                  className={`relative px-5 py-3 rounded-2xl border text-sm font-semibold transition-all duration-300 cursor-pointer flex flex-col items-center gap-1 min-w-[160px]
+                    ${designTier === tier.key
+                      ? 'border-purple-500/50 bg-purple-950/20 text-white shadow-[0_0_20px_rgba(139,92,246,0.2)]'
+                      : 'border-white/5 bg-white/5 text-gray-400 hover:text-gray-200 hover:bg-white/10'
+                    }
+                  `}
+                >
+                  {tier.popular && (
+                    <span className="absolute -top-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-[9px] text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow">
+                      Popular
+                    </span>
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    {tier.label}
+                  </span>
+                  <span className="text-[10px] text-gray-500 font-mono font-medium">{tier.desc}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Viewport Frame */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="glass border border-white/10 rounded-2xl overflow-hidden shadow-2xl bg-black/20"
+            >
+              {/* Header Bar */}
+              <div className="bg-[#0b0c16]/80 px-4 py-3 border-b border-white/5 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                </div>
+                <div className="bg-white/5 border border-white/5 text-[10px] text-gray-400 rounded-lg px-4 py-1 font-mono tracking-wide w-48 sm:w-64 text-center select-none truncate">
+                  pluto.ai/design-showcase/{designTier}
+                </div>
+                <button
+                  onClick={() => setIsPreviewOpen(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  <Maximize2 size={12} />
+                  <span className="hidden sm:inline">Fullscreen Preview</span>
+                </button>
+              </div>
+
+              {/* Viewport Iframe */}
+              <div className="relative w-full h-[650px] bg-[#eceaf6] overflow-hidden">
+                <iframe
+                  srcDoc={designTemplates[designTier]}
+                  title={`Design Poster ${designTier}`}
+                  className="w-full h-full border-none pointer-events-auto"
+                />
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
+
+      {/* Fullscreen Interactive Preview Modal */}
+      <AnimatePresence>
+        {isPreviewOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4"
+          >
+            {/* Modal Navigation */}
+            <div className="w-full max-w-[720px] flex items-center justify-between mb-4 px-2">
+              <div className="flex items-center gap-2.5 text-white">
+                <Sparkles className="text-purple-400 animate-pulse" size={18} />
+                <h3 className="text-sm font-bold font-orbitron tracking-wider uppercase">
+                  {designTier} Showcase Preview
+                </h3>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <div className="hidden sm:flex border border-white/10 bg-white/5 rounded-xl p-1 gap-1">
+                  {['basic', 'intermediate', 'advanced'].map((t) => (
+                    <button
+                      key={t}
+                      onClick={() => setDesignTier(t)}
+                      className={`px-3 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+                        designTier === t ? 'bg-purple-600 text-white shadow-md' : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+                
+                <button
+                  onClick={() => setIsPreviewOpen(false)}
+                  className="p-2 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  aria-label="Close preview"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Iframe Wrapper */}
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', duration: 0.5 }}
+              className="w-full max-w-[720px] h-[85vh] bg-[#eceaf6] border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative"
+            >
+              <iframe
+                srcDoc={designTemplates[designTier]}
+                title={`Fullscreen Poster ${designTier}`}
+                className="w-full h-full border-none"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
