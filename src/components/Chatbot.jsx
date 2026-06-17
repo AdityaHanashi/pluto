@@ -325,13 +325,13 @@ const Chatbot = () => {
               {messages.length === 1 && (
                 <div className="flex flex-col gap-2 mt-4">
                   {[
-                    { text: 'What services do you offer?', icon: Zap },
-                    { text: 'Show me your projects', icon: LayoutDashboard },
-                    { text: 'How do I get started?', icon: Briefcase }
+                    { text: 'What services do you offer?', icon: Zap, target: 'services' },
+                    { text: 'Show me your projects', icon: LayoutDashboard, target: 'projects' },
+                    { text: 'How do I get started?', icon: Briefcase, target: 'contact' }
                   ].map((prompt, i) => (
                     <button
                       key={i}
-                      onClick={() => handleOptionClick({ label: prompt.text, action: 'scroll_to', value: 'services' })}
+                      onClick={() => handleOptionClick({ label: prompt.text, action: 'scroll_to', value: prompt.target })}
                       className="flex items-center gap-3 w-full text-left p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04] transition-all cursor-pointer group"
                     >
                       <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center text-[#C9A84C] group-hover:scale-110 transition-transform">
