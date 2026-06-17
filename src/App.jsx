@@ -26,20 +26,20 @@ function App() {
   return (
     <div className="relative min-h-screen bg-[#161311] overflow-x-hidden w-full max-w-[100vw]">
       <Navbar />
-      <Suspense fallback={<div className="min-h-screen bg-[#161311]" />}>
-        <ParticleField />
-        <main>
-          <section id="home"><Hero /></section>
+      <main>
+        <section id="home"><Hero /></section>
+        <Suspense fallback={<div className="min-h-screen bg-[#161311]" />}>
+          <ParticleField />
           <section id="about"><About /></section>
           <section id="services"><Services /></section>
           <section id="technologies"><Technologies /></section>
           <section id="projects"><Projects /></section>
           <section id="contact"><Contact /></section>
-        </main>
-        <Chatbot />
-        <WelcomeAudio />
-        <Footer />
-      </Suspense>
+          <Chatbot />
+          <WelcomeAudio />
+          <Footer />
+        </Suspense>
+      </main>
     </div>
   )
 }

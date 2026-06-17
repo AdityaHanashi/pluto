@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#141110]">
         {/* Blurred Background Layer (Fills the whole width, zero blank space) */}
         <video 
-          autoPlay loop muted playsInline preload="auto"
+          autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
           className="hidden md:block absolute inset-0 w-full h-full object-cover blur-3xl scale-125 opacity-50"
         >
           <source src="/founder.mp4" type="video/mp4" />
@@ -20,7 +20,7 @@ const Hero = () => {
 
         {/* Sharp Foreground Layer */}
         <video 
-          autoPlay loop muted playsInline preload="auto"
+          autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
           className="absolute inset-0 w-full h-full object-cover md:object-contain object-top drop-shadow-[0_0_30px_rgba(20,17,16,0.8)]"
         >
           <source src="/founder.mp4" type="video/mp4" />
