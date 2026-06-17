@@ -26,7 +26,7 @@ const Hero = () => {
 
         {/* Sharp Foreground Layer */}
         <video 
-          autoPlay loop muted playsInline preload="auto"
+          autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
           className="absolute inset-0 w-full h-full object-cover md:object-contain object-top md:object-center shadow-none md:shadow-[0_0_40px_rgba(20,17,16,0.8)]"
         >
           <source src="/founder.mp4" type="video/mp4" />
