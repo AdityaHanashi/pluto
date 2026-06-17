@@ -12,15 +12,22 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-[55vh] md:h-full z-0 overflow-hidden bg-[#141110]">
         {/* Desktop Blur Layer */}
         <video 
-          autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
+          autoPlay loop muted playsInline preload="auto"
           className="hidden md:block absolute inset-0 w-full h-full object-cover blur-3xl scale-125 opacity-50"
         >
           <source src="/founder.mp4" type="video/mp4" />
         </video>
 
+        {/* Dedicated Placeholder Image to prevent stretching bugs on iOS/mobile */}
+        <img 
+          src="/founder-poster.webp" 
+          alt="Aditya Hanashi"
+          className="absolute inset-0 w-full h-full object-cover md:object-contain object-top md:object-center pointer-events-none drop-shadow-none md:drop-shadow-[0_0_30px_rgba(20,17,16,0.8)]"
+        />
+
         {/* Sharp Foreground Layer */}
         <video 
-          autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
+          autoPlay loop muted playsInline preload="auto"
           className="absolute inset-0 w-full h-full object-cover md:object-contain object-top md:object-center drop-shadow-none md:drop-shadow-[0_0_30px_rgba(20,17,16,0.8)]"
         >
           <source src="/founder.mp4" type="video/mp4" />

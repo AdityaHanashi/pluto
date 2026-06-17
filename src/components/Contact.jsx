@@ -77,11 +77,11 @@ const Contact = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center w-full max-w-6xl mx-auto">
-          {/* Left Column: Form */}
+        <div className="w-full max-w-4xl mx-auto">
+          {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: -35 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 35 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full"
           >
@@ -93,7 +93,7 @@ const Contact = () => {
               }}
             >
               {/* Form Header */}
-              <div className="mb-8 pb-8 border-b border-white/5">
+              <div className="mb-8 pb-8 border-b border-white/5 text-center">
                 <h3 className="text-3xl font-bold font-heading tracking-[-0.02em] text-white tracking-wide">
                   Send a Message
                 </h3>
@@ -243,96 +243,6 @@ const Contact = () => {
               </form>
             </div>
           </motion.div>
-
-          {/* Right Column: Glimpses of Pluto (6 Images Floating Grid) */}
-          <motion.div
-            initial={{ opacity: 0, x: 35 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="w-full flex flex-col lg:grid lg:grid-cols-2 gap-6 relative h-full content-center"
-          >
-            {/* Glowing orb behind */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-[120px] z-0 pointer-events-none" />
-
-            {/* Left Column of Floating Images */}
-            <div className="flex flex-col gap-6 pt-12">
-              {/* Image 1 - System Overview */}
-              <motion.div 
-                className="relative w-full h-[220px] rounded-3xl overflow-hidden border border-white/5 shadow-xl glass group z-10"
-                whileHover={{ scale: 1.03 }}
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0 }}
-              >
-                <img loading="lazy" src="/pluto_glimpse_1.webp" alt="Pluto Dashboard" className="w-full h-full object-cover opacity-80" />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
-                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">System Overview</div>
-              </motion.div>
-
-              {/* Image 3 - Neural System */}
-              <motion.div 
-                className="relative w-full h-[280px] rounded-3xl overflow-hidden border border-white/10 shadow-xl glass group z-10"
-                whileHover={{ scale: 1.03 }}
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              >
-                <img loading="lazy" src="/pluto_glimpse_2.webp" alt="Pluto AI Neural Network" className="w-full h-full object-cover opacity-80" />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
-                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Neural System</div>
-              </motion.div>
-
-              {/* Image 5 - Cafe Platform */}
-              <motion.div 
-                className="relative w-full h-[220px] rounded-3xl overflow-hidden border border-white/5 shadow-xl glass group z-10"
-                whileHover={{ scale: 1.03 }}
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-              >
-                <img loading="lazy" src="/photo1.webp" alt="Pluto Cafe Interface" className="w-full h-full object-cover opacity-80" />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
-                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Cafe Platform</div>
-              </motion.div>
-            </div>
-
-            {/* Right Column of Floating Images */}
-            <div className="flex flex-col gap-6 pb-12">
-              {/* Image 2 - Ops Dashboard */}
-              <motion.div 
-                className="relative w-full h-[280px] rounded-3xl overflow-hidden border border-white/10 shadow-xl glass group z-10"
-                whileHover={{ scale: 1.03 }}
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              >
-                <img loading="lazy" src="/photo2.webp" alt="Pluto Project" className="w-full h-full object-cover opacity-70" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
-                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Ops Dashboard</div>
-              </motion.div>
-
-              {/* Image 4 - AI Agent */}
-              <motion.div 
-                className="relative w-full h-[220px] rounded-3xl overflow-hidden border border-white/10 shadow-xl glass group z-10"
-                whileHover={{ scale: 1.03 }}
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-              >
-                <img loading="lazy" src="/robot.webp" alt="AI Robot" className="w-full h-full object-cover opacity-90 object-top" />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
-                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">AI Agent</div>
-              </motion.div>
-
-              {/* Image 6 - Code Editor */}
-              <motion.div 
-                className="relative w-full h-[280px] rounded-3xl overflow-hidden border border-[#C9A84C]/30 shadow-xl glass group z-10"
-                whileHover={{ scale: 1.03 }}
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
-              >
-                <img loading="lazy" src="/pluto_glimpse_3.webp" alt="Pluto Code Editor" className="w-full h-full object-cover object-top opacity-90" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300" />
-                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Code Editor</div>
-              </motion.div>
-            </div>
-          </motion.div>
-
         </div>
       </div>
     </section>
