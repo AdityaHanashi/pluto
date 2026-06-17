@@ -5,12 +5,12 @@ import { Link as ScrollLink } from 'react-scroll'
 const Hero = () => {
   return (
     <section 
-      className="relative min-h-[100vh] flex flex-col justify-center items-center overflow-hidden bg-[#141110]"
+      className="relative min-h-[100dvh] w-full flex flex-col md:justify-center items-center overflow-hidden bg-[#141110]"
       id="home"
     >
-      {/* Cinematic Founder Background Video Wrapper */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#141110]">
-        {/* Blurred Background Layer (Fills the whole width, zero blank space) */}
+      {/* Background Video Wrapper */}
+      <div className="absolute top-0 left-0 w-full h-[55vh] md:h-full z-0 overflow-hidden bg-[#141110]">
+        {/* Desktop Blur Layer */}
         <video 
           autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
           className="hidden md:block absolute inset-0 w-full h-full object-cover blur-3xl scale-125 opacity-50"
@@ -21,25 +21,27 @@ const Hero = () => {
         {/* Sharp Foreground Layer */}
         <video 
           autoPlay loop muted playsInline preload="auto" poster="/founder-poster.webp"
-          className="absolute inset-0 w-full h-full object-cover md:object-contain object-top drop-shadow-[0_0_30px_rgba(20,17,16,0.8)]"
+          className="absolute inset-0 w-full h-full object-cover md:object-contain object-top md:object-center drop-shadow-none md:drop-shadow-[0_0_30px_rgba(20,17,16,0.8)]"
         >
           <source src="/founder.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Dark Luxury Overlay for Text Legibility */}
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#141110] via-[rgba(20,17,16,0.85)] to-transparent z-10" />
+      {/* Dark Luxury Overlay for Text Legibility (Mobile gets solid bottom) */}
+      <div className="absolute inset-x-0 bottom-[45vh] md:bottom-0 h-[20vh] md:h-1/2 bg-gradient-to-t from-[#141110] md:from-[#141110] via-[rgba(20,17,16,0.9)] to-transparent z-10 pointer-events-none" />
+      <div className="md:hidden absolute inset-x-0 bottom-0 h-[45vh] bg-[#141110] z-10 pointer-events-none" />
 
-      <div className="w-full h-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 md:px-8 relative z-20 flex flex-col justify-center items-center text-center mt-[20vh] md:mt-[30vh]">
+      {/* Content Container */}
+      <div className="w-full h-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 md:px-8 relative z-20 flex flex-col justify-end md:justify-center items-center text-center pb-12 md:pb-0 md:mt-[30vh]">
         
         {/* Main Title */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading tracking-[-0.02em] text-white leading-[1.1] tracking-tight mb-6 max-w-5xl mx-auto drop-shadow-lg"
+          className="text-[28px] leading-[1.2] sm:text-4xl md:text-6xl lg:text-7xl font-bold font-heading tracking-[-0.02em] text-white tracking-tight mb-4 md:mb-6 max-w-5xl mx-auto drop-shadow-lg"
         >
-          AI Automation Systems That <span className="text-[#C9A84C] font-extrabold">Save Time</span> & Scale Businesses
+          AI Automation Systems That <span className="text-[#C9A84C] font-extrabold block md:inline">Save Time</span> & Scale Businesses
         </motion.h1>
 
         {/* Subheadline */}
@@ -47,7 +49,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto font-normal font-sans drop-shadow-md"
+          className="text-gray-300 text-[15px] sm:text-lg md:text-xl leading-relaxed mb-8 md:mb-10 max-w-3xl mx-auto font-normal font-sans drop-shadow-md px-2"
         >
           We build AI agents, voice automation, websites, and custom business systems that help companies grow faster.
         </motion.p>
@@ -57,7 +59,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2"
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0"
         >
           <ScrollLink
             to="contact"

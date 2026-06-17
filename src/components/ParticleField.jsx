@@ -54,13 +54,17 @@ const ParticleField = () => {
       }
     }
 
-    for (let i = 0; i < 120; i++) particles.push(new Particle())
+    const isMobile = window.innerWidth < 768
+    const particleCount = isMobile ? 30 : 120
+
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle())
 
     const loop = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => { p.update(); p.draw() })
 
-      // Draw connection lines
+      // Draw connection lines only on desktop to save performance
+      if (!isMobile) {
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x
@@ -79,6 +83,7 @@ const ParticleField = () => {
           }
         }
       }
+      } // Close if (!isMobile)
 
       animFrameId = requestAnimationFrame(loop)
     }
