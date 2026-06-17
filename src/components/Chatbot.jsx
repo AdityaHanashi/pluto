@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageSquare, X, Send, Bot, CornerDownLeft } from 'lucide-react'
+import { MessageSquare, X, Send, Bot, CornerDownLeft, Sparkles, LayoutDashboard, Briefcase, Zap } from 'lucide-react'
 import { animateScroll as scroll, scroller } from 'react-scroll'
 
 const Chatbot = () => {
@@ -252,13 +252,13 @@ const Chatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 rounded-full bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-white cursor-pointer shadow-[0_4px_25px_rgba(124,58,237,0.45)] border border-purple-500/20 relative group"
+        className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#C9A84C] to-[#C9A84C] flex items-center justify-center text-white cursor-pointer shadow-[0_4px_25px_rgba(124,58,237,0.45)] border border-[#C9A84C]/20 relative group"
         aria-label="Chat assistant"
       >
         {isOpen ? <X size={20} /> : <MessageSquare size={20} />}
         
         {/* Glow indicator ring */}
-        <span className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 opacity-0 group-hover:opacity-30 blur animate-pulse transition-opacity" />
+        <span className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-[#C9A84C] to-[#C9A84C] opacity-0 group-hover:opacity-30 blur animate-pulse transition-opacity" />
       </motion.button>
 
       {/* Expanded Chat Box */}
@@ -268,21 +268,21 @@ const Chatbot = () => {
             initial={{ opacity: 0, scale: 0.85, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 30 }}
-            className="absolute bottom-20 right-0 w-[calc(100vw-48px)] sm:w-[380px] md:w-[400px] h-[550px] max-h-[80vh] flex flex-col bg-[#0b0b12] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+            className="absolute bottom-20 right-0 sm:right-6 w-[calc(100vw-48px)] sm:w-[380px] md:w-[400px] h-[550px] max-h-[calc(100vh-120px)] flex flex-col bg-[#1f1a18] border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-[100]"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 px-4 py-4 border-b border-white/10 flex items-center justify-between">
+            <div className="bg-[#1f1a18] border-b border-white/5 px-4 py-3 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8.5 h-8.5 rounded-lg bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                <div className="w-8.5 h-8.5 rounded-lg bg-[#C9A84C]/10 border border-[#C9A84C]/30 flex items-center justify-center text-[#C9A84C]">
                   <Bot size={18} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white tracking-wide uppercase font-syne">
+                  <h4 className="text-[13px] font-bold text-white tracking-wide font-heading tracking-[-0.02em]">
                     Pluto Assistant
                   </h4>
-                  <div className="flex items-center gap-1 mt-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[8px] font-bold text-green-400 uppercase tracking-widest font-mono-jb">Online</span>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono-jb">Online</span>
                   </div>
                 </div>
               </div>
@@ -295,38 +295,66 @@ const Chatbot = () => {
             </div>
 
             {/* Chat Messages Log */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-purple-500/10 scrollbar-track-transparent">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-[#C9A84C]/10 scrollbar-track-transparent">
               {messages.map((msg) => (
                 <div 
                   key={msg.id} 
-                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
+                  {msg.sender === 'bot' && (
+                    <div className="w-6 h-6 rounded-md bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-[#C9A84C] mr-2 shrink-0 mt-1">
+                      <Bot size={12} />
+                    </div>
+                  )}
                   <div 
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs sm:text-[13px] font-medium leading-relaxed ${
+                    className={`max-w-[80%] px-4 py-2.5 text-[13px] font-medium leading-relaxed ${
                       msg.sender === 'user'
-                        ? 'bg-purple-600 text-white rounded-tr-none'
-                        : 'bg-white/5 border border-white/5 text-gray-200 rounded-tl-none'
+                        ? 'bg-[#C9A84C] text-[#0E0E0E] rounded-2xl rounded-tr-sm'
+                        : 'bg-white/[0.02] border border-white/[0.08] text-gray-200 rounded-2xl rounded-tl-sm'
                     }`}
                   >
                     <p>{msg.text}</p>
-                    <span className="block text-[8px] text-right mt-1 text-gray-500">
+                    <span className={`block text-[9px] text-right mt-1 ${msg.sender === 'user' ? 'text-black/50' : 'text-gray-500'}`}>
                       {msg.timestamp}
                     </span>
                   </div>
                 </div>
               ))}
+
+              {/* Empty State Prompt Cards */}
+              {messages.length === 1 && (
+                <div className="flex flex-col gap-2 mt-4">
+                  {[
+                    { text: 'What services do you offer?', icon: Zap },
+                    { text: 'Show me your projects', icon: LayoutDashboard },
+                    { text: 'How do I get started?', icon: Briefcase }
+                  ].map((prompt, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleOptionClick({ label: prompt.text, action: 'scroll_to', value: 'services' })}
+                      className="flex items-center gap-3 w-full text-left p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04] transition-all cursor-pointer group"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center text-[#C9A84C] group-hover:scale-110 transition-transform">
+                        <prompt.icon size={14} />
+                      </div>
+                      <span className="text-[13px] text-gray-300 group-hover:text-white transition-colors">{prompt.text}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
               <div ref={chatEndRef} />
             </div>
 
-            {/* Inline option buttons */}
+            {/* Inline option buttons (Quick Action Chips) */}
             {showOptions && currentOptions.length > 0 && (
-              <div className="px-4 py-3 border-t border-white/5 bg-black/40 flex flex-wrap gap-2 justify-start">
+              <div className="px-4 py-3 bg-[#1f1a18] border-t border-white/[0.05] flex flex-nowrap overflow-x-auto gap-2 no-scrollbar">
                 {currentOptions.map((opt, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleOptionClick(opt)}
-                    className="text-[11px] font-semibold bg-purple-950/20 border border-purple-500/25 hover:border-purple-500/50 hover:bg-purple-900/30 text-purple-300 px-3.5 py-2 rounded-full transition-all cursor-pointer"
+                    className="flex items-center gap-1.5 shrink-0 text-[12px] font-medium bg-[#1f1a18] border border-white/[0.1] hover:border-[#C9A84C]/50 text-gray-300 hover:text-[#C9A84C] px-3.5 py-1.5 rounded-full transition-all cursor-pointer shadow-sm"
                   >
+                    <Sparkles size={12} className="text-[#C9A84C]/70" />
                     {opt.label}
                   </button>
                 ))}
@@ -336,18 +364,18 @@ const Chatbot = () => {
             {/* Input Form Footer */}
             <form 
               onSubmit={handleSendText}
-              className="px-4 py-3.5 border-t border-white/10 bg-black/60 flex items-center gap-2"
+              className="px-4 py-3 border-t border-white/[0.05] bg-[#1f1a18] flex items-center gap-2"
             >
               <input
                 type="text"
                 placeholder="Ask assistant or choose option..."
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                className="flex-1 bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-purple-500/50 focus:outline-none transition-colors"
+                className="flex-1 bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
               />
               <button
                 type="submit"
-                className="p-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-colors cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.3)] shrink-0"
+                className="p-3 rounded-xl bg-[#C9A84C] hover:bg-[#C9A84C] text-white transition-colors cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.3)] shrink-0"
                 aria-label="Send message"
               >
                 <Send size={14} />

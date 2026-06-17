@@ -30,9 +30,9 @@ const Solutions = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
 
   return (
-    <section className="section-padding relative bg-black/60" id="solutions" ref={ref}>
+    <section className="section-padding relative bg-[#161311]/60" id="solutions" ref={ref}>
       <div className="absolute top-0 left-0 w-full h-full grid-pattern opacity-[0.03] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-purple-700/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -45,7 +45,7 @@ const Solutions = () => {
         >
           <span className="tag tag-blue mb-4 inline-flex font-mono">Capabilities</span>
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            AI Tools &amp; <span className="gradient-text">Solutions We Build</span>
+            AI Tools &amp; <span className="text-[#C9A84C]">Solutions We Build</span>
           </h2>
           <div className="title-underline" />
           <p className="text-gray-400 max-w-2xl mx-auto mt-6">
@@ -72,13 +72,13 @@ const Solutions = () => {
                 className="glass rounded-2xl p-5 border border-white/5 flex flex-col group cursor-default transition-all duration-300 relative overflow-hidden"
               >
                 {/* Micro particle blur effect inside card */}
-                <div className="absolute -right-8 -top-8 w-20 h-20 rounded-full bg-purple-500/5 blur-xl group-hover:bg-purple-500/10 transition-colors" />
+                <div className="absolute -right-8 -top-8 w-20 h-20 rounded-full bg-[#C9A84C]/5 blur-xl group-hover:bg-[#C9A84C]/10 transition-colors" />
 
                 <div className="flex items-center gap-3.5 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] border border-[#C9A84C]/20 group-hover:scale-110 transition-transform">
                     <Icon size={18} />
                   </div>
-                  <h3 className="text-base font-bold font-orbitron text-white group-hover:text-purple-300 transition-colors tracking-wide">
+                  <h3 className="text-base font-bold font-orbitron text-white group-hover:text-[#C9A84C] transition-colors tracking-wide">
                     {sol.title}
                   </h3>
                 </div>

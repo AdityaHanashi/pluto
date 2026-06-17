@@ -37,13 +37,13 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative bg-black/95 text-gray-400 border-t border-white/5 pt-16 pb-8 overflow-hidden">
+    <footer className="relative bg-[#161311]/95 text-gray-400 border-t border-white/5 pt-16 pb-8 overflow-hidden">
       {/* Decorative Gradient Line Separator */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 via-amber-500/30 via-cyan-500/40 via-purple-500/40 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.2)]" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/40 via-[#C9A84C]/30 via-[#C9A84C]/40 via-[#C9A84C]/40 to-transparent shadow-[0_0_10px_rgba(16,185,129,0.2)]" />
       
       {/* Background flare */}
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-emerald-500/5 blur-[100px] animate-blob pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-cyan-500/5 blur-[100px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-[#C9A84C]/5 blur-[100px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-[#C9A84C]/5 blur-[100px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
 
       <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
@@ -57,12 +57,12 @@ const Footer = () => {
               smooth={true}
               duration={600}
               offset={-80}
-              className="flex items-center gap-2 font-syne font-bold text-white text-xl tracking-wide cursor-pointer inline-flex group"
+              className="flex items-center gap-2 font-heading tracking-[-0.02em] font-bold text-white text-xl tracking-wide cursor-pointer inline-flex group"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-bold shadow-[0_0_10px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-transform duration-200">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#C9A84C] to-[#C9A84C] flex items-center justify-center text-white font-bold shadow-[0_0_10px_rgba(139,92,246,0.4)] group-hover:scale-105 transition-transform duration-200">
                 P
               </div>
-              <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white via-white to-[#C9A84C] bg-clip-text text-transparent">
                 PLUTO.AI
               </span>
             </ScrollLink>
@@ -72,7 +72,7 @@ const Footer = () => {
             {/* Social Icons */}
             <div className="flex gap-3 pt-2">
               {[
-                { icon: GithubIcon, href: 'https://github.com/pluto-system', color: 'hover:text-purple-400', isGithub: true },
+                { icon: GithubIcon, href: 'https://github.com/pluto-system', color: 'hover:text-[#C9A84C]', isGithub: true, label: 'GitHub Profile' },
               ].map((item, idx) => {
                 const Icon = item.icon
                 return (
@@ -81,6 +81,7 @@ const Footer = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={item.label}
                     className={`w-9 h-9 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-gray-500 transition-all ${item.color} hover:bg-white/10 hover:border-white/10`}
                   >
                     <Icon className="w-4.5 h-4.5" />
@@ -95,7 +96,7 @@ const Footer = () => {
             <h4 className="text-[10px] font-bold font-mono-jb uppercase text-white tracking-widest">
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold font-mono-jb uppercase tracking-wider">
+            <ul className="space-y-2.5 text-xs font-medium font-mono-jb uppercase tracking-wider">
               {[
                 { label: 'Home', to: 'home' },
                 { label: 'About', to: 'about' },
@@ -124,23 +125,23 @@ const Footer = () => {
               Founder Details
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm">
-              <li className="text-gray-300 font-semibold font-syne">
+              <li className="text-gray-300 font-medium font-heading tracking-[-0.02em]">
                 Aditya Hanashi
               </li>
               <li className="flex items-center gap-2.5 group">
-                <Mail size={14} className="text-purple-400 shrink-0" />
+                <Mail size={14} className="text-[#C9A84C] shrink-0" />
                 <a href="mailto:buildwithpluto@gmail.com" className="hover:text-white transition-colors break-all font-mono-jb text-xs">
                   buildwithpluto@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone size={14} className="text-blue-400 shrink-0" />
+                <Phone size={14} className="text-[#C9A84C] shrink-0" />
                 <a href="tel:+917022951232" className="hover:text-white transition-colors font-mono-jb text-xs">
                   +91 7022951232
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <GithubIcon className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <GithubIcon className="w-3.5 h-3.5 text-[#C9A84C] shrink-0" />
                 <a 
                   href="https://github.com/pluto-system" 
                   target="_blank" 
@@ -161,8 +162,8 @@ const Footer = () => {
             </h4>
             <div className="glass border border-white/5 rounded-2xl p-4 space-y-2">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest font-mono-jb">
+                <span className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
+                <span className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest font-mono-jb">
                   Systems Nominal
                 </span>
               </div>

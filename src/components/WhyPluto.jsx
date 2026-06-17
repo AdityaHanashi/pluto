@@ -12,7 +12,7 @@ const statsData = [
     suffix: 'x',
     label: 'Velocity Multiplier',
     desc: 'Automate manual processes to execute workflows ten times faster than humanly possible.',
-    color: 'text-amber-400',
+    color: 'text-[#C9A84C]',
     glow: 'rgba(245, 158, 11, 0.25)',
   },
   {
@@ -23,7 +23,7 @@ const statsData = [
     suffix: '%',
     label: 'Accuracy Rate',
     desc: 'Fine-tuned Large Language Models trained precisely on your data to minimize hallucination.',
-    color: 'text-purple-400',
+    color: 'text-[#C9A84C]',
     glow: 'rgba(168, 85, 247, 0.25)',
   },
   {
@@ -34,7 +34,7 @@ const statsData = [
     suffix: '%',
     label: 'Server Uptime',
     desc: 'Decentralized failover and auto-scaling logic protecting products from spikes and down-times.',
-    color: 'text-blue-400',
+    color: 'text-[#C9A84C]',
     glow: 'rgba(59, 130, 246, 0.25)',
   },
   {
@@ -64,7 +64,7 @@ const statsData = [
     prefix: '#',
     label: 'Industry Ranking',
     desc: 'Zero legacy code. Engineered on Vite, React, and Tailwind CSS for optimized production bundles.',
-    color: 'text-cyan-400',
+    color: 'text-[#C9A84C]',
     glow: 'rgba(6, 182, 212, 0.25)',
   },
   {
@@ -84,7 +84,7 @@ const statsData = [
     suffix: 'h',
     label: 'Yearly Active Shifts',
     desc: 'Autonomous software cron jobs and monitoring agents operating uninterrupted all year.',
-    color: 'text-green-400',
+    color: 'text-[#C9A84C]',
     glow: 'rgba(34, 197, 94, 0.25)',
   },
 ]
@@ -95,7 +95,7 @@ const WhyPluto = () => {
   return (
     <section className="section-padding relative overflow-hidden" id="why-pluto" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.04] pointer-events-none" />
-      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-purple-700/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -108,7 +108,7 @@ const WhyPluto = () => {
         >
           <span className="tag tag-purple mb-4 inline-flex font-mono">Metrics</span>
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Why Partner With <span className="gradient-text font-extrabold">Pluto.ai</span>?
+            Why Partner With <span className="text-[#C9A84C] font-extrabold">Pluto.ai</span>?
           </h2>
           <div className="title-underline" />
           <p className="text-gray-400 max-w-2xl mx-auto mt-6">
@@ -150,14 +150,14 @@ const WhyPluto = () => {
                   <div className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 ${stat.color} group-hover:scale-110 transition-all`}>
                     <Icon size={18} />
                   </div>
-                  <h3 className="text-xs sm:text-sm font-bold font-orbitron text-white group-hover:text-purple-300 transition-colors tracking-wide">
+                  <h3 className="text-xs sm:text-sm font-bold font-orbitron text-white group-hover:text-[#C9A84C] transition-colors tracking-wide">
                     {stat.title}
                   </h3>
                 </div>
 
                 {/* Count Up Number */}
                 <div className="mb-2 flex items-baseline font-orbitron font-extrabold text-white text-3xl sm:text-4xl tracking-tight">
-                  {stat.prefix && <span className="text-purple-400 mr-1 text-2xl">{stat.prefix}</span>}
+                  {stat.prefix && <span className="text-[#C9A84C] mr-1 text-2xl">{stat.prefix}</span>}
                   
                   {inView ? (
                     <CountUp
@@ -170,7 +170,7 @@ const WhyPluto = () => {
                     <span>0</span>
                   )}
 
-                  {stat.suffix && <span className="text-purple-400 ml-0.5 text-2xl">{stat.suffix}</span>}
+                  {stat.suffix && <span className="text-[#C9A84C] ml-0.5 text-2xl">{stat.suffix}</span>}
                 </div>
 
                 {/* Stat Label */}

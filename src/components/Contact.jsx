@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, Phone, MapPin, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Loader2, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
 const Contact = () => {
@@ -58,11 +58,11 @@ const Contact = () => {
   return (
     <section className="section-padding relative overflow-hidden" id="contact" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
-      <div className="absolute top-[20%] left-[20%] w-[450px] h-[450px] rounded-full bg-amber-500/5 blur-[130px] animate-blob pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[20%] w-[450px] h-[450px] rounded-full bg-cyan-500/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-emerald-500/4 blur-[140px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
+      <div className="absolute top-[20%] left-[20%] w-[450px] h-[450px] rounded-full bg-[#C9A84C]/5 blur-[130px] animate-blob pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[20%] w-[450px] h-[450px] rounded-full bg-[#C9A84C]/6 blur-[130px] animate-blob pointer-events-none" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C9A84C]/4 blur-[140px] animate-blob pointer-events-none" style={{ animationDelay: '6s' }} />
 
-      <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-black/10">
+      <div className="w-full max-w-[98%] xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 relative z-10 glass rounded-3xl py-12 md:py-16 border border-white/5 shadow-2xl bg-[#161311]/10">
         
         {/* Header */}
         <motion.div
@@ -71,87 +71,33 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           className="text-left mb-16"
         >
-          <span className="font-mono-jb text-[10px] text-purple-400 tracking-[0.2em] uppercase block mb-3">05 / Contact</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-syne text-white leading-tight">
-            Let's build <span className="gradient-text font-extrabold">something great</span>
+          <span className="font-mono-jb text-[10px] text-[#C9A84C] tracking-[0.2em] uppercase block mb-3">05 / Contact</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-heading text-white tracking-[-0.02em] leading-tight mb-4">
+            Let's Build the <span className="text-[#C9A84C] font-extrabold">Future.</span>
           </h2>
         </motion.div>
 
-        {/* Simplified Layout matching referral theme */}
-        <div className="grid lg:grid-cols-12 gap-12 items-start w-full mx-auto">
-          
-          {/* Left Column: Direct contact info */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center w-full max-w-6xl mx-auto">
+          {/* Left Column: Form */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-4 space-y-8"
-          >
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold font-syne text-white leading-snug">
-                Let's turn your ideas into automated systems.
-              </h3>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-                Whether you need custom calling agent pipelines, responsive frontends, or automated database connections, we build solutions that deliver measurable efficiency.
-              </p>
-            </div>
-
-            {/* Quick Details */}
-            <div className="space-y-4">
-              {[
-                { icon: Mail, label: 'Email', value: 'buildwithpluto@gmail.com', href: 'mailto:buildwithpluto@gmail.com' },
-                { icon: Phone, label: 'Phone', value: '+91 7022951232', href: 'tel:+917022951232' },
-                { icon: MapPin, label: 'Location', value: 'Remote / Global', href: null }
-              ].map((item, idx) => {
-                const Icon = item.icon
-                const CardWrapper = item.href ? 'a' : 'div'
-                return (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.3 + idx * 0.1 }}
-                  >
-                    <CardWrapper
-                      href={item.href || undefined}
-                      className={`flex items-center gap-4 glass rounded-2xl px-5 py-4 border border-white/5 transition-all duration-300 block ${item.href ? 'hover:bg-purple-500/5 hover:border-purple-500/20 group' : ''}`}
-                    >
-                      <div className={`w-9 h-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 ${item.href ? 'group-hover:scale-110 transition-transform' : ''}`}>
-                        <Icon size={18} />
-                      </div>
-                      <div>
-                        <p className="text-[10px] font-bold font-mono-jb text-gray-500 uppercase tracking-widest">{item.label}</p>
-                        <p className="text-gray-300 text-sm font-semibold mt-0.5 tracking-wide group-hover:text-white transition-colors">
-                          {item.value}
-                        </p>
-                      </div>
-                    </CardWrapper>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </motion.div>
-
-          {/* Right Column: Complete Form Section matching referral image (Enlarged) */}
-          <motion.div
-            initial={{ opacity: 0, x: 35 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-8"
+            className="w-full"
           >
             <div 
-              className="glass rounded-3xl p-6 md:p-10 border border-white/5 relative"
+              className="glass rounded-3xl p-8 md:p-12 lg:p-16 border border-white/5 relative"
               style={{ 
                 boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 35px rgba(124, 58, 237, 0.04)',
                 borderColor: 'rgba(255, 255, 255, 0.06)'
               }}
             >
               {/* Form Header */}
-              <div className="mb-6 pb-6 border-b border-white/5">
-                <h3 className="text-2xl font-bold font-syne text-white tracking-wide">
+              <div className="mb-8 pb-8 border-b border-white/5">
+                <h3 className="text-3xl font-bold font-heading tracking-[-0.02em] text-white tracking-wide">
                   Send a Message
                 </h3>
-                <p className="text-gray-400 text-xs md:text-sm mt-1">
+                <p className="text-gray-400 text-sm md:text-base mt-2">
                   I respond to every inquiry personally — usually within a business day.
                 </p>
               </div>
@@ -160,113 +106,83 @@ const Contact = () => {
               <form 
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="space-y-6"
+                className="space-y-8"
               >
                 {/* Row 1: Name and Email */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="name">
-                      Your Name
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="name">
+                      Your Name <span className="text-orange-500">*</span>
                     </label>
                     <input
                       type="text"
                       id="name"
                       name="name"
-                      placeholder="Jane Smith"
+                      placeholder="Aditya"
                       required
                       disabled={status === 'sending'}
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-[#1f1a18] border border-white/10 rounded-xl px-6 py-5 text-white placeholder-gray-600 text-lg focus:border-[#C9A84C]/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed outline-none"
                     />
                   </div>
                   
-                  <div className="space-y-2">
-                    <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="email">
-                      Email Address
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="email">
+                      Email Address <span className="text-orange-500">*</span>
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      placeholder="jane@company.com"
+                      placeholder="abc@gmail.com"
                       required
                       disabled={status === 'sending'}
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-[#1f1a18] border border-white/10 rounded-xl px-6 py-5 text-white placeholder-gray-600 text-lg focus:border-[#C9A84C]/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed outline-none"
                     />
                   </div>
                 </div>
 
                 {/* Row 2: Contact Number */}
-                <div className="space-y-2">
-                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="phone">
-                    Contact Number <span className="text-orange-500">*</span>
+                <div className="space-y-3">
+                  <label className="block text-xs font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="phone">
+                    Contact Number
                   </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
-                    placeholder="+91 98765 43210"
-                    required
+                    placeholder="+91 XXXXXXXXXX"
                     disabled={status === 'sending'}
-                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#1f1a18] border border-white/10 rounded-xl px-6 py-5 text-white placeholder-gray-600 text-lg focus:border-[#C9A84C]/50 transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed outline-none"
                   />
                 </div>
 
-                {/* Row 3: Inquiry Type */}
-                <div className="space-y-2">
-                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="inquiryType">
-                    Inquiry Type
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="inquiryType"
-                      name="inquiryType"
-                      required
-                      defaultValue=""
-                      disabled={status === 'sending'}
-                      className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white text-base focus:border-blue-500/50 transition-all duration-300 font-medium appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <option value="" disabled>Select a topic...</option>
-                      <option value="ai-automation">AI Automations</option>
-                      <option value="website-design">Website Design / Builder</option>
-                      <option value="saas-platform">Custom SaaS Platform</option>
-                      <option value="cybersecurity">Cybersecurity Consultation</option>
-                      <option value="other">Other</option>
-                    </select>
-                    {/* Select arrow */}
-                    <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-gray-500">
-                      <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Row 4: Project Details */}
-                <div className="space-y-2">
-                  <label className="block text-[10px] font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="message">
-                    Project Details
+                {/* Row 3: Message */}
+                <div className="space-y-3">
+                  <label className="block text-xs font-bold font-mono-jb uppercase tracking-widest text-gray-400" htmlFor="message">
+                    Message <span className="text-orange-500">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     placeholder="Tell me about your project, the problem you're solving, and your timeline..."
-                    rows={8}
+                    rows={6}
                     required
                     disabled={status === 'sending'}
-                    className="w-full bg-[#111119] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 text-base focus:border-blue-500/50 transition-all duration-300 min-h-[220px] font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#1f1a18] border border-white/10 rounded-xl px-6 py-5 text-white placeholder-gray-600 text-lg focus:border-[#C9A84C]/50 focus:bg-[#1f1a18] transition-all duration-300 min-h-[200px] font-medium disabled:opacity-50 disabled:cursor-not-allowed outline-none"
                   />
                 </div>
 
                 {/* Row 5: Submit Button and Status Messages */}
-                <div className="space-y-4">
+                <div className="space-y-5 pt-4">
                   <button
                     type="submit"
                     disabled={status === 'sending' || status === 'success'}
-                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl text-xs font-bold tracking-wider text-black transition-all cursor-pointer uppercase font-mono-jb mt-2 border border-transparent
-                      ${status === 'sending' ? 'bg-blue-400/80 text-white cursor-wait opacity-80' : ''}
-                      ${status === 'success' ? 'bg-emerald-500 text-white cursor-default' : ''}
-                      ${status === 'error' ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-[0_8px_30px_rgba(225,29,72,0.25)]' : ''}
-                      ${status === 'idle' ? 'bg-blue-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(59,130,246,0.25)]' : ''}
+                    className={`w-full flex items-center justify-center gap-3 py-5 rounded-lg text-base font-bold tracking-wide text-[#0E0E0E] transition-all cursor-pointer uppercase font-heading mt-2 border border-transparent
+
+                      ${status === 'sending' ? 'bg-[#C9A84C]/80 cursor-wait opacity-80' : ''}
+                      ${status === 'success' ? 'bg-[#C9A84C] cursor-default' : ''}
+                      ${status === 'error' ? 'bg-rose-600 hover:bg-rose-500 text-white' : ''}
+                      ${status === 'idle' ? 'bg-[#C9A84C] hover:bg-white hover:scale-[1.02]' : ''}
                     `}
                   >
                     {status === 'sending' && (
@@ -289,7 +205,8 @@ const Contact = () => {
                     )}
                     {status === 'idle' && (
                       <>
-                        <span>Send Message &rarr;</span>
+                        <span>Send Message</span>
+                        <ArrowRight size={18} />
                       </>
                     )}
                   </button>
@@ -299,12 +216,12 @@ const Contact = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-start gap-3"
+                      className="p-4 rounded-xl bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C] text-xs flex items-start gap-3"
                     >
                       <CheckCircle2 size={16} className="shrink-0 mt-0.5" />
                       <div>
                         <p className="font-bold">Inquiry Sent!</p>
-                        <p className="text-emerald-400/80 mt-1">Thank you for reaching out. I'll personally review your inquiry and get back to you shortly.</p>
+                        <p className="text-[#C9A84C]/80 mt-1">Thank you for reaching out. I'll personally review your inquiry and get back to you shortly.</p>
                       </div>
                     </motion.div>
                   )}
@@ -324,6 +241,95 @@ const Contact = () => {
                   )}
                 </div>
               </form>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Glimpses of Pluto (6 Images Floating Grid) */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-full flex flex-col lg:grid lg:grid-cols-2 gap-6 relative h-full content-center"
+          >
+            {/* Glowing orb behind */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-[120px] z-0 pointer-events-none" />
+
+            {/* Left Column of Floating Images */}
+            <div className="flex flex-col gap-6 pt-12">
+              {/* Image 1 - System Overview */}
+              <motion.div 
+                className="relative w-full h-[220px] rounded-3xl overflow-hidden border border-white/5 shadow-xl glass group z-10"
+                whileHover={{ scale: 1.03 }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0 }}
+              >
+                <img loading="lazy" src="/pluto_glimpse_1.webp" alt="Pluto Dashboard" className="w-full h-full object-cover opacity-80" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
+                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">System Overview</div>
+              </motion.div>
+
+              {/* Image 3 - Neural System */}
+              <motion.div 
+                className="relative w-full h-[280px] rounded-3xl overflow-hidden border border-white/10 shadow-xl glass group z-10"
+                whileHover={{ scale: 1.03 }}
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              >
+                <img loading="lazy" src="/pluto_glimpse_2.webp" alt="Pluto AI Neural Network" className="w-full h-full object-cover opacity-80" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
+                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Neural System</div>
+              </motion.div>
+
+              {/* Image 5 - Cafe Platform */}
+              <motion.div 
+                className="relative w-full h-[220px] rounded-3xl overflow-hidden border border-white/5 shadow-xl glass group z-10"
+                whileHover={{ scale: 1.03 }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+              >
+                <img loading="lazy" src="/photo1.webp" alt="Pluto Cafe Interface" className="w-full h-full object-cover opacity-80" />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
+                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Cafe Platform</div>
+              </motion.div>
+            </div>
+
+            {/* Right Column of Floating Images */}
+            <div className="flex flex-col gap-6 pb-12">
+              {/* Image 2 - Ops Dashboard */}
+              <motion.div 
+                className="relative w-full h-[280px] rounded-3xl overflow-hidden border border-white/10 shadow-xl glass group z-10"
+                whileHover={{ scale: 1.03 }}
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+              >
+                <img loading="lazy" src="/photo2.webp" alt="Pluto Project" className="w-full h-full object-cover opacity-70" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Ops Dashboard</div>
+              </motion.div>
+
+              {/* Image 4 - AI Agent */}
+              <motion.div 
+                className="relative w-full h-[220px] rounded-3xl overflow-hidden border border-white/10 shadow-xl glass group z-10"
+                whileHover={{ scale: 1.03 }}
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+              >
+                <img loading="lazy" src="/robot.webp" alt="AI Robot" className="w-full h-full object-cover opacity-90 object-top" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">AI Agent</div>
+              </motion.div>
+
+              {/* Image 6 - Code Editor */}
+              <motion.div 
+                className="relative w-full h-[280px] rounded-3xl overflow-hidden border border-[#C9A84C]/30 shadow-xl glass group z-10"
+                whileHover={{ scale: 1.03 }}
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
+              >
+                <img loading="lazy" src="/pluto_glimpse_3.webp" alt="Pluto Code Editor" className="w-full h-full object-cover object-top opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-300" />
+                <div className="absolute bottom-3 left-4 text-xs font-medium text-white/70 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">Code Editor</div>
+              </motion.div>
             </div>
           </motion.div>
 

@@ -4,13 +4,13 @@ import { useInView } from 'react-intersection-observer'
 import { Sparkles, Hourglass, RefreshCw, Cpu, Smartphone, Video, FileText, BarChart3, Building, ShieldCheck } from 'lucide-react'
 
 const upcomingServices = [
-  { icon: Cpu, name: 'AI SaaS Products', progress: 85, status: 'Launching Soon', color: 'from-purple-500 to-indigo-500' },
-  { icon: Smartphone, name: 'Mobile Applications', progress: 60, status: 'In Development', color: 'from-blue-500 to-cyan-500' },
-  { icon: ShieldCheck, name: 'Advanced AI Systems', progress: 40, status: 'In Development', color: 'from-pink-500 to-purple-500' },
+  { icon: Cpu, name: 'AI SaaS Products', progress: 85, status: 'Launching Soon', color: 'from-[#C9A84C] to-indigo-500' },
+  { icon: Smartphone, name: 'Mobile Applications', progress: 60, status: 'In Development', color: 'from-[#C9A84C] to-[#C9A84C]' },
+  { icon: ShieldCheck, name: 'Advanced AI Systems', progress: 40, status: 'In Development', color: 'from-pink-500 to-[#C9A84C]' },
   { icon: Video, name: 'AI Video Automation', progress: 75, status: 'In Development', color: 'from-orange-500 to-red-500' },
-  { icon: FileText, name: 'AI Content Systems', progress: 90, status: 'Launching Soon', color: 'from-emerald-500 to-teal-500' },
-  { icon: BarChart3, name: 'AI Analytics Platforms', progress: 50, status: 'In Development', color: 'from-cyan-500 to-blue-500' },
-  { icon: Building, name: 'Enterprise AI Solutions', progress: 30, status: 'Coming Soon', color: 'from-indigo-500 to-purple-500' },
+  { icon: FileText, name: 'AI Content Systems', progress: 90, status: 'Launching Soon', color: 'from-[#C9A84C] to-teal-500' },
+  { icon: BarChart3, name: 'AI Analytics Platforms', progress: 50, status: 'In Development', color: 'from-[#C9A84C] to-[#C9A84C]' },
+  { icon: Building, name: 'Enterprise AI Solutions', progress: 30, status: 'Coming Soon', color: 'from-indigo-500 to-[#C9A84C]' },
   { icon: Cpu, name: 'Custom AI Platforms', progress: 65, status: 'In Development', color: 'from-pink-500 to-rose-500' },
 ]
 
@@ -20,7 +20,7 @@ const ComingSoon = () => {
   return (
     <section className="section-padding relative overflow-hidden" id="coming-soon" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.05] pointer-events-none" />
-      <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-blue-600/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -35,7 +35,7 @@ const ComingSoon = () => {
             <Hourglass size={12} className="animate-spin" style={{ animationDuration: '4s' }} /> Roadmap
           </span>
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            More Services <span className="gradient-text">Coming Soon</span>
+            More Services <span className="text-[#C9A84C]">Coming Soon</span>
           </h2>
           <div className="title-underline" />
           <p className="text-gray-400 max-w-2xl mx-auto mt-6">
@@ -68,7 +68,7 @@ const ComingSoon = () => {
                 <div>
                   {/* Card Title & Icon */}
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-all border border-white/5">
+                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-[#C9A84C] group-hover:bg-[#C9A84C]/10 transition-all border border-white/5">
                       <Icon size={18} />
                     </div>
                     <span className={`tag ${tagStyle} text-[9px] uppercase tracking-wider font-bold`}>
@@ -76,7 +76,7 @@ const ComingSoon = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-white font-bold font-orbitron text-sm sm:text-base mb-4 tracking-wider group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-white font-bold font-orbitron text-sm sm:text-base mb-4 tracking-wider group-hover:text-[#C9A84C] transition-colors">
                     {service.name}
                   </h3>
                 </div>
@@ -85,10 +85,10 @@ const ComingSoon = () => {
                 <div className="mt-4 space-y-2">
                   <div className="flex justify-between items-center text-[10px] font-mono">
                     <span className="text-gray-500 flex items-center gap-1.5">
-                      <RefreshCw size={10} className="animate-spin text-purple-400" style={{ animationDuration: '3s' }} /> 
+                      <RefreshCw size={10} className="animate-spin text-[#C9A84C]" style={{ animationDuration: '3s' }} /> 
                       Compiling build...
                     </span>
-                    <span className="text-purple-400 font-bold">{service.progress}%</span>
+                    <span className="text-[#C9A84C] font-bold">{service.progress}%</span>
                   </div>
                   
                   {/* Bar */}

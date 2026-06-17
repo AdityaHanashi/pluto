@@ -1,127 +1,89 @@
-import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React from 'react'
 
 const LoadingScreen = () => {
-  const [progress, setProgress] = useState(0)
-  const [phase, setPhase] = useState(0)
-
-  const phases = [
-    'Initializing AI Systems...',
-    'Loading Neural Networks...',
-    'Connecting to Pluto.ai...',
-    'Welcome to the Future.',
-  ]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          return 100
-        }
-        return prev + 1.2
-      })
-    }, 25)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    if (progress > 20) setPhase(1)
-    if (progress > 55) setPhase(2)
-    if (progress > 85) setPhase(3)
-  }, [progress])
-
   return (
-    <AnimatePresence>
-      <motion.div
-        className="loading-screen"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0, scale: 1.05 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Animated background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="orb w-96 h-96 bg-emerald-500/25 -top-20 -left-20" style={{ animationDelay: '0s' }} />
-          <div className="orb w-80 h-80 bg-amber-500/20 -bottom-20 -right-20" style={{ animationDelay: '2s' }} />
-          <div className="orb w-96 h-96 bg-cyan-500/20 -top-10 right-20" style={{ animationDelay: '4s' }} />
-          <div className="orb w-80 h-80 bg-purple-600/20 bottom-20 -left-10" style={{ animationDelay: '6s' }} />
+    <div className="fixed inset-0 z-[100] bg-[#161311] flex flex-col items-center justify-center overflow-hidden">
+      <style>{`
+        .loader-container { position: relative; margin-bottom: 64px; }
+        .logo-box {
+          width: 80px; height: 80px; border-radius: 50%;
+          background: #C9A84C;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 30px; font-weight: bold; font-family: 'Orbitron', sans-serif;
+          animation: pulse 2s infinite ease-in-out;
+        }
+        .ring-1 {
+          position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(201,168,76,0.3);
+          transform: scale(1.5);
+          animation: spin 8s linear infinite;
+        }
+        .ring-2 {
+          position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(201,168,76,0.2);
+          transform: scale(2.2);
+          animation: spin-reverse 12s linear infinite;
+        }
+        .progress-container { width: 320px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 999px; position: relative; overflow: hidden; margin-bottom: 16px; margin-top: 32px; }
+        .progress-bar {
+          height: 100%; border-radius: 999px; background: #C9A84C;
+          animation: load 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .text-cycler {
+          color: rgba(201,168,76,0.8); font-size: 14px; letter-spacing: 0.05em; font-family: monospace;
+          position: relative; height: 20px; overflow: hidden; display: flex; align-items: center; justify-content: center; width: 320px;
+        }
+        .text-cycler span {
+          position: absolute; opacity: 0;
+          animation: cycle-text 2.4s linear forwards;
+          text-align: center; width: 100%;
+        }
+        .text-cycler span:nth-child(1) { animation-delay: 0s; }
+        .text-cycler span:nth-child(2) { animation-delay: 0.6s; }
+        .text-cycler span:nth-child(3) { animation-delay: 1.2s; }
+        .text-cycler span:nth-child(4) { animation-delay: 1.8s; }
+        
+        .scan-line {
+          position: absolute; top: 0; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, #C9A84C, transparent); opacity: 0.6;
+          animation: scan 2.5s linear infinite;
+        }
+        
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.4); } 50% { box-shadow: 0 0 40px rgba(201,168,76,0.8); } }
+        @keyframes spin { 100% { transform: scale(1.5) rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: scale(2.2) rotate(-360deg); } }
+        @keyframes load { 0% { width: 0%; } 20% { width: 15%; } 50% { width: 45%; } 80% { width: 70%; } 100% { width: 100%; } }
+        @keyframes cycle-text { 0% { opacity: 0; transform: translateY(10px); } 5%, 20% { opacity: 1; transform: translateY(0); } 25% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 0; } }
+        @keyframes cycle-text-last { 0% { opacity: 0; transform: translateY(10px); } 5%, 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes scan { 0% { transform: translateY(0vh); } 100% { transform: translateY(100vh); } }
+      `}</style>
+
+      {/* Abstract animated background elements */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A84C]/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px]" />
+
+      <div className="flex flex-col items-center z-10">
+        <div className="loader-container mt-6">
+          <div className="logo-box text-[#141110]">P</div>
+          <div className="ring-1" />
+          <div className="ring-2" />
         </div>
 
-        {/* Grid */}
-        <div className="absolute inset-0 grid-pattern opacity-30" />
+        <div className="text-4xl font-bold font-orbitron text-[#C9A84C] mb-2 mt-4">PLUTO.AI</div>
+        <p className="text-gray-500 text-sm tracking-widest uppercase mb-6">Building The Future</p>
 
-        {/* Logo */}
-        <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, type: 'spring', bounce: 0.5 }}
-          className="relative z-10 flex flex-col items-center"
-        >
-          {/* Logo icon */}
-          <div className="relative mb-6">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 via-amber-500 via-cyan-500 to-purple-600 flex items-center justify-center text-3xl font-bold font-orbitron animate-glow-pulse">
-              P
-            </div>
-            {/* Orbit rings */}
-            <div className="absolute inset-0 rounded-full border border-emerald-500/30 animate-spin-slow scale-150" />
-            <div className="absolute inset-0 rounded-full border border-cyan-500/20 animate-spin-slow scale-[2.2]" style={{ animationDuration: '12s', animationDirection: 'reverse' }} />
-          </div>
+        <div className="progress-container">
+          <div className="progress-bar" />
+        </div>
 
-          <motion.h1
-            className="text-4xl font-bold font-orbitron gradient-text mb-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            PLUTO.AI
-          </motion.h1>
+        <div className="text-cycler font-mono-jb">
+          <span>Initializing AI Systems...</span>
+          <span>Connecting Automation Modules...</span>
+          <span>Calibrating Voice Agents...</span>
+          <span style={{animationFillMode: 'forwards', animationName: 'cycle-text-last', animationDelay: '1.8s'}}>Almost Ready...</span>
+        </div>
+      </div>
 
-          <motion.p
-            className="text-gray-500 text-sm tracking-widest uppercase mb-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            Building The Future
-          </motion.p>
-
-          {/* Progress bar */}
-          <div className="w-80 h-[2px] bg-gray-800 rounded-full overflow-hidden relative mb-4">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-amber-500 via-cyan-500 to-purple-600"
-              style={{ width: `${progress}%` }}
-              transition={{ ease: 'linear' }}
-            />
-            <div
-              className="absolute top-0 h-full w-8 bg-gradient-to-r from-transparent to-white/30 rounded-full"
-              style={{ left: `${Math.max(0, progress - 4)}%` }}
-            />
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={phase}
-              className="text-emerald-400/80 text-sm tracking-wider font-mono"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-            >
-              {phases[phase]}
-            </motion.p>
-          </AnimatePresence>
-
-          <p className="text-gray-600 text-xs mt-2 font-mono">{Math.min(100, Math.round(progress))}%</p>
-        </motion.div>
-
-        {/* Scanning line effect */}
-        <motion.div
-          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-60"
-          animate={{ y: ['0vh', '100vh'] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
-        />
-      </motion.div>
-    </AnimatePresence>
+      <div className="scan-line" />
+    </div>
   )
 }
 

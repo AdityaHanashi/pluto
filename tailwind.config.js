@@ -3,18 +3,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#8B5CF6',
-        secondary: '#0EA5E9',
-        accent: '#6366F1',
-        dark: '#0a0a0a',
+        primary: '#C9A84C',
+        secondary: '#06B6D4',
+        accent: '#C9A84C',
+        dark: '#0E0E0E',
+        light: '#F5F0E8',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        orbitron: ['Orbitron', 'sans-serif'],
+        sans: ['Inter', 'DM Sans', 'sans-serif'],
+        heading: ['"Bricolage Grotesque"', 'sans-serif'],
+        syne: ['"Bricolage Grotesque"', 'sans-serif'], // fallback mapping
+        mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        glow: '0 0 20px rgba(139,92,246,0.5)',
-        glass: '0 4px 30px rgba(0,0,0,0.5)',
+        glow: '0 0 20px rgba(139,92,246,0.3)',
+        glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       },
     },
   },

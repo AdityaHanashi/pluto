@@ -65,11 +65,11 @@ const LaborManagement = () => {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden bg-black" id="labor">
+    <section className="py-24 relative overflow-hidden bg-[#161311]" id="labor">
       {/* Moving Cyber Grid Background */}
       <div className="absolute inset-0 grid-pattern opacity-[0.06] pointer-events-none" />
-      <div className="absolute top-[30%] left-[20%] w-96 h-96 rounded-full bg-blue-600/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-purple-600/5 blur-[130px] pointer-events-none" />
+      <div className="absolute top-[30%] left-[20%] w-96 h-96 rounded-full bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-[#C9A84C]/5 blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -79,16 +79,16 @@ const LaborManagement = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-900/10 backdrop-blur-md mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/10 backdrop-blur-md mb-4"
           >
-            <Database size={12} className="text-blue-400" />
-            <span className="text-[10px] font-semibold text-blue-300 font-orbitron tracking-widest uppercase">
+            <Database size={12} className="text-[#C9A84C]" />
+            <span className="text-[10px] font-medium text-[#C9A84C] font-orbitron tracking-widest uppercase">
               Relational Control
             </span>
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white">
-            MySQL Labor <span className="gradient-text font-extrabold">Management</span>
+            MySQL Labor <span className="text-[#C9A84C] font-extrabold">Management</span>
           </h2>
           <div className="title-underline mt-4" />
           <p className="text-gray-400 max-w-2xl mx-auto mt-6 text-sm md:text-base leading-relaxed">
@@ -112,11 +112,11 @@ const LaborManagement = () => {
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
                 <div className="flex items-center gap-2">
-                  <Server size={18} className="text-blue-400" />
+                  <Server size={18} className="text-[#C9A84C]" />
                   <h3 className="font-orbitron font-bold text-sm tracking-wide text-white">CONNECTION_INFO</h3>
                 </div>
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[9px] font-bold text-emerald-400 font-mono">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[9px] font-bold text-[#C9A84C] font-mono">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] animate-pulse" />
                   LIVE
                 </div>
               </div>
@@ -128,7 +128,7 @@ const LaborManagement = () => {
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
                   <span>PORT:</span>
-                  <span className="text-cyan-400">3306</span>
+                  <span className="text-[#C9A84C]">3306</span>
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
                   <span>HOST_URL:</span>
@@ -136,11 +136,11 @@ const LaborManagement = () => {
                 </div>
                 <div className="flex justify-between border-b border-white/5 pb-1">
                   <span>DB_NAME:</span>
-                  <span className="text-purple-400">pluto_labor_db</span>
+                  <span className="text-[#C9A84C]">pluto_labor_db</span>
                 </div>
                 <div className="flex justify-between">
                   <span>PING_LATENCY:</span>
-                  <span className="text-emerald-400 font-bold">4.2 ms</span>
+                  <span className="text-[#C9A84C] font-bold">4.2 ms</span>
                 </div>
               </div>
             </motion.div>
@@ -163,7 +163,7 @@ const LaborManagement = () => {
                     onClick={() => handleQuerySelect(idx)}
                     className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 text-xs font-medium cursor-pointer ${
                       activeQueryIdx === idx
-                        ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 text-white font-semibold shadow-[0_0_15px_rgba(59,130,246,0.15)]'
+                        ? 'bg-gradient-to-r from-[#C9A84C]/20 to-[#C9A84C]/20 border border-[#C9A84C]/30 text-white font-medium shadow-[0_0_15px_rgba(59,130,246,0.15)]'
                         : 'bg-white/5 border border-transparent text-gray-400 hover:bg-white/10 hover:text-white'
                     }`}
                   >
@@ -195,16 +195,16 @@ const LaborManagement = () => {
                 <div className="flex gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C9A84C]/60" />
                 </div>
               </div>
 
               {/* Console Code Editor area */}
-              <div className="p-6 bg-black/60 font-mono text-xs text-emerald-400/90 space-y-4">
+              <div className="p-6 bg-[#161311]/60 font-mono text-xs text-[#C9A84C]/90 space-y-4">
                 <textarea
                   value={sqlCode}
                   onChange={(e) => setSqlCode(e.target.value)}
-                  className="w-full bg-transparent border-none text-emerald-400 focus:outline-none focus:ring-0 font-mono text-sm leading-relaxed h-20 resize-none"
+                  className="w-full bg-transparent border-none text-[#C9A84C] focus:outline-none focus:ring-0 font-mono text-sm leading-relaxed h-20 resize-none"
                   style={{ outline: 'none' }}
                 />
                 
@@ -261,7 +261,7 @@ const LaborManagement = () => {
                         <tr className="bg-transparent">
                           <td colSpan={5} className="py-12 text-center text-gray-500 font-mono text-xs">
                             <span className="inline-flex gap-2 items-center justify-center">
-                              <RefreshCw size={14} className="animate-spin text-blue-400" />
+                              <RefreshCw size={14} className="animate-spin text-[#C9A84C]" />
                               Executing MySQL pipeline queries...
                             </span>
                           </td>
@@ -283,19 +283,19 @@ const LaborManagement = () => {
                             <td className="px-4 py-3.5 text-right">
                               <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider font-mono ${
                                 row.status.toLowerCase().includes('active') || row.status.toLowerCase().includes('online')
-                                  ? 'bg-emerald-500/10 border border-emerald-500/20 text-emerald-400'
+                                  ? 'bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[#C9A84C]'
                                   : row.status.toLowerCase().includes('break')
                                     ? 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-400'
                                     : row.status.toLowerCase().includes('overtime')
-                                      ? 'bg-purple-500/10 border border-purple-500/20 text-purple-400 animate-pulse'
+                                      ? 'bg-[#C9A84C]/10 border border-[#C9A84C]/20 text-[#C9A84C] animate-pulse'
                                       : 'bg-red-500/10 border border-red-500/20 text-red-400'
                               }`}>
                                 <span className={`w-1 h-1 rounded-full ${
                                   row.status.toLowerCase().includes('active') || row.status.toLowerCase().includes('online')
-                                    ? 'bg-emerald-400'
+                                    ? 'bg-[#C9A84C]'
                                     : row.status.toLowerCase().includes('break')
                                       ? 'bg-yellow-400'
-                                      : 'bg-purple-400'
+                                      : 'bg-[#C9A84C]'
                                 }`} />
                                 {row.status}
                               </span>

@@ -9,7 +9,7 @@ const steps = [
     title: 'Discovery Call',
     subtitle: 'Step 01',
     desc: 'We map your metrics, identify operational bottlenecks, and scope your custom AI automation and web development systems.',
-    color: 'from-purple-500 to-indigo-500',
+    color: 'from-[#C9A84C] to-indigo-500',
     glow: 'rgba(139, 92, 246, 0.3)',
   },
   {
@@ -17,7 +17,7 @@ const steps = [
     title: 'Planning & Architecture',
     subtitle: 'Step 02',
     desc: 'We map data flow routing paths, choose model checkpoints, outline RAG databases, and structure Figma design mockups.',
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-[#C9A84C] to-[#C9A84C]',
     glow: 'rgba(59, 130, 246, 0.3)',
   },
   {
@@ -25,7 +25,7 @@ const steps = [
     title: 'Design & Frontend',
     subtitle: 'Step 03',
     desc: 'We draft bespoke layouts, styling systems, and React component codeblocks to ensure premium, high-speed UX.',
-    color: 'from-cyan-500 to-teal-500',
+    color: 'from-[#C9A84C] to-teal-500',
     glow: 'rgba(6, 182, 212, 0.3)',
   },
   {
@@ -33,7 +33,7 @@ const steps = [
     title: 'AI & Backend Integration',
     subtitle: 'Step 04',
     desc: 'We bind autonomous agents, connect webhook APIs, configure vector databases, and establish RAG indexes.',
-    color: 'from-indigo-500 to-purple-500',
+    color: 'from-indigo-500 to-[#C9A84C]',
     glow: 'rgba(99, 102, 241, 0.3)',
   },
   {
@@ -49,7 +49,7 @@ const steps = [
     title: 'Launch & Live Support',
     subtitle: 'Step 06',
     desc: 'We deploy the client codebase directly to production, activate Netlify forms, and provide continuous uptime support.',
-    color: 'from-emerald-500 to-green-500',
+    color: 'from-[#C9A84C] to-[#C9A84C]',
     glow: 'rgba(34, 197, 94, 0.3)',
   },
 ]
@@ -61,7 +61,7 @@ const Workflow = () => {
     <section className="section-padding relative overflow-hidden" id="workflow" ref={ref}>
       {/* Background patterns */}
       <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
@@ -74,7 +74,7 @@ const Workflow = () => {
         >
           <span className="tag tag-blue mb-4 inline-flex font-mono">Process</span>
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Our Development <span className="gradient-text font-extrabold">Workflow</span>
+            Our Development <span className="text-[#C9A84C] font-extrabold">Workflow</span>
           </h2>
           <div className="title-underline" />
           <p className="text-gray-400 max-w-2xl mx-auto mt-6">
@@ -86,7 +86,7 @@ const Workflow = () => {
         <div className="relative max-w-4xl mx-auto">
           {/* Vertical central spine line */}
           <div 
-            className="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] bg-gradient-to-b from-purple-500 via-blue-500 to-green-400 opacity-30 -translate-x-[1px]" 
+            className="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#C9A84C] via-[#C9A84C] to-[#C9A84C] opacity-30 -translate-x-[1px]" 
             style={{ boxShadow: '0 0 10px rgba(139, 92, 246, 0.15)' }}
           />
 
@@ -94,7 +94,7 @@ const Workflow = () => {
           <motion.div 
             animate={{ top: ['0%', '100%'] }}
             transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
-            className="absolute left-4 md:left-1/2 w-2.5 h-2.5 rounded-full bg-cyan-400 -translate-x-[5px] z-20 shadow-[0_0_12px_#22d3ee] pointer-events-none"
+            className="absolute left-4 md:left-1/2 w-2.5 h-2.5 rounded-full bg-[#C9A84C] -translate-x-[5px] z-20 shadow-[0_0_12px_#E8DFD8] pointer-events-none"
           />
 
           {/* Steps alternate */}
@@ -114,10 +114,10 @@ const Workflow = () => {
                         initial={{ opacity: 0, x: -35 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: idx * 0.08 }}
-                        className="glass rounded-2xl p-6 border border-white/5 relative card-hover hover:border-purple-500/20"
+                        className="glass rounded-2xl p-6 border border-white/5 relative card-hover hover:border-[#C9A84C]/20"
                         style={{ boxShadow: `0 4px 30px rgba(0,0,0,0.4)` }}
                       >
-                        <span className="text-[10px] font-mono font-bold text-purple-400 uppercase tracking-widest block mb-1">
+                        <span className="text-[10px] font-mono font-bold text-[#C9A84C] uppercase tracking-widest block mb-1">
                           {step.subtitle}
                         </span>
                         <h3 className="text-lg font-bold font-orbitron text-white mb-2 tracking-wider">
@@ -134,7 +134,7 @@ const Workflow = () => {
                   </div>
 
                   {/* Central Node Badge */}
-                  <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-black border border-white/10 -translate-x-1/2 z-10 flex items-center justify-center shadow-[0_0_15px_rgba(0,0,0,0.8)] group">
+                  <div className="absolute left-4 md:left-1/2 w-8 h-8 rounded-full bg-[#161311] border border-white/10 -translate-x-1/2 z-10 flex items-center justify-center shadow-[0_0_15px_rgba(0,0,0,0.8)] group">
                     <div className={`w-3.5 h-3.5 rounded-full bg-gradient-to-tr ${step.color} shadow-[0_0_8px_rgba(139,92,246,0.5)]`} />
                   </div>
 
@@ -145,10 +145,10 @@ const Workflow = () => {
                         initial={{ opacity: 0, x: 35 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: idx * 0.08 }}
-                        className="glass rounded-2xl p-6 border border-white/5 relative card-hover hover:border-blue-500/20"
+                        className="glass rounded-2xl p-6 border border-white/5 relative card-hover hover:border-[#C9A84C]/20"
                         style={{ boxShadow: `0 4px 30px rgba(0,0,0,0.4)` }}
                       >
-                        <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-widest block mb-1">
+                        <span className="text-[10px] font-mono font-bold text-[#C9A84C] uppercase tracking-widest block mb-1">
                           {step.subtitle}
                         </span>
                         <h3 className="text-lg font-bold font-orbitron text-white mb-2 tracking-wider">

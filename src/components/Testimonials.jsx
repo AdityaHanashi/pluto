@@ -65,7 +65,7 @@ const Testimonials = () => {
   return (
     <section className="section-padding relative overflow-hidden" id="testimonials" ref={ref}>
       <div className="absolute inset-0 grid-pattern opacity-[0.03] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-purple-700/5 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#C9A84C]/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         
@@ -78,7 +78,7 @@ const Testimonials = () => {
         >
           <span className="tag tag-purple mb-4 inline-flex font-mono">Testimonials</span>
           <h2 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-4">
-            Loved By <span className="gradient-text font-extrabold">Innovators</span>
+            Loved By <span className="text-[#C9A84C] font-extrabold">Innovators</span>
           </h2>
           <div className="title-underline" />
           <p className="text-gray-400 max-w-xl mx-auto mt-6">
@@ -121,7 +121,7 @@ const Testimonials = () => {
                         <Star key={i} size={15} className="fill-yellow-500 text-yellow-500 shadow-sm" />
                       ))}
                     </div>
-                    <Quote size={32} className="text-purple-500/20" />
+                    <Quote size={32} className="text-[#C9A84C]/20" />
                   </div>
 
                   {/* Quote text */}
@@ -132,8 +132,8 @@ const Testimonials = () => {
                   {/* Profile info */}
                   <div className="flex items-center gap-4 mt-2">
                     {/* Dummy avatar representation */}
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-600 to-blue-600 p-[2px] shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-                      <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-white font-orbitron font-bold text-sm">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#C9A84C] to-[#C9A84C] p-[2px] shadow-[0_0_10px_rgba(139,92,246,0.4)]">
+                      <div className="w-full h-full rounded-full bg-[#161311] flex items-center justify-center text-white font-orbitron font-bold text-sm">
                         {testimonials[current].name[0]}
                       </div>
                     </div>
@@ -143,7 +143,7 @@ const Testimonials = () => {
                         {testimonials[current].name}
                       </h4>
                       <p className="text-gray-400 text-xs font-mono mt-0.5">
-                        {testimonials[current].role} &bull; <span className="text-purple-400 font-bold">{testimonials[current].company}</span>
+                        {testimonials[current].role} &bull; <span className="text-[#C9A84C] font-bold">{testimonials[current].company}</span>
                       </p>
                     </div>
                   </div>
@@ -155,7 +155,7 @@ const Testimonials = () => {
           {/* Left Arrow */}
           <button 
             onClick={prevSlide}
-            className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all cursor-pointer z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+            className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#161311]/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#C9A84C]/30 transition-all cursor-pointer z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
             aria-label="Previous slide"
           >
             <ChevronLeft size={20} />
@@ -164,7 +164,7 @@ const Testimonials = () => {
           {/* Right Arrow */}
           <button 
             onClick={nextSlide}
-            className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/30 transition-all cursor-pointer z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+            className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#161311]/40 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-[#C9A84C]/30 transition-all cursor-pointer z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)]"
             aria-label="Next slide"
           >
             <ChevronRight size={20} />
@@ -177,7 +177,7 @@ const Testimonials = () => {
                 key={idx}
                 onClick={() => setCurrent(idx)}
                 className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  current === idx ? 'w-6 bg-purple-500 shadow-[0_0_8px_#8b5cf6]' : 'w-2 bg-white/20'
+                  current === idx ? 'w-6 bg-[#C9A84C] shadow-[0_0_8px_#E8DFD8]' : 'w-2 bg-white/20'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
