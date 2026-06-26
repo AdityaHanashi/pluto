@@ -11,7 +11,6 @@ const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
 const ParticleField = lazy(() => import('./components/ParticleField'))
 const Chatbot = lazy(() => import('./components/Chatbot'))
-const WelcomeAudio = lazy(() => import('./components/WelcomeAudio'))
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -36,7 +35,6 @@ function App() {
           <section id="projects"><Projects /></section>
           <section id="contact"><Contact /></section>
           <Chatbot />
-          <WelcomeAudio />
           <Footer />
         </Suspense>
       </main>

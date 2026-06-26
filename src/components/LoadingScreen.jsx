@@ -7,9 +7,9 @@ const LoadingScreen = () => {
         .loader-container { position: relative; margin-bottom: 64px; }
         .logo-box {
           width: 80px; height: 80px; border-radius: 50%;
-          background: #C9A84C;
+          background: #000;
           display: flex; align-items: center; justify-content: center;
-          font-size: 30px; font-weight: bold; font-family: 'Orbitron', sans-serif;
+          overflow: hidden;
           animation: pulse 2s infinite ease-in-out;
         }
         .ring-1 {
@@ -62,7 +62,9 @@ const LoadingScreen = () => {
 
       <div className="flex flex-col items-center z-10">
         <div className="loader-container mt-6">
-          <div className="logo-box text-[#141110]">P</div>
+          <div className="logo-box">
+            <img src="/company-logo.png" alt="Pluto.ai Logo" className="w-full h-full object-cover scale-110" />
+          </div>
           <div className="ring-1" />
           <div className="ring-2" />
         </div>

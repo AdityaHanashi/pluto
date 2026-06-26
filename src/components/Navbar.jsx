@@ -25,11 +25,11 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="fixed inset-x-0 top-6 z-50 flex justify-center px-6 pointer-events-none">
+    <nav className="fixed inset-x-0 top-4 md:top-6 z-50 flex justify-center px-4 md:px-6 pointer-events-none">
       <div 
-        className={`rounded-full px-8 py-3.5 flex items-center justify-center pointer-events-auto max-w-2xl w-auto transition-all duration-300 ${
+        className={`rounded-full px-5 md:px-8 py-3 md:py-3.5 flex items-center justify-center pointer-events-auto max-w-2xl w-auto transition-all duration-300 ${
           scrolled 
-            ? 'bg-[rgba(10,10,10,0.6)] backdrop-blur-[12px] border border-white/10 shadow-2xl' 
+            ? 'bg-[#0a0a0a]/95 md:bg-[rgba(10,10,10,0.6)] backdrop-blur-[12px] border border-white/10 shadow-2xl' 
             : 'bg-transparent border border-transparent'
         }`}
       >
@@ -56,7 +56,7 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile View Toggle */}
-        <div className="flex lg:hidden items-center justify-between w-full gap-8">
+        <div className="flex lg:hidden items-center justify-between w-full gap-6">
           <span className="text-[10px] font-bold tracking-[0.2em] text-white font-mono-jb uppercase">PLUTO.AI</span>
           <button
             onClick={() => setIsOpen(!isOpen)}

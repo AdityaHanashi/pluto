@@ -361,26 +361,6 @@ const Chatbot = () => {
               </div>
             )}
 
-            {/* Input Form Footer */}
-            <form 
-              onSubmit={handleSendText}
-              className="px-4 py-3 border-t border-white/[0.05] bg-[#1f1a18] flex items-center gap-2"
-            >
-              <input
-                type="text"
-                placeholder="Ask assistant or choose option..."
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                className="flex-1 bg-[#08080f]/80 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:border-[#C9A84C]/50 focus:outline-none transition-colors"
-              />
-              <button
-                type="submit"
-                className="p-3 rounded-xl bg-[#C9A84C] hover:bg-[#C9A84C] text-white transition-colors cursor-pointer shadow-[0_0_15px_rgba(124,58,237,0.3)] shrink-0"
-                aria-label="Send message"
-              >
-                <Send size={14} />
-              </button>
-            </form>
           </motion.div>
         )}
       </AnimatePresence>

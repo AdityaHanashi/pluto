@@ -8,7 +8,7 @@ const featuredProjects = [
     id: 'cafe-website-1',
     title: 'Cafe Website (Frontend)',
     desc: 'Premium storefront and online ordering system for a futuristic coffee shop, highlighting brand identity and menu.',
-    videoUrl: '/video1_opt.mp4',
+    videoUrl: '/video1.mp4',
     posterUrl: '/photo1.webp',
     tags: ['Web Design', 'UI/UX'],
     stat: '3x lead response time',
